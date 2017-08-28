@@ -2,3 +2,6 @@
 	path = reveal.js
 	url = https://github.com/hakimel/reveal.js.git
 	branch = master
+[submodule "ch_2_rl_in_non_associative/multi_arm_bandits"]
+	path = ch_2_rl_in_non_associative/multi_arm_bandits
+	url = https://github.com/BardOfCodes/multi_arm_bandits.git
