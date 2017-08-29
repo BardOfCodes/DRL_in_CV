@@ -11981,6 +11981,46 @@ a.anchor-link {
 <h1 id="RL-vs-Supervised-Learning-vs-Unsupervised-Learning"><center>RL vs Supervised Learning vs Unsupervised Learning</center><a class="anchor-link" href="#RL-vs-Supervised-Learning-vs-Unsupervised-Learning">&#194;&#182;</a></h1>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Supervised-Learning">Supervised Learning<a class="anchor-link" href="#Supervised-Learning">&#194;&#182;</a></h2><p>1) A human builds a classifier based on input and output data</p>
+<p>2) That classifier is trained with a training set of data</p>
+<p>3) That classifier is tested with a test set of data</p>
+<p>4) Deployment if the output is satisfactory</p>
+<p>To be used when, "I know how to classify this data, I just need you(the classifier) to sort it."</p>
+<p>Point of method: To class labels or to produce real numbers</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Unsupervised-Learning">Unsupervised Learning<a class="anchor-link" href="#Unsupervised-Learning">&#194;&#182;</a></h2><p>1) A human builds an algorithm based on input data</p>
+<p>2) That algorithm is tested with a test set of data (in which the algorithm creates the classifier)</p>
+<p>3) Deployment if the classifier is satisfactory</p>
+<p>To be used when, "I have no idea how to classify this data, can you(the algorithm) create a classifier for me?"
+Point of method: To class labels or to predict</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Reinforcement-Learning">Reinforcement Learning<a class="anchor-link" href="#Reinforcement-Learning">&#194;&#182;</a></h2><p>1) A human builds an algorithm based on input data</p>
+<p>2) That algorithm presents a state dependent on the input data in which a user rewards or punishes the algorithm via the action the algorithm took, this continues over time</p>
+<p>3) That algorithm learns from the reward/punishment and updates itself, this continues</p>
+<p>4) It's always in production, it needs to learn real data to be able to present actions from states</p>
+<p>To be used when, "I have no idea how to classify this data, can you classify this data and I'll give you a reward if it's correct or I'll punish you if it's not."</p>
+
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12330,7 +12370,12 @@ $$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><p>This was just a basic insight into the RL terminology.</p>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
+<li>We got introduced to the basic terminologies of RL.</li>
+</ul>
+<ul>
+<li>We got an intuition behind how an RL agent can solve problems.</li>
+</ul>
 
 </div>
 </div>
