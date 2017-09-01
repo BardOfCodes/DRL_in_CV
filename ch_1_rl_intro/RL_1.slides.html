@@ -12255,8 +12255,8 @@ $$v_π(s) = E_π[R _{t+1} + γ*R_{t+2} + γ^{2}*R_{t+3} + ... | S_t = s]$$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model">Model<a class="anchor-link" href="#Model">&#194;&#182;</a></h2><ul>
 <li>A model predicts what the environment will do next</li>
-<li>P predicts the next state</li>
-<li>R predicts the next (immediate) reward, e.g.
+<li><strong>Transitions</strong>: P predicts the next state (i.e. dynamics)</li>
+<li><strong>Rewards</strong>: R predicts the next (immediate) reward, e.g.
 $$ P_{ss'} = P[S_{t+1} = s' | S_t = s, A_t = a]$$
 $$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
 </ul>
@@ -12276,7 +12276,10 @@ $$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Maze-Example:-Policy">Maze Example: Policy<a class="anchor-link" href="#Maze-Example:-Policy">&#194;&#182;</a></h1><center><img src="img/e2.png" alt="HistoryandState" style="width: 1000px;"/></center>
+<h1 id="Maze-Example:-Policy">Maze Example: Policy<a class="anchor-link" href="#Maze-Example:-Policy">&#194;&#182;</a></h1><center><img src="img/e2.png" alt="HistoryandState" style="width: 1000px;"/></center><ul>
+<li>Arrows represent policy $\pi(s)$ for each state s. </li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -12325,12 +12328,22 @@ $$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Exploration-and-Exploitation">Exploration and Exploitation<a class="anchor-link" href="#Exploration-and-Exploitation">&#194;&#182;</a></h2><ul>
 <li>Reinforcement learning is like trial-and-error learning</li>
-<li>The agent should discover a good policy</li>
-<li>From its experiences of the environment</li>
+</ul>
+<ul>
+<li>The agent should discover a good policy,<ul>
+<li>From its experiences of the environment,</li>
 <li>Without losing too much reward along the way</li>
-<li>Exploration finds more information about the environment</li>
-<li>Exploitation exploits known information to maximise reward</li>
-<li>It is usually important to explore as well as exploit</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Exploration</strong> finds more information about the environment</li>
+</ul>
+<ul>
+<li><strong>Exploitation</strong> exploits known information to maximise reward</li>
+</ul>
+<ul>
+<li>It is usually important to explore as well as exploit (In Detail =&gt; Chapter 2).</li>
 </ul>
 
 </div>
