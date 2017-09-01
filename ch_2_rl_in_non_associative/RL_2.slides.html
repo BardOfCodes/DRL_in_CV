@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,26 +11854,23 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Reinforcement-Learning-in-Non-Associative-setting"><center>Reinforcement Learning in Non-Associative setting</center><a class="anchor-link" href="#Reinforcement-Learning-in-Non-Associative-setting">&#182;</a></h1><h4 id="-Reference:-Chapter-2,-Sutton-and-Barto"><center> Reference: Chapter 2, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-2,-Sutton-and-Barto">&#182;</a></h4>
+<h1 id="Reinforcement-Learning-in-Non-Associative-setting"><center>Reinforcement Learning in Non-Associative setting</center><a class="anchor-link" href="#Reinforcement-Learning-in-Non-Associative-setting">&#194;&#182;</a></h1><h4 id="-Reference:-Chapter-2,-Sutton-and-Barto"><center> Reference: Chapter 2, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-2,-Sutton-and-Barto">&#194;&#182;</a></h4>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents:">Contents:<a class="anchor-link" href="#Contents:">&#182;</a></h2>
+<h2 id="Contents:">Contents:<a class="anchor-link" href="#Contents:">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11853,8 +11879,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11863,8 +11888,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11873,8 +11897,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11883,17 +11906,15 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#182;</a></h1>
+<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11902,8 +11923,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11917,8 +11937,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11928,12 +11947,11 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Goal">Goal<a class="anchor-link" href="#Goal">&#182;</a></h2><ul>
+<h2 id="Goal">Goal<a class="anchor-link" href="#Goal">&#194;&#182;</a></h2><ul>
 <li>Show how evaluative feedback differs from instructive feedback.</li>
 <li>Give an introduction on how to solve Reinforcement learning problems.</li>
 </ul>
@@ -11941,17 +11959,15 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Multi-arm-Bandit-Problems"><center>Multi-arm Bandit Problems</center><a class="anchor-link" href="#Multi-arm-Bandit-Problems">&#182;</a></h1>
+<h1 id="Multi-arm-Bandit-Problems"><center>Multi-arm Bandit Problems</center><a class="anchor-link" href="#Multi-arm-Bandit-Problems">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11960,8 +11976,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11972,8 +11987,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11984,8 +11998,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11996,8 +12009,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12005,8 +12017,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12015,8 +12026,7 @@ Example of Non-Associative setting: k-Arm Bandit Problem, Animals learning not t
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12025,8 +12035,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12041,8 +12050,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12052,8 +12060,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12062,8 +12069,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12075,17 +12081,15 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exploring-vs-Exploiting">Exploring vs Exploiting<a class="anchor-link" href="#Exploring-vs-Exploiting">&#182;</a></h2>
+<h2 id="Exploring-vs-Exploiting">Exploring vs Exploiting<a class="anchor-link" href="#Exploring-vs-Exploiting">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12095,8 +12099,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12105,8 +12108,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12117,8 +12119,7 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12129,20 +12130,21 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Exploitation is the right thing to do to maximize the expected reward on the one step, but exploration may produce the greater total reward in the long run.</li>
+<li>Exploitation is the right thing to do to maximize the expected reward in one step,<ul>
+<li>but exploration may produce the greater total reward in the long run.</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12152,40 +12154,36 @@ $$ \mathbf{ q_* (a) = E(R_t | A_t = a) } $$
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Action-Value-Method"><center>Action-Value Method</center><a class="anchor-link" href="#Action-Value-Method">&#182;</a></h1>
+<h1 id="Action-Value-Method"><center>Action-Value Method</center><a class="anchor-link" href="#Action-Value-Method">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Action-Value-Method">Action-Value Method<a class="anchor-link" href="#Action-Value-Method">&#182;</a></h3><ul>
+<h3 id="Action-Value-Method">Action-Value Method<a class="anchor-link" href="#Action-Value-Method">&#194;&#182;</a></h3><ul>
 <li>Find an estimate $Q_t(a) \sim q_*(a)$ for each action. </li>
 </ul>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Sample-Average-method">Sample-Average method<a class="anchor-link" href="#Sample-Average-method">&#182;</a></h4><p>Simplest way of estimating $Q_t(a)$, given $ Q_t (a) \approx q_* (a) = E(R_t | A_t = a)$</p>
+<h4 id="Sample-Average-method">Sample-Average method<a class="anchor-link" href="#Sample-Average-method">&#194;&#182;</a></h4><p>Simplest way of estimating $Q_t(a)$, given $ Q_t (a) \approx q_* (a) = E(R_t | A_t = a)$</p>
 $$ Q_t (a) = \frac{\sum^{t-1}_{i=1}{R_i . 1_{A_i = a}}}{\sum^{t-1}_{i=1}{1_{A_i = a}}} $$<p>If the denominator is zero, then we instead define $Q_t(a)$ as some default value, such as $Q_1(a) = 0$.</p>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12194,21 +12192,19 @@ $$ Q_t (a) = \frac{\sum^{t-1}_{i=1}{R_i . 1_{A_i = a}}}{\sum^{t-1}_{i=1}{1_{A_i 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Greedy-Action-Selection-Method">Greedy Action Selection Method<a class="anchor-link" href="#Greedy-Action-Selection-Method">&#182;</a></h4>$$ A_t = {argmax}_a Q_t (a) $$
+<h4 id="Greedy-Action-Selection-Method">Greedy Action Selection Method<a class="anchor-link" href="#Greedy-Action-Selection-Method">&#194;&#182;</a></h4>$$ A_t = {argmax}_a Q_t (a) $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="$\epsilon$---Greedy-Method">$\epsilon$ - Greedy Method<a class="anchor-link" href="#$\epsilon$---Greedy-Method">&#182;</a></h4><ul>
+<h4 id="$\epsilon$---Greedy-Method">$\epsilon$ - Greedy Method<a class="anchor-link" href="#$\epsilon$---Greedy-Method">&#194;&#182;</a></h4><ul>
 <li>Behave greedily most of the time, </li>
 <li>But every once in a while, with small probability $\epsilon$,<ul>
 <li>Select randomly from amongst all the actions ,</li>
@@ -12220,8 +12216,7 @@ $$ Q_t (a) = \frac{\sum^{t-1}_{i=1}{R_i . 1_{A_i = a}}}{\sum^{t-1}_{i=1}{1_{A_i 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12233,8 +12228,7 @@ $\quad$ A = any random Action with probability $\epsilon$<br>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12247,22 +12241,20 @@ $\quad$Calculate new $Q_t$</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Minor-point:-Incremental-Implementation">Minor point: Incremental Implementation<a class="anchor-link" href="#Minor-point:-Incremental-Implementation">&#182;</a></h4><p><br></p>
+<h4 id="Minor-point:-Incremental-Implementation">Minor point: Incremental Implementation<a class="anchor-link" href="#Minor-point:-Incremental-Implementation">&#194;&#182;</a></h4><p><br></p>
 $$ Q_n = \frac{R_1 + R_2+ ... + R_{n-1}}{n-1} $$$$ Q_{n+1} = Q_n + \frac{1}{n} \big[ R_n - Q_n\big]$$
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Simple-Bandit-Algorithm-with-$\epsilon$-greedy-method"><center>Simple Bandit Algorithm with $\epsilon$-greedy method</center><a class="anchor-link" href="#Simple-Bandit-Algorithm-with-$\epsilon$-greedy-method">&#182;</a></h2><p>Initialize, for a =1 to k:<br>
+<h2 id="Simple-Bandit-Algorithm-with-$\epsilon$-greedy-method"><center>Simple Bandit Algorithm with $\epsilon$-greedy method</center><a class="anchor-link" href="#Simple-Bandit-Algorithm-with-$\epsilon$-greedy-method">&#194;&#182;</a></h2><p>Initialize, for a =1 to k:<br>
 $\quad$ Q(a) = 0<br>
 $\quad$ N(a) = 0<br>
 Repeat Forever:<br>
@@ -12276,26 +12268,23 @@ $\quad$ Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$<br></p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problem-Formulation---The-10-armed-testbed"><center>Problem Formulation - The 10-armed testbed</center><a class="anchor-link" href="#Problem-Formulation---The-10-armed-testbed">&#182;</a></h2>
+<h2 id="Problem-Formulation---The-10-armed-testbed"><center>Problem Formulation - The 10-armed testbed</center><a class="anchor-link" href="#Problem-Formulation---The-10-armed-testbed">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Problem-Formulation---The-10-armed-testbed">Problem Formulation - The 10-armed testbed<a class="anchor-link" href="#Problem-Formulation---The-10-armed-testbed">&#182;</a></h4><center><img src="img/testbed.jpg" alt="Ten-armed Testbed" style="width: 400px;"/></center>
+<h4 id="Problem-Formulation---The-10-armed-testbed">Problem Formulation - The 10-armed testbed<a class="anchor-link" href="#Problem-Formulation---The-10-armed-testbed">&#194;&#182;</a></h4><center><img src="img/testbed.JPG" alt="Ten-armed Testbed" style="width: 300px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12304,8 +12293,7 @@ $\quad$ Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$<br></p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12314,8 +12302,7 @@ $\quad$ Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$<br></p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12324,14 +12311,13 @@ $\quad$ Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$<br></p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>For any learning method, measure performance as it improves with experience over 1000 steps interaction. </li>
-<li>This is one run. Repeate this for 2000 independent runs.<ul>
+<li>This is one run. Repeat this for 2000 independent runs.<ul>
 <li>Obtain measures of the learning algorithm’s <strong>average</strong> behavior.</li>
 </ul>
 </li>
@@ -12340,31 +12326,28 @@ $\quad$ Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$<br></p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><center><img src="img/greedyvs.jpg" alt="Ten-armed Testbed" style="width: 700px;"/></center>
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h2><center><img src="img/greedyvs.jpg" alt="Ten-armed Testbed" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Question">Question<a class="anchor-link" href="#Question">&#182;</a></h2><p>When would $epsilon$-greedy method perform significantly better?</p>
+<h2 id="Question">Question<a class="anchor-link" href="#Question">&#194;&#182;</a></h2><p>When would $epsilon$-greedy method perform significantly better?</p>
 
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Update-Rule-of-Simple-Bandit-Problem">Update Rule of Simple Bandit Problem<a class="anchor-link" href="#Update-Rule-of-Simple-Bandit-Problem">&#182;</a></h2><p>In the pseudocode, given by:<br></p>
+<h2 id="Update-Rule-of-Simple-Bandit-Problem">Update Rule of Simple Bandit Problem<a class="anchor-link" href="#Update-Rule-of-Simple-Bandit-Problem">&#194;&#182;</a></h2><p>In the pseudocode, given by:<br></p>
 <center> Q(A) = Q(A) + $\frac{1}{n}\big[ R_n - Q_n\big]$</center><br>
 
 This can be written as:<br>
@@ -12372,18 +12355,16 @@ This can be written as:<br>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tracking-a-Nonstationary-Problem">Tracking a Nonstationary Problem<a class="anchor-link" href="#Tracking-a-Nonstationary-Problem">&#182;</a></h2><p>Some problems are nonstationary, meaning reward function is not from a constant distribution.<br></p>
+<h2 id="Tracking-a-Nonstationary-Problem">Tracking a Nonstationary Problem<a class="anchor-link" href="#Tracking-a-Nonstationary-Problem">&#194;&#182;</a></h2><p>Some problems are nonstationary, meaning reward function is not from a constant distribution.<br></p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12394,49 +12375,44 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Improving-exploration-in-Simple-Bandit-Problems"><center>Improving exploration in Simple Bandit Problems</center><a class="anchor-link" href="#Improving-exploration-in-Simple-Bandit-Problems">&#182;</a></h1><h4 id="(These-methods-would-be-used-in-different-forms-in-future-methods)"><center>(These methods would be used in different forms in future methods)</center><a class="anchor-link" href="#(These-methods-would-be-used-in-different-forms-in-future-methods)">&#182;</a></h4>
+<h1 id="Improving-exploration-in-Simple-Bandit-Problems"><center>Improving exploration in Simple Bandit Problems</center><a class="anchor-link" href="#Improving-exploration-in-Simple-Bandit-Problems">&#194;&#182;</a></h1><h4 id="(These-methods-would-be-used-in-different-forms-in-future-methods)"><center>(These methods would be used in different forms in future methods)</center><a class="anchor-link" href="#(These-methods-would-be-used-in-different-forms-in-future-methods)">&#194;&#182;</a></h4>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Optimistic-initial-values">Optimistic initial values<a class="anchor-link" href="#Optimistic-initial-values">&#182;</a></h4><p>These methods are biased by their initial estimates.<br></p>
+<h4 id="Optimistic-initial-values">Optimistic initial values<a class="anchor-link" href="#Optimistic-initial-values">&#194;&#182;</a></h4><p>These methods are biased by their initial estimates.<br></p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/testbed.jpg" alt="Ten-armed Testbed" style="width: 700px;"/></center>
+<center><img src="img/testbed.JPG" alt="Ten-armed Testbed" style="width: 700px;"/></center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h1><center><img src="img/optinit.jpg" alt="Optimistic Initialization" style="width: 800px;"/></center>
+<h1 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h1><center><img src="img/optinit.JPG" alt="Optimistic Initialization" style="width: 800px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Optimistic-initial-values">Optimistic initial values<a class="anchor-link" href="#Optimistic-initial-values">&#182;</a></h4><ul>
+<h4 id="Optimistic-initial-values">Optimistic initial values<a class="anchor-link" href="#Optimistic-initial-values">&#194;&#182;</a></h4><ul>
 <li>For the sample-average methods, the bias disappears once all actions have been selected at least once, <br></li>
 <li>methods with constant $\alpha$, the bias is permanent, though decreasing over time.</li>
 </ul>
@@ -12444,8 +12420,7 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12459,17 +12434,15 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Upper-Confidence-Bound-Action-Selection">Upper-Confidence-Bound Action Selection<a class="anchor-link" href="#Upper-Confidence-Bound-Action-Selection">&#182;</a></h3>$$ A_t= argmax_a \bigg[ Q_t (a) + c \sqrt{\frac{log(t)}{N_t (a)}} \bigg]  $$
+<h3 id="Upper-Confidence-Bound-Action-Selection">Upper-Confidence-Bound Action Selection<a class="anchor-link" href="#Upper-Confidence-Bound-Action-Selection">&#194;&#182;</a></h3>$$ A_t= argmax_a \bigg[ Q_t (a) + c \sqrt{\frac{log(t)}{N_t (a)}} \bigg]  $$
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12478,29 +12451,26 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h1><center><img src="img/UCB.jpg" alt="UCB" style="width: 800px;"/></center>
+<h1 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h1><center><img src="img/UCB.JPG" alt="UCB" style="width: 800px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Gradient-Bandit-Algorithms">Gradient Bandit Algorithms<a class="anchor-link" href="#Gradient-Bandit-Algorithms">&#182;</a></h3><ul>
+<h3 id="Gradient-Bandit-Algorithms">Gradient Bandit Algorithms<a class="anchor-link" href="#Gradient-Bandit-Algorithms">&#194;&#182;</a></h3><ul>
 <li>Numerical preference $H_t (a)$ for each action $a$. </li>
 </ul>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12511,8 +12481,7 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12523,8 +12492,7 @@ $$Q_{n+1} = Q_n + \alpha [R_n − Q_n]$$$$\alpha \in (0,1] $$<p>This method is c
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12532,60 +12500,55 @@ $$ Pr\{ A_t =a\} = \frac{e^{H_t (a)}}{\sum^{k}_{b=1}{e^{H_t (b)}}} = \pi_t (a) $
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Update Rules </strong></p>
 $$ H_{t+1}(A_t) = H_t (A_t) + \alpha(R_t − \overline{R_{t}})(1− \pi_t (A_t)) $$<p>and</p>
-$$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \forall a \neq A_t $$<p>$\overline{R_{t}}$ is the average of all the rewards up through and including time t. It is also called the <strong>baseline reward</strong>.</p>
+$$ H_{t+1} (a) = H_t (a) - \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \forall a \neq A_t $$<p>$\overline{R_{t}}$ is the average of all the rewards up through and including time t. It is also called the <strong>baseline reward</strong>.</p>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h1><center><img src="img/grad.jpg" alt="Gradient Bandit" style="width: 800px;"/></center>
+<h1 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h1><center><img src="img/grad.jpg" alt="Gradient Bandit" style="width: 800px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#182;</a></h1>
+<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>We have seen how Reinforcement learning is different from other forms of learning.<br></li>
 <li>We applied reinforcement learning to a very simple problem.</li>
+<li>We saw the importance of balancing exploration and exploitation</li>
 </ul>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#182;</a></h1><h4 id="Comparison-between-the-learnt-methods.">Comparison between the learnt methods.<a class="anchor-link" href="#Comparison-between-the-learnt-methods.">&#182;</a></h4>
+<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h1><h4 id="Comparison-between-the-learnt-methods.">Comparison between the learnt methods.<a class="anchor-link" href="#Comparison-between-the-learnt-methods.">&#194;&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12596,8 +12559,7 @@ $$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \fora
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12608,8 +12570,7 @@ $$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \fora
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12620,8 +12581,7 @@ $$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \fora
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12632,8 +12592,7 @@ $$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \fora
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12642,8 +12601,7 @@ $$ H_{t+1} (a) = H_t (a) + \alpha(R_t − \overline{R_{t}})\pi_t (a) \quad \fora
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
