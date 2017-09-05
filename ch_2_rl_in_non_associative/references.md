@@ -8,6 +8,11 @@
 
 4) Exploration vs exploitation:[David Silver's Slides(Includes formuation of regret)](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/XX.pdf)
 
+5) More Bandit Algorithms:[Book/wesite by Csaba Szepesvari](http://banditalgs.com/)
+
+6) Real life examples of MAB: [practo](https://www.youtube.com/watch?v=B1l_juzrw7Q),[Google Analytics A/B testing](https://support.google.com/analytics/answer/2844870?hl=en)
+
+
 ### Globally valuable content:
 
 1) [Princeton Slides on Exploration & Exploitation in Reinforcement Learning](https://www.cs.princeton.edu/courses/archive/fall16/cos402/lectures/402-lec22.pdf).
