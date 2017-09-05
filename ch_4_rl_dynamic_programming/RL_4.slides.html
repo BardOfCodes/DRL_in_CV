@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>RL_1 slides</title>
+<title>RL_4 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,158 +11854,154 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-to-Reinforcement-Learning"><center>Introduction to Reinforcement Learning</center><a class="anchor-link" href="#Introduction-to-Reinforcement-Learning">&#182;</a></h1><h3 id="-Reference:-Chapter-1,-Sutton-and-Barto-"><center> Reference: Chapter 1, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-1,-Sutton-and-Barto-">&#182;</a></h3>
+<h1 id="Dynamic-Programming-Methods"><center>Dynamic Programming Methods</center><a class="anchor-link" href="#Dynamic-Programming-Methods">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-4,-Sutton-and-Barto"><center> Reference: Chapter 4, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-4,-Sutton-and-Barto">&#194;&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h1>
+<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>RL: Formal Definition</li>
+<li>Recap: What is Dynamic Programming?</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>RL vs Supervised Learning vs Unsupervised learning</li>
+<li>Planning by DP in MDP</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Important RL Perspectives<ul>
-<li>Goal (Reward Hypothesis)</li>
-<li>Sequential Decision Making Problem</li>
-<li>Interaction between Agent and Environment</li>
-</ul>
-</li>
+<li>Iterative Policy Evaluation</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Components of RL Agent</li>
+<li>Policy Improvement</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>RL Problems: Learning and Planning</li>
+<li>Example: Gridworld (Policy Evaluation and Policy Improvement)</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Prediction and Control</li>
+<li>Policy Iteration</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Value Iteration</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Synchronous Dynamic Programming Algorithms</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Asynchronous Dynamic Programming</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Full-Width Backups/Sample Backups</li>
 </ul>
 
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="RL-Formal-Definition"><center>RL Formal Definition</center><a class="anchor-link" href="#RL-Formal-Definition">&#182;</a></h1>
+<h1 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>"Reinforcement learning is the problem of getting an agent to act in the world so as to maximize its rewards. For example, consider teaching a dog a new trick: you cannot tell it what to do, but you can reward/punish it if it does the right/wrong thing. It has to figure out what it did that made it get the reward/punishment, which is known as the credit assignment problem."</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/1.png" alt="Example1"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/2.png" alt="Example2"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="RL-vs-Supervised-Learning-vs-Unsupervised-Learning"><center>RL vs Supervised Learning vs Unsupervised Learning</center><a class="anchor-link" href="#RL-vs-Supervised-Learning-vs-Unsupervised-Learning">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Supervised-Learning">Supervised Learning<a class="anchor-link" href="#Supervised-Learning">&#194;&#182;</a></h2><p>1) A human builds a classifier based on input and output data</p>
-<p>2) That classifier is trained with a training set of data</p>
-<p>3) That classifier is tested with a test set of data</p>
-<p>4) Deployment if the output is satisfactory</p>
-<p>To be used when, "I know how to classify this data, I just need you(the classifier) to sort it."</p>
-<p>Point of method: To class labels or to produce real numbers</p>
+<p><strong>Dynamic</strong> sequential or temporal component to the problem</p>
+<p><strong>Programming</strong> optimising a “program”, i.e. a policy</p>
+<ul>
+<li>A method for solving complex problems</li>
+<li>By breaking them down into subproblems<ul>
+<li>Solve the subproblems</li>
+<li>Combine solutions to subproblems</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -11985,403 +12010,21 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unsupervised-Learning">Unsupervised Learning<a class="anchor-link" href="#Unsupervised-Learning">&#194;&#182;</a></h2><p>1) A human builds an algorithm based on input data</p>
-<p>2) That algorithm is tested with a test set of data (in which the algorithm creates the classifier)</p>
-<p>3) Deployment if the classifier is satisfactory</p>
-<p>To be used when, "I have no idea how to classify this data, can you(the algorithm) create a classifier for me?"
-Point of method: To class labels or to predict</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reinforcement-Learning">Reinforcement Learning<a class="anchor-link" href="#Reinforcement-Learning">&#194;&#182;</a></h2><p>1) A human builds an algorithm based on input data</p>
-<p>2) That algorithm presents a state dependent on the input data in which a user rewards or punishes the algorithm via the action the algorithm took, this continues over time</p>
-<p>3) That algorithm learns from the reward/punishment and updates itself, this continues</p>
-<p>4) It's always in production, it needs to learn real data to be able to present actions from states</p>
-<p>To be used when, "I have no idea how to classify this data, can you classify this data and I'll give you a reward if it's correct or I'll punish you if it's not."</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="RL-vs-Supervised-Learning">RL vs Supervised Learning<a class="anchor-link" href="#RL-vs-Supervised-Learning">&#194;&#182;</a></h3><ul>
-<li>Training Examples<ul>
-<li>Supervised Learning: Training Examples of the formNo training examples from a knowledgeable external supervisor (situation together with a label).</li>
-<li>RL: No such training examples.</li>
-</ul>
-</li>
-<li>Objective Functions<ul>
-<li>Supervised Learning: Aim is to extrapolate, or generalize so that it acts correctly in situations not present in the training set. </li>
-<li>In RL, it is often impractical to obtain examples of desired behavior that are both correct and representative of all the situations and an agent must be able to learn from its own experience.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="RL-vs-Unsupervised-Learning">RL vs Unsupervised Learning<a class="anchor-link" href="#RL-vs-Unsupervised-Learning">&#182;</a></h3><ul>
-<li>Unsupervised Learning is about finding structure hidden in collections of unlabeled data.</li>
-<li>Uncovering structure in an agent’s experience can certainly be useful in reinforcement learning, but by itself does not address the reinforcement learning agent’s problem of maximizing a reward signal.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Examples-of-RL">Examples of RL<a class="anchor-link" href="#Examples-of-RL">&#182;</a></h3><ul>
-<li>Fly stunt manoeuvres in a helicopter</li>
-<li>Defeat the world champion at Backgammon</li>
-<li>Manage an investment portfolio</li>
-<li>Control a power station</li>
-<li>Make a humanoid robot walk</li>
-<li>Play many different Atari games better than humans</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Important-RL-Perspectives"><center>Important RL Perspectives</center><a class="anchor-link" href="#Important-RL-Perspectives">&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Goal-of-RL-(Reward-Hypothesis)">Goal of RL (Reward Hypothesis)<a class="anchor-link" href="#Goal-of-RL-(Reward-Hypothesis)">&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reward-Examples">Reward Examples<a class="anchor-link" href="#Reward-Examples">&#182;</a></h2><ul>
-<li>stunt manoeuvres in a helicopter<ul>
-<li>+ve reward for following desired trajectory</li>
-<li>−ve reward for crashing</li>
-</ul>
-</li>
-<li>Defeat the world champion at Backgammon<ul>
-<li>+/−ve reward for winning/losing a game</li>
-</ul>
-</li>
-<li>Manage an investment portfolio<ul>
-<li>+ve reward for each dollar in bank</li>
-</ul>
-</li>
-<li>Control a power station<ul>
-<li>+ve reward for producing power</li>
-<li>−ve reward for exceeding safety thresholds</li>
-</ul>
-</li>
-<li>Make a humanoid robot walk<ul>
-<li>+ve reward for forward motion</li>
-<li>−ve reward for falling over</li>
-</ul>
-</li>
-<li>Play many different Atari games better than humans<ul>
-<li>+/−ve reward for increasing/decreasing score</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sequential-Decision-Making-Problem">Sequential Decision Making Problem<a class="anchor-link" href="#Sequential-Decision-Making-Problem">&#182;</a></h2><ul>
-<li>Goal: select actions to maximise total future reward</li>
-<li>Actions may have long term consequences</li>
-<li>Reward may be delayed</li>
-<li>It may be better to sacrifice immediate reward to gain more long-term reward</li>
-<li>Examples:<ul>
-<li>A financial investment (may take months to mature)</li>
-<li>Refuelling a helicopter (might prevent a crash in several hours)</li>
-<li>Blocking opponent moves (might help winning chances many moves from now)</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Interaction-between-Agent-and-Environment">Interaction between Agent and Environment<a class="anchor-link" href="#Interaction-between-Agent-and-Environment">&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Interaction-between-Agent-and-Environment">Interaction between Agent and Environment<a class="anchor-link" href="#Interaction-between-Agent-and-Environment">&#182;</a></h2><center><img src="img/7.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="History-and-State">History and State<a class="anchor-link" href="#History-and-State">&#182;</a></h2><center><img src="img/8.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Environment-State">Environment State<a class="anchor-link" href="#Environment-State">&#182;</a></h2><center><img src="img/9.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Agent-State">Agent State<a class="anchor-link" href="#Agent-State">&#182;</a></h2><center><img src="img/10.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Information-State">Information State<a class="anchor-link" href="#Information-State">&#182;</a></h2><center><img src="img/11.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fully-Observable-Environment">Fully Observable Environment<a class="anchor-link" href="#Fully-Observable-Environment">&#182;</a></h2><center><img src="img/12.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Partially-Observable-Environment">Partially Observable Environment<a class="anchor-link" href="#Partially-Observable-Environment">&#182;</a></h2><center><img src="img/13.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Major-Components-of-a-RL-Agent">Major Components of a RL Agent<a class="anchor-link" href="#Major-Components-of-a-RL-Agent">&#182;</a></h2><p>An RL agent may include one or more of these components:</p>
+<h2 id="Requirements-for-Dynamic-Programming">Requirements for Dynamic Programming<a class="anchor-link" href="#Requirements-for-Dynamic-Programming">&#194;&#182;</a></h2><p>Dynamic Programming is a very general solution method for problems which have two properties:</p>
 <ul>
-<li><strong>Policy</strong>: agent’s behaviour function</li>
-<li><strong>Value function</strong>: how good is each state and/or action</li>
-<li><strong>Model</strong>: agent’s representation of the environment</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy">Policy<a class="anchor-link" href="#Policy">&#182;</a></h2><ul>
-<li>A policy is the agent’s behaviour</li>
-<li>It is a map from state to action, e.g.</li>
-<li>Deterministic policy: $a = π(s)$</li>
-<li>Stochastic policy: $π(a|s) = P[A_t = a|S_t = s]$</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-function">Value function<a class="anchor-link" href="#Value-function">&#182;</a></h2><ul>
-<li>Value function is a prediction of future reward</li>
-<li>Used to evaluate the goodness/badness of states</li>
-<li>And therefore to select between actions, e.g.
-$$v_π(s) = E_π[R _{t+1} + γ*R_{t+2} + γ^{2}*R_{t+3} + ... | S_t = s]$$</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2><ul>
-<li>A model predicts what the environment will do next</li>
-<li><strong>Transitions</strong>: P predicts the next state (i.e. dynamics)</li>
-<li><strong>Rewards</strong>: R predicts the next (immediate) reward, e.g.
-$$ P_{ss'} = P[S_{t+1} = s' | S_t = s, A_t = a]$$
-$$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Maze-Example">Maze Example<a class="anchor-link" href="#Maze-Example">&#182;</a></h2><center><img src="img/e1.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Maze-Example:-Policy">Maze Example: Policy<a class="anchor-link" href="#Maze-Example:-Policy">&#194;&#182;</a></h1><center><img src="img/e2.png" alt="HistoryandState" style="width: 1000px;"/></center><ul>
-<li>Arrows represent policy $\pi(s)$ for each state s. </li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Maze-Example:-Value-Function">Maze Example: Value Function<a class="anchor-link" href="#Maze-Example:-Value-Function">&#182;</a></h1><center><img src="img/e3.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Maze-Example:-Model">Maze Example: Model<a class="anchor-link" href="#Maze-Example:-Model">&#182;</a></h1><center><img src="img/e4.png" alt="HistoryandState" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Learning-and-Planning">Learning and Planning<a class="anchor-link" href="#Learning-and-Planning">&#182;</a></h2><p>Two fundamental problems in sequential decision making:</p>
-<ul>
-<li>Reinforcement Learning:<ul>
-<li>The environment is initially unknown</li>
-<li>The agent interacts with the environment</li>
-<li>The agent improves its policy</li>
+<li><strong>Optimal substructure</strong><ul>
+<li>Principle of optimality applies</li>
+<li>Optimal solution can be decomposed into subproblems</li>
 </ul>
 </li>
-<li>Planning:<ul>
-<li>A model of the environment is known</li>
-<li>The agent performs computations with its model (without any external interaction)</li>
-<li>The agent improves its policy a.k.a. deliberation, reasoning, introspection, pondering, thought, search</li>
+<li><strong>Overlapping subproblems</strong><ul>
+<li>Subproblems recur many times</li>
+<li>Solutions can be cached and reused</li>
 </ul>
 </li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Exploration-and-Exploitation">Exploration and Exploitation<a class="anchor-link" href="#Exploration-and-Exploitation">&#182;</a></h2><ul>
-<li>Reinforcement learning is like trial-and-error learning</li>
-</ul>
-<ul>
-<li>The agent should discover a good policy,<ul>
-<li>From its experiences of the environment,</li>
-<li>Without losing too much reward along the way</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>Exploration</strong> finds more information about the environment</li>
-</ul>
-<ul>
-<li><strong>Exploitation</strong> exploits known information to maximise reward</li>
-</ul>
-<ul>
-<li>It is usually important to explore as well as exploit (In Detail =&gt; Chapter 2).</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examples-of-Explortion-and-Exploitation">Examples of Explortion and Exploitation<a class="anchor-link" href="#Examples-of-Explortion-and-Exploitation">&#182;</a></h2><ul>
-<li>Restaurant Selection<ul>
-<li>Exploitation Go to your favourite restaurant</li>
-<li>Exploration Try a new restaurant</li>
-</ul>
-</li>
-<li>Online Banner Advertisements<ul>
-<li>Exploitation Show the most successful advert</li>
-<li>Exploration Show a different advert</li>
-</ul>
-</li>
-<li>Oil Drilling<ul>
-<li>Exploitation Drill at the best known location</li>
-<li>Exploration Drill at a new location</li>
-</ul>
-</li>
-<li>Game Playing<ul>
-<li>Exploitation Play the move you believe is best</li>
-<li>Exploration Play an experimental move</li>
+<li>Markov decision processes satisfy both properties<ul>
+<li>Bellman equation gives recursive decomposition</li>
+<li>Value function stores and reuses solutions</li>
 </ul>
 </li>
 </ul>
@@ -12393,13 +12036,322 @@ $$ R^{a}_{s} = E[R_{t+1} | S_t = s, A_t = a]$$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
-<li>We got introduced to the basic terminologies of RL.</li>
-</ul>
+<h1 id="-Planning-by-DP-in-MDP-"><center> Planning by DP in MDP </center><a class="anchor-link" href="#-Planning-by-DP-in-MDP-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>We got an intuition behind how an RL agent can solve problems.</li>
+<li>Dynamic programming assumes full knowledge of the MDP</li>
+<li>It is used for planning in an MDP </li>
+<li>For prediction:<ul>
+<li>Input: MDP $&lt; S, A, P, R, γ&gt;$ and policy $π$</li>
+<li>Output: value function $v_π$</li>
+</ul>
+</li>
+<li>Or for control:<ul>
+<li>Input: MDP $&lt;S, A, P, R, γ&gt;$</li>
+<li>Output: optimal value function $v_∗$ and optimal policy $π_∗$</li>
+</ul>
+</li>
 </ul>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Iterative-Policy-Evaluation-"><center> Iterative Policy Evaluation </center><a class="anchor-link" href="#-Iterative-Policy-Evaluation-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/a.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;img/b.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;RewardHypothesis&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 1000px;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Policy-Improvement-"><center> Policy Improvement </center><a class="anchor-link" href="#-Policy-Improvement-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Policy-Improvement-Theorem">Policy Improvement Theorem<a class="anchor-link" href="#Policy-Improvement-Theorem">&#194;&#182;</a></h2><p>Let $\pi$ and $\pi'$ be any pair of deterministic policies such that, for all s $\epsilon$ S,
+$$q_\pi(s,\pi'(s)) \geq v_{\pi}(s)$$
+Then the policy $ \pi '$ must be as good as, or better than $\pi$. That is it must obtain greater or equal expected return from all states s $\epsilon$ S:
+$$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/d.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/e.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-"><center> Example: Gridworld (Policy Evaluation and Policy Improvement) </center><a class="anchor-link" href="#-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/e1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/e2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/e3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Policy-Iteration-"><center> Policy Iteration </center><a class="anchor-link" href="#-Policy-Iteration-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/p1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modified-Policy-Iteration">Modified Policy Iteration<a class="anchor-link" href="#Modified-Policy-Iteration">&#194;&#182;</a></h2><ul>
+<li>Does policy evaluation need to converge to $v_π$ ?</li>
+<li>Or should we introduce a stopping condition
+  e.g. $\epsilon$-convergence of value function</li>
+<li>Or simply stop after k iterations of iterative policy evaluation?</li>
+<li>For example, in the small gridworld k = 3 was sufficient to achieve optimal policy</li>
+<li>Why not update policy every iteration? i.e. stop after k = 1</li>
+<li>This is equivalent to <strong>value iteration</strong> (next section)</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Value-Iteration-"><center> Value Iteration </center><a class="anchor-link" href="#-Value-Iteration-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Principle-of-Optimality">Principle of Optimality<a class="anchor-link" href="#Principle-of-Optimality">&#194;&#182;</a></h2><p>Any optimal policy can be subdivided into two components:</p>
+<ul>
+<li>An optimal first action $A_∗$</li>
+<li>Followed by an optimal policy from successor state S'<center><img src="img/v1.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#194;&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/v5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Synchronous-Dynamic-Programming-Algorithm-"><center> Synchronous Dynamic Programming Algorithm </center><a class="anchor-link" href="#-Synchronous-Dynamic-Programming-Algorithm-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/s1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Asynchronous-Dynamic-Programming-Methods-"><center> Asynchronous Dynamic Programming Methods </center><a class="anchor-link" href="#-Asynchronous-Dynamic-Programming-Methods-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>DP methods described so far used synchronous backups</li>
+<li>i.e. all states are backed up in parallel</li>
+<li>Asynchronous DP backs up states individually, in any order</li>
+<li>For each selected state, apply the appropriate backup</li>
+<li>Can significantly reduce computation</li>
+<li>Guaranteed to converge if all states continue to be selected</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Three simple ideas for asynchronous dynamic programming:</p>
+<ul>
+<li>In-place dynamic programming</li>
+<li>Prioritised sweeping</li>
+<li>Real-time dynamic programming</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Full-Width-Backup/-Sample-Backup-"><center> Full-Width Backup/ Sample Backup </center><a class="anchor-link" href="#-Full-Width-Backup/-Sample-Backup-">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#194;&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#194;&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
 </div>
 </div>
 </div></section></section>
