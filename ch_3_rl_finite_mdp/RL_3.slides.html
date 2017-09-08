@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,6 +1163,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2591,6 +2592,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3081,6 +3083,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8811,9 +8814,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,14 +9016,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9046,16 +9040,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9192,9 +9176,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9284,9 +9265,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9331,9 +9309,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9630,7 +9605,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9651,6 +9625,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11321,7 +11300,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11633,7 +11612,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11647,9 +11625,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11710,10 +11685,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11724,11 +11697,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11854,50 +11825,44 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Finite-Markov-Decision-Processes"><center>Finite Markov Decision Processes</center><a class="anchor-link" href="#Finite-Markov-Decision-Processes">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-3,-Sutton-and-Barto-"><center> Reference: Chapter 3, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-3,-Sutton-and-Barto-">&#194;&#182;</a></h3>
+<h1 id="Finite-Markov-Decision-Processes"><center>Finite Markov Decision Processes</center><a class="anchor-link" href="#Finite-Markov-Decision-Processes">&#182;</a></h1><h3 id="-Reference:-Chapter-3,-Sutton-and-Barto-"><center> Reference: Chapter 3, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-3,-Sutton-and-Barto-">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h1>
+<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Why MDPs?</li>
+<li>Introduction</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Markov Property</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Building Blocks of MDP<ul>
+<li>Markov Property</li>
 <li>Episodic vs Continuous Tasks</li>
 <li>State Transition Matrix</li>
 <li>Return</li>
@@ -11910,7 +11875,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11925,7 +11891,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11936,7 +11903,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11947,15 +11915,199 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why-Markov-Decision-Process?"><center>Why Markov Decision Process?</center><a class="anchor-link" href="#Why-Markov-Decision-Process?">&#194;&#182;</a></h1>
+<h2 id="The-Agent-Environment-Interface"><center>The Agent Environment Interface</center><a class="anchor-link" href="#The-Agent-Environment-Interface">&#182;</a></h2><center> <img src="img/agent_env.PNG" alt="MarkovProperty Definition" style="width:700px;"/> </center>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>At each time step t, <ul>
+<li>the agent has some representation of the environment’s state, $S_t \in S$, <ul>
+<li>where S is the set of possible states,</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>On basis of $S_t$,agent selects an action, $A_t \in A(S_t)$, <ul>
+<li>where $A(S_t)$ is the set of actions available in state $S_t$.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>One time step later, as a consequence of its action, <ul>
+<li>the agent receives a numerical reward, $R_{t+1} \in R \subset R$, and </li>
+<li>finds itself in a new state, $S_{t+1}$.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-very-Flexible-Framework">A very Flexible Framework<a class="anchor-link" href="#A-very-Flexible-Framework">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The time steps can be any unit, non-fixed intervals of real-time;<ul>
+<li>Tracking: decision is per time step</li>
+<li>Inventory management RL agent: Based only on current inventory state, time for depletion may vary.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Actions can be low-level controls,or High-level Decisions<ul>
+<li>The voltages applied to the motors of a robot arm</li>
+<li>Whether or not to have lunch or to go to graduate school.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The states can take a wide variety of forms:<ul>
+<li>determined by low-level sensations, such as direct sensor readings, </li>
+<li>high-level and abstract, such as symbolic descriptions of objects in a room.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>State could be based on memory of past sensations or even be entirely mental or subjective.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Key-Points">Some Key Points<a class="anchor-link" href="#Some-Key-Points">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Boundary between agent and environment:not necessarily the same as the physical boundary of a robot’s or animal’s body.<ul>
+<li><strong>The agent–environment boundary represents the limit of the agent’s absolute control, not of its knowledge.</strong></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The reward signal Should communicate <strong>what</strong> you want it to achieve, not <strong>how</strong> you want it achieved.<ul>
+<li>Reward is placed outside the agent, so that it cant explicitly change reward formulation without achieving the goals.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The state signal should not be expected to inform the agent of everything about the environment,<ul>
+<li>The agent is not designed to be omniscient.</li>
+<li>State can contain, a copy of reward, part memory etc.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Why-Markov-Decision-Process?"><center>Why Markov Decision Process?</center><a class="anchor-link" href="#Why-Markov-Decision-Process?">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11973,16 +12125,27 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Markov-Property"><center>Markov Property</center><a class="anchor-link" href="#Markov-Property">&#194;&#182;</a></h1>
+<h1 id="Building-Blocks-of-MDP"><center>Building Blocks of MDP</center><a class="anchor-link" href="#Building-Blocks-of-MDP">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Markov-Property">Markov Property<a class="anchor-link" href="#Markov-Property">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11995,93 +12158,153 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Building-Blocks-of-MDP"><center>Building Blocks of MDP</center><a class="anchor-link" href="#Building-Blocks-of-MDP">&#194;&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Episodic-vs-Continuing-Tasks">Episodic vs Continuing Tasks<a class="anchor-link" href="#Episodic-vs-Continuing-Tasks">&#194;&#182;</a></h2><h3 id="Episodic-Tasks">Episodic Tasks<a class="anchor-link" href="#Episodic-Tasks">&#194;&#182;</a></h3><ul>
-<li>Each episode ends in a special state called the terminal state, </li>
-<li>Followed by a reset to a standard starting state or to a sample from a standard distribution of starting states. </li>
-</ul>
-<h3 id="Continuing-Tasks">Continuing Tasks<a class="anchor-link" href="#Continuing-Tasks">&#194;&#182;</a></h3><ul>
-<li>The agent–environment interaction does not break naturally into identifiable episodes.</li>
-<li>It goes on continually without limit. </li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unified-Notation-for-Episodic-and-Continuous-Tasks">Unified Notation for Episodic and Continuous Tasks<a class="anchor-link" href="#Unified-Notation-for-Episodic-and-Continuous-Tasks">&#194;&#182;</a></h2>
+<h2 id="Markov-State">Markov State<a class="anchor-link" href="#Markov-State">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Return-for-Episodic-Tasks">Return for Episodic Tasks<a class="anchor-link" href="#Return-for-Episodic-Tasks">&#194;&#182;</a></h4><p>sum over a finite number of terms</p>
+<ul>
+<li>A state signal that succeeds in retaining all relevant information is said to be Markov, or to have the Markov property.<ul>
+<li>Checker Position</li>
+<li>Location and Velocity of an Cannon ball</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Return-for-Continuous-Tasks">Return for Continuous Tasks<a class="anchor-link" href="#Return-for-Continuous-Tasks">&#194;&#182;</a></h4><p>sum over an infinite number of terms</p>
+<ul>
+<li>If an environment has the Markov property,<ul>
+<li>one-step dynamics enable prediction of next state and expected next reward</li>
+<li>based on current Action</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We need one convention to obtain a single notation that covers both episodic and continuing tasks.</p>
-<p>How to do that?</p>
+<ul>
+<li>In such situation, the best policy for choosing actions as a function of a Markov state,<ul>
+<li><strong>is just as good as</strong> the best policy for choosing actions as a function of complete histories.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>When state signal is non-Markov<ul>
+<li>We still approximate it as a markov process as,</li>
+<li>We want our state representation to:<ul>
+<li>Be a good basis for predicting subsequent states,</li>
+<li>Be a good basis for predicting future rewards, and</li>
+<li>Be a good basis for selecting actions.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>These can be unified by considering episode termination to be the entering
-of a <strong>special absorbing state</strong> that <strong>transitions only to itself</strong> and that <strong>generates only
-rewards of zero</strong>. For example, consider the state transition diagram -</p>
-<center><img src="img/unified.png" alt="Matrix" style="width: 1000px;"/></center>
-Hence, return can be written as-
-<center><img src="img/return.png" alt="Matrix" style="width: 200px;"/></center>
+<h2 id="State-Transition-Matrix">State Transition Matrix<a class="anchor-link" href="#State-Transition-Matrix">&#182;</a></h2><center><img src="img/2.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Markov-Process">Markov Process<a class="anchor-link" href="#Markov-Process">&#182;</a></h2><center><img src="img/slides_1.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="State-Transition-Matrix">State Transition Matrix<a class="anchor-link" href="#State-Transition-Matrix">&#194;&#182;</a></h2><center><img src="img/2.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_2.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Return">Return<a class="anchor-link" href="#Return">&#194;&#182;</a></h2><p><center><img src="img/3.png" alt="Matrix" style="width: 1000px;"/></center></p>
+<h2 id="Example-of-Episodes">Example of Episodes<a class="anchor-link" href="#Example-of-Episodes">&#182;</a></h2><center><img src="img/slides_3.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-of-Transition-Matrix">Example of Transition Matrix<a class="anchor-link" href="#Example-of-Transition-Matrix">&#182;</a></h2><center><img src="img/slides_4.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Markov-Reward-Process">Markov Reward Process<a class="anchor-link" href="#Markov-Reward-Process">&#182;</a></h2><center><img src="img/slides_5.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_6.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Return">Return<a class="anchor-link" href="#Return">&#182;</a></h2><p><center><img src="img/3.png" alt="Matrix" style="width: 700px;"/></center></p>
 <ul>
 <li>The discount $γ ∈ [0, 1]$ is the present value of future rewards</li>
 <li>The value of receiving reward R after k + 1 time-steps is $γ^k R$.</li>
@@ -12095,11 +12318,12 @@ Hence, return can be written as-
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Discount">Discount<a class="anchor-link" href="#Discount">&#194;&#182;</a></h2><p>Most Markov reward and decision processes are discounted. Why?</p>
+<h2 id="Discount">Discount<a class="anchor-link" href="#Discount">&#182;</a></h2><p>Most Markov reward and decision processes are discounted. Why?</p>
 <ul>
 <li>Mathematically convenient to discount rewards</li>
 <li>Avoids infinite returns in cyclic Markov processes</li>
@@ -12112,61 +12336,174 @@ Hence, return can be written as-
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Function">Value Function<a class="anchor-link" href="#Value-Function">&#194;&#182;</a></h2><p>The value function $v(s)$ gives the long-term value of state s</p>
-<center><img src="img/5.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_7.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Value-Function">Value Function<a class="anchor-link" href="#Value-Function">&#182;</a></h2><p>The value function $v(s)$ gives the long-term value of state s</p>
+<center><img src="img/5.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_8.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_9.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/slides_10.png" alt="Matrix" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Episodic-vs-Continuing-Tasks">Episodic vs Continuing Tasks<a class="anchor-link" href="#Episodic-vs-Continuing-Tasks">&#182;</a></h2><h3 id="Episodic-Tasks">Episodic Tasks<a class="anchor-link" href="#Episodic-Tasks">&#182;</a></h3><ul>
+<li>Each episode ends in a special state called the terminal state, </li>
+<li>Followed by a reset to a standard starting state or to a sample from a standard distribution of starting states. </li>
+</ul>
+<h3 id="Continuing-Tasks">Continuing Tasks<a class="anchor-link" href="#Continuing-Tasks">&#182;</a></h3><ul>
+<li>The agent–environment interaction does not break naturally into identifiable episodes.</li>
+<li>It goes on continually without limit. </li>
+</ul>
+
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="MDP-Parameters"><center>MDP Parameters</center><a class="anchor-link" href="#MDP-Parameters">&#194;&#182;</a></h1>
+<h2 id="Unified-Notation-for-Episodic-and-Continuous-Tasks">Unified Notation for Episodic and Continuous Tasks<a class="anchor-link" href="#Unified-Notation-for-Episodic-and-Continuous-Tasks">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Return-for-Episodic-Tasks">Return for Episodic Tasks<a class="anchor-link" href="#Return-for-Episodic-Tasks">&#182;</a></h4><p>sum over a finite number of terms</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Return-for-Continuous-Tasks">Return for Continuous Tasks<a class="anchor-link" href="#Return-for-Continuous-Tasks">&#182;</a></h4><p>sum over an infinite number of terms</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need one convention to obtain a single notation that covers both episodic and continuing tasks.</p>
+<p>How to do that?</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These can be unified by considering episode termination to be the entering
+of a <strong>special absorbing state</strong> that <strong>transitions only to itself</strong> and that <strong>generates only
+rewards of zero</strong>. For example, consider the state transition diagram -</p>
+<center><img src="img/unified.png" alt="Matrix" style="width: 800px;"/></center>
+Hence, return can be written as-
+<center><img src="img/return.png" alt="Matrix" style="width: 200px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Markov-Decision-Process"><center>Markov Decision Process</center><a class="anchor-link" href="#Markov-Decision-Process">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A Markov decision process (MDP) is a Markov reward process with decisions. It is an environment in which all states are Markov.</p>
-<center><img src="img/4.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Markov-Decision-Process"><center>Markov Decision Process</center><a class="anchor-link" href="#Markov-Decision-Process">&#182;</a></h2><p>A Markov decision process (MDP) is a Markov reward process with decisions. It is an environment in which all states are Markov.</p>
+<center><img src="img/4.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-in-MDP-notation">Policy in MDP notation<a class="anchor-link" href="#Policy-in-MDP-notation">&#194;&#182;</a></h2><p><center><img src="img/6.png" alt="Matrix" style="width: 1000px;"/></center></p>
+<h2 id="Policy-in-MDP-notation">Policy in MDP notation<a class="anchor-link" href="#Policy-in-MDP-notation">&#182;</a></h2><p><center><img src="img/6.png" alt="Matrix" style="width: 700px;"/></center></p>
 <ul>
 <li>A policy fully defines the behaviour of an agent</li>
 <li>MDP policies depend on the current state (not the history)</li>
 <li>i.e. Policies are <strong>stationary</strong> (time-independent),
-  $A_t ∼ π(·|S_t ), \forall t &gt; 0$</li>
+  $A_t ∼ π(·|S_t ), \forall t > 0$</li>
 </ul>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-in-MDP-notation">Policy in MDP notation<a class="anchor-link" href="#Policy-in-MDP-notation">&#194;&#182;</a></h2><p>Given a MDP $M = \left \langle S, A, P, R, \gamma \right \rangle$ and a policy $\pi$</p>
+<h2 id="Policy-in-MDP-notation">Policy in MDP notation<a class="anchor-link" href="#Policy-in-MDP-notation">&#182;</a></h2><p>Given a MDP $M = \left \langle S, A, P, R, \gamma \right \rangle$ and a policy $\pi$</p>
 $$P_{s,s'}^{\pi} = \sum_{a \epsilon A} \pi(a|s) P_{ss'}^{a}$$$$R_{s}^{\pi} = \sum_{a \epsilon A} \pi(a|s) R_{s}^{a}$$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Recycling-Robot">Example: Recycling Robot<a class="anchor-link" href="#Example:-Recycling-Robot">&#194;&#182;</a></h2><p><left><img src="img/robot.jpg" alt="Matrix" style="width: 100px;"/></left>
+<h2 id="Example:-Recycling-Robot">Example: Recycling Robot<a class="anchor-link" href="#Example:-Recycling-Robot">&#182;</a></h2><p><left><img src="img/robot.jpg" alt="Matrix" style="width: 100px;"/></left>
 <strong> Task: </strong> Collect Empty soda cans in office</p>
 <p><strong> Sensors: </strong></p>
 
@@ -12199,131 +12536,147 @@ $$P_{s,s'}^{\pi} = \sum_{a \epsilon A} \pi(a|s) P_{ss'}^{a}$$$$R_{s}^{\pi} = \su
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Function-in-MDP-notation">Value Function in MDP notation<a class="anchor-link" href="#Value-Function-in-MDP-notation">&#194;&#182;</a></h2><center><img src="img/7.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Value-Function-in-MDP-notation">Value Function in MDP notation<a class="anchor-link" href="#Value-Function-in-MDP-notation">&#182;</a></h2><center><img src="img/7.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bellman-Expectation-Equation"><center>Bellman Expectation Equation</center><a class="anchor-link" href="#Bellman-Expectation-Equation">&#194;&#182;</a></h1>
+<h1 id="Bellman-Expectation-Equation"><center>Bellman Expectation Equation</center><a class="anchor-link" href="#Bellman-Expectation-Equation">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Equation">Bellman Expectation Equation<a class="anchor-link" href="#Bellman-Expectation-Equation">&#194;&#182;</a></h2><center><img src="img/b1.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Expectation-Equation">Bellman Expectation Equation<a class="anchor-link" href="#Bellman-Expectation-Equation">&#182;</a></h2><center><img src="img/b1.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Equation-for-$V^\pi$">Bellman Expectation Equation for $V^\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$V^\pi$">&#194;&#182;</a></h2><center><img src="img/b2.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Expectation-Equation-for-$V^\pi$">Bellman Expectation Equation for $V^\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$V^\pi$">&#182;</a></h2><center><img src="img/b2.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Equation-for-$Q^\pi$">Bellman Expectation Equation for $Q^\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$Q^\pi$">&#194;&#182;</a></h2><center><img src="img/b3.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Expectation-Equation-for-$Q^\pi$">Bellman Expectation Equation for $Q^\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$Q^\pi$">&#182;</a></h2><center><img src="img/b3.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Equation-for-$v_\pi$">Bellman Expectation Equation for $v_\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$v_\pi$">&#194;&#182;</a></h2><center><img src="img/b4.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Expectation-Equation-for-$v_\pi$">Bellman Expectation Equation for $v_\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$v_\pi$">&#182;</a></h2><center><img src="img/b4.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Equation-for-$q_\pi$">Bellman Expectation Equation for $q_\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$q_\pi$">&#194;&#182;</a></h2><center><img src="img/b5.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Expectation-Equation-for-$q_\pi$">Bellman Expectation Equation for $q_\pi$<a class="anchor-link" href="#Bellman-Expectation-Equation-for-$q_\pi$">&#182;</a></h2><center><img src="img/b5.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bellman-Optimality-Equation"><center>Bellman Optimality Equation</center><a class="anchor-link" href="#Bellman-Optimality-Equation">&#194;&#182;</a></h1>
+<h1 id="Bellman-Optimality-Equation"><center>Bellman Optimality Equation</center><a class="anchor-link" href="#Bellman-Optimality-Equation">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Optimal-Value-Function">Optimal Value Function<a class="anchor-link" href="#Optimal-Value-Function">&#194;&#182;</a></h2><center><img src="img/o.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Optimal-Value-Function">Optimal Value Function<a class="anchor-link" href="#Optimal-Value-Function">&#182;</a></h2><center><img src="img/o.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Optimal-Policy">Optimal Policy<a class="anchor-link" href="#Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/o1.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Optimal-Policy">Optimal Policy<a class="anchor-link" href="#Optimal-Policy">&#182;</a></h2><center><img src="img/o1.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Finding-an-Optimal-Policy">Finding an Optimal Policy<a class="anchor-link" href="#Finding-an-Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/o2.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Finding-an-Optimal-Policy">Finding an Optimal Policy<a class="anchor-link" href="#Finding-an-Optimal-Policy">&#182;</a></h2><center><img src="img/o2.png" alt="Matrix" style="width: 1000px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Equation-for-$v_{*}$">Bellman Optimality Equation for $v_{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$v_{*}$">&#194;&#182;</a></h2><center><img src="img/op1.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Optimality-Equation-for-$v_{*}$">Bellman Optimality Equation for $v_{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$v_{*}$">&#182;</a></h2><center><img src="img/op1.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Equation-for-$Q_{*}$">Bellman Optimality Equation for $Q_{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$Q_{*}$">&#194;&#182;</a></h2><center><img src="img/op2.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Optimality-Equation-for-$Q_{*}$">Bellman Optimality Equation for $Q_{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$Q_{*}$">&#182;</a></h2><center><img src="img/op2.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Equatin-for-$V^{*}$">Bellman Optimality Equatin for $V^{*}$<a class="anchor-link" href="#Bellman-Optimality-Equatin-for-$V^{*}$">&#194;&#182;</a></h2><center><img src="img/op3.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Optimality-Equatin-for-$V^{*}$">Bellman Optimality Equatin for $V^{*}$<a class="anchor-link" href="#Bellman-Optimality-Equatin-for-$V^{*}$">&#182;</a></h2><center><img src="img/op3.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Equation-for-$Q^{*}$">Bellman Optimality Equation for $Q^{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$Q^{*}$">&#194;&#182;</a></h2><center><img src="img/op4.png" alt="Matrix" style="width: 1000px;"/></center>
+<h2 id="Bellman-Optimality-Equation-for-$Q^{*}$">Bellman Optimality Equation for $Q^{*}$<a class="anchor-link" href="#Bellman-Optimality-Equation-for-$Q^{*}$">&#182;</a></h2><center><img src="img/op4.png" alt="Matrix" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
 <li>We looked into the MDP formulation of a RL problem.</li>
 <li>We looked into the formulation of Value functions.<ul>
 <li>action-value pairs</li>
