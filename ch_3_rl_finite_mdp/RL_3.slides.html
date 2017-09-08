@@ -12008,15 +12008,64 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Episodic-vs-Continuing-Tasks">Episodic vs Continuing Tasks<a class="anchor-link" href="#Episodic-vs-Continuing-Tasks">&#194;&#182;</a></h2><p>Each episode ends in a special state called the terminal state, followed by a reset
-to a standard starting state or to a sample from a standard distribution of starting
-states. Tasks with episodes of this kind are called <strong>episodic tasks</strong>.</p>
-<p>On the other hand, in many cases the agent–environment interaction does not
-break naturally into identifiable episodes, but goes on continually without limit. For
-example, this would be the natural way to formulate a continual process-control
-task, or an application to a robot with a long life span. We call these <strong>continuing
-tasks</strong>.</p>
+<h2 id="Episodic-vs-Continuing-Tasks">Episodic vs Continuing Tasks<a class="anchor-link" href="#Episodic-vs-Continuing-Tasks">&#194;&#182;</a></h2><h3 id="Episodic-Tasks">Episodic Tasks<a class="anchor-link" href="#Episodic-Tasks">&#194;&#182;</a></h3><ul>
+<li>Each episode ends in a special state called the terminal state, </li>
+<li>Followed by a reset to a standard starting state or to a sample from a standard distribution of starting states. </li>
+</ul>
+<h3 id="Continuing-Tasks">Continuing Tasks<a class="anchor-link" href="#Continuing-Tasks">&#194;&#182;</a></h3><ul>
+<li>The agent–environment interaction does not break naturally into identifiable episodes.</li>
+<li>It goes on continually without limit. </li>
+</ul>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Unified-Notation-for-Episodic-and-Continuous-Tasks">Unified Notation for Episodic and Continuous Tasks<a class="anchor-link" href="#Unified-Notation-for-Episodic-and-Continuous-Tasks">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Return-for-Episodic-Tasks">Return for Episodic Tasks<a class="anchor-link" href="#Return-for-Episodic-Tasks">&#194;&#182;</a></h4><p>sum over a finite number of terms</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Return-for-Continuous-Tasks">Return for Continuous Tasks<a class="anchor-link" href="#Return-for-Continuous-Tasks">&#194;&#182;</a></h4><p>sum over an infinite number of terms</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need one convention to obtain a single notation that covers both episodic and continuing tasks.</p>
+<p>How to do that?</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These can be unified by considering episode termination to be the entering
+of a <strong>special absorbing state</strong> that <strong>transitions only to itself</strong> and that <strong>generates only
+rewards of zero</strong>. For example, consider the state transition diagram -</p>
+<center><img src="img/unified.png" alt="Matrix" style="width: 1000px;"/></center>
+Hence, return can be written as-
+<center><img src="img/return.png" alt="Matrix" style="width: 200px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12097,7 +12146,7 @@ tasks</strong>.</p>
 <ul>
 <li>A policy fully defines the behaviour of an agent</li>
 <li>MDP policies depend on the current state (not the history)</li>
-<li>i.e. Policies are stationary (time-independent),
+<li>i.e. Policies are <strong>stationary</strong> (time-independent),
   $A_t ∼ π(·|S_t ), \forall t &gt; 0$</li>
 </ul>
 
@@ -12110,6 +12159,43 @@ tasks</strong>.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Policy-in-MDP-notation">Policy in MDP notation<a class="anchor-link" href="#Policy-in-MDP-notation">&#194;&#182;</a></h2><p>Given a MDP $M = \left \langle S, A, P, R, \gamma \right \rangle$ and a policy $\pi$</p>
 $$P_{s,s'}^{\pi} = \sum_{a \epsilon A} \pi(a|s) P_{ss'}^{a}$$$$R_{s}^{\pi} = \sum_{a \epsilon A} \pi(a|s) R_{s}^{a}$$
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example:-Recycling-Robot">Example: Recycling Robot<a class="anchor-link" href="#Example:-Recycling-Robot">&#194;&#182;</a></h2><p><left><img src="img/robot.jpg" alt="Matrix" style="width: 100px;"/></left>
+<strong> Task: </strong> Collect Empty soda cans in office</p>
+<p><strong> Sensors: </strong></p>
+
+<pre><code>1) Detector : For detecting cans
+2) Arm + Gripper : To pick up and place can in onboard bin
+
+</code></pre>
+<p><strong> Actions: </strong></p>
+
+<pre><code>1) {Search} - Actively search for a can
+2) {Wait} - Remain stationary and wait for someone to bring a can. (Will lose less battery)
+3) {Recharge} - Head back home for recharging
+
+</code></pre>
+<p><strong> States: </strong></p>
+
+<pre><code>1) high - Battery is charged considerably well
+2) low - Battery is not charged
+
+</code></pre>
+<p><strong> Rewards: </strong></p>
+
+<pre><code>1) zero most of the time
+2) become positive when the robot secures an empty can, 
+3) negative if the battery runs all the way down
+
+</code></pre>
+<p><strong> <center>How can we formulate this as a MDP?</center> </strong></p>
+
 </div>
 </div>
 </div></section><section>
