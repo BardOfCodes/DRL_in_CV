@@ -12166,36 +12166,44 @@ $$P_{s,s'}^{\pi} = \sum_{a \epsilon A} \pi(a|s) P_{ss'}^{a}$$$$R_{s}^{\pi} = \su
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Recycling-Robot">Example: Recycling Robot<a class="anchor-link" href="#Example:-Recycling-Robot">&#194;&#182;</a></h2><p><left><img src="img/robot.jpg" alt="Matrix" style="width: 100px;"/></left>
-<strong> Task: </strong> Collect Empty soda cans in office</p>
+<h2 id="Example:-Recycling-Robot">Example: Recycling Robot<a class="anchor-link" href="#Example:-Recycling-Robot">&#194;&#182;</a></h2><center><img src="img/robot.jpg" alt="Matrix" style="width: 100px;"/></center><p><strong> Task: </strong></p>
+<p>Collect Empty soda cans in office</p>
 <p><strong> Sensors: </strong></p>
-
-<pre><code>1) Detector : For detecting cans
-2) Arm + Gripper : To pick up and place can in onboard bin
-
-</code></pre>
-<p><strong> Actions: </strong></p>
-
-<pre><code>1) {Search} - Actively search for a can
-2) {Wait} - Remain stationary and wait for someone to bring a can. (Will lose less battery)
-3) {Recharge} - Head back home for recharging
-
-</code></pre>
-<p><strong> States: </strong></p>
-
-<pre><code>1) high - Battery is charged considerably well
-2) low - Battery is not charged
-
-</code></pre>
-<p><strong> Rewards: </strong></p>
-
-<pre><code>1) zero most of the time
-2) become positive when the robot secures an empty can, 
-3) negative if the battery runs all the way down
-
-</code></pre>
+<p>1) Detector : For detecting cans</p>
+<p>2) Arm + Gripper : To pick up and place can in onboard bin</p>
 <p><strong> <center>How can we formulate this as a MDP?</center> </strong></p>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> We first need to identify States (S), Actions (A) and Rewards (R) </strong></p>
+<p><strong> Actions: </strong></p>
+<p>1) {Search} - Actively search for a can</p>
+<p>2) {Wait} - Remain stationary and wait for someone to bring a can. (Will lose less battery)</p>
+<p>3) {Recharge} - Head back home for recharging</p>
+<p><strong> States: </strong></p>
+<p>1) high - Battery is charged considerably well
+2) low - Battery is not charged</p>
+<p><strong> Rewards: </strong></p>
+<p>1) zero most of the time</p>
+<p>2) become positive when the robot secures an empty can,</p>
+<p>3) negative if the battery runs all the way down</p>
+<p><strong> <center>How can we now formulate this as a MDP?</center> </strong></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transition-Probabilities-and-Expected-Rewards">Transition Probabilities and Expected Rewards<a class="anchor-link" href="#Transition-Probabilities-and-Expected-Rewards">&#194;&#182;</a></h2><center><img src="img/pic1.png" alt="Matrix" style="width: 500px;"/></center>
+## Transition Graph
+<center><img src="img/pic2.png" alt="Matrix" style="width: 500px;"/></center>
 </div>
 </div>
 </div></section><section>
