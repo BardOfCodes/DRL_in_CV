@@ -11919,12 +11919,12 @@ a.anchor-link {
 <h2 id="-Task-1:-Object-Detection-"><center> Task 1: Object Detection </center><a class="anchor-link" href="#-Task-1:-Object-Detection-">&#194;&#182;</a></h2>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/1.png" alt="Example1"/></center>
+<center><img src="img/1_1.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
@@ -11973,8 +11973,9 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="What's-the-idea-here?">What's the idea here?<a class="anchor-link" href="#What's-the-idea-here?">&#194;&#182;</a></h2><ul>
-<li>Perform Hierarchical Object Detection in images guided by a Deep Reinforcement Learning</li>
-<li>Focus on those parts of the image that contain richer information and zoom on them</li>
+<li>A class-specific active detection model that learns to <strong>localize target objects</strong> known by the system. </li>
+<li>Model follows a <strong>top-down search strategy</strong>, which starts by analyzing the whole scene and then proceeds to narrow down the correct location of objects.</li>
+<li>Achieved by applying a <strong>sequence of transformations</strong> to a box that initially covers a large region of the image and is finally reduced to a tight bounding box.</li>
 </ul>
 
 </div>
@@ -11984,7 +11985,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#194;&#182;</a></h2><center><img src="img/6.png" alt="Example1"/></center>
+<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#194;&#182;</a></h2><center><img src="img/1_2.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12019,7 +12020,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer 2</strong>: The problem is cast as a MDP, that provides a framework to model decision making when outcomes are pretty uncertain. Now, we need to identify parameters of the MDP, namely States, Actions and Rewards.</p>
+<p><strong>Answer 2</strong>: We cast the problem of object localization as a Markov decision process (MDP) since this setting provides a formal framework to model an agent that makes a sequence of decisions. We will try to identify the components of MDP, the set of actions A, a set of states S, and a reward function R.</p>
 
 </div>
 </div>
@@ -12028,7 +12029,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#194;&#182;</a></h2><h4 id="What-do-the-States-look-like?">What do the States look like?<a class="anchor-link" href="#What-do-the-States-look-like?">&#194;&#182;</a></h4>
+<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#194;&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#194;&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
@@ -12036,28 +12037,57 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>State</strong> is composed by the descriptor of the <strong>current region</strong> and a <strong>memory vector</strong>.</p>
-<p><strong>Memory Vector</strong> captures last 4 actions that the agent has already performed in the search for an object. The past 4 actions are encoded in a one-shot vector.</p>
+<p>The <strong>set of actions A</strong> is composed of <strong>eight transformations</strong> that can be applied to the box and one action to terminate the search process.</p>
+<center><img src="img/1_3.png" alt="Example1"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>State Repreentation = tuple(o,h)</li>
+<li>o = feature vector of the observed region <ul>
+<li>((fc6) output =&gt; 4,096 dimensional feature vector to represent its content)</li>
+</ul>
+</li>
+<li>h = vector with the history of taken actions<ul>
+<li>The history vector encodes 10 past actions</li>
+<li>Actions encoded as a 9-dimensional binary vector</li>
+</ul>
+</li>
+</ul>
+<p>Motivation behind the history vector: Useful to stabilize search trajectories that might get stuck in repetitive cycles, improving average precision
+by approximately 3 percent points.</p>
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="What-do-the-Actions-look-like?">What do the Actions look like?<a class="anchor-link" href="#What-do-the-Actions-look-like?">&#194;&#182;</a></h4>
+<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#194;&#182;</a></h3>
 </div>
 </div>
-</div></div><div class="fragment">
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There are two types of possible actions-</p>
+<p>Motivation:</p>
 <ul>
-<li><strong>Movement Actions</strong> : These imply a change in the current observed region (5 actions).</li>
-<li><strong>Terminal Action</strong> : To indicate that the object is found and search has ended. </li>
+<li>Reward function R is proportional to the improvement that the agent makes to localize an object after selecting a particular action</li>
+<li>Measured using the Intersection-over-Union (IoU) between the target object and the predicted box at any given time</li>
 </ul>
 
 </div>
@@ -12067,23 +12097,9 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/2.png" alt="Example1"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/3.png" alt="Example1"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="What-does-the-Reward-look-like?">What does the Reward look like?<a class="anchor-link" href="#What-does-the-Reward-look-like?">&#194;&#182;</a></h4>
+<center><img src="img/1_10.png" alt="Example1"/></center>
+<center><img src="img/1_11.png" alt="Example1"/></center>
+<center><img src="img/1_12.png" alt="Example1"/></center>
 </div>
 </div>
 </div><div class="fragment">
@@ -12091,7 +12107,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/8.png" alt="Example1"/></center>
+<p>where,
+b = be the box of an observable region, and</p>
+<p>g = the ground truth box for a target object</p>
+
 </div>
 </div>
 </div></div><div class="fragment">
@@ -12101,8 +12120,9 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Explanation:</p>
 <ul>
-<li>Given a state s, those actions will be rewarded that result in a higher IOU with the groudtruth, otherwise the actions are penalised. </li>
+<li>Given a state s, those actions will be <strong>rewarded</strong> that result in a <strong>higher IOU with the groudtruth</strong>, otherwise the actions are penalised. </li>
 <li>For trigger action, reward is positive if final IOU with groundtruth is greater than a certin threshold, and negative otherwise. </li>
+<li>This <strong>reward scheme is binary</strong> r ∈ {−1, +1}, and applies to any action that transforms the box.</li>
 </ul>
 
 </div>
@@ -12112,7 +12132,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/4.png" alt="Example1"/></center>
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/1_4.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12120,8 +12140,63 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-use-RL-here?">Why use RL here?<a class="anchor-link" href="#Why-use-RL-here?">&#194;&#182;</a></h2><p>Claim: Objects can be detected with very few proposals from an appropriate hierarchy.</p>
-<center><img src="img/7.png" alt="Example1"/></center>
+<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/1_5.png" alt="Example1"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/1_8.png" alt="Example1"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/1_9.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-to-use-RL-here?">Why to use RL here?<a class="anchor-link" href="#Why-to-use-RL-here?">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/1_6.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/1_7.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section></section>
