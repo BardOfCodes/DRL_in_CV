@@ -12352,7 +12352,7 @@ by approximately 3 percent points.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Motivation:</p>
 <ul>
-<li>Reward function R awards the agent for ctions that will bring about the improvement of motion localisation accuracy</li>
+<li>Reward function R awards the agent for actions that will bring about the improvement of motion localisation accuracy</li>
 <li>And, the agent is penalized for actions that leads to the decline of the accuracy</li>
 <li>Measured using the Intersection-over-Union (IoU) between the current attended temporal window and the groundtruth region of motion</li>
 </ul>
@@ -12406,6 +12406,243 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Why-use-RL-here?">Why use RL here?<a class="anchor-link" href="#Why-use-RL-here?">&#194;&#182;</a></h2><center><img src="img/d.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Task-3:-Visual-Tracking-"><center> Task 3: Visual Tracking </center><a class="anchor-link" href="#-Task-3:-Visual-Tracking-">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/adnet_1.PNG" style="width:700px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Task-at-hand:">The Task at hand:<a class="anchor-link" href="#The-Task-at-hand:">&#194;&#182;</a></h2><h3 id="Single-Line:">Single Line:<a class="anchor-link" href="#Single-Line:">&#194;&#182;</a></h3><ul>
+<li>Visual tracking solves the problem of finding the position of the target in a new frame from the current position.</li>
+</ul>
+<h3 id="Definition:">Definition:<a class="anchor-link" href="#Definition:">&#194;&#182;</a></h3><ul>
+<li>Visual Tracking is the process of locating, identifying, and determining the dynamic configuration of one or many moving (possibly deformable) objects (or parts of objects) in each frame of one or several cameras</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tracking-Challenges">Tracking Challenges<a class="anchor-link" href="#Tracking-Challenges">&#194;&#182;</a></h2><ul>
+<li><strong>Object Modeling</strong>: how to define what an object is in terms that can be interpreted by a computer ?</li>
+<li><strong>Appearance Change</strong>: The observation of an object changes according to many parameters (illumination conditions, occlusions, shape variation...)</li>
+<li><strong>Kinematic Modelling</strong>: How to inject priors on object kinematic and interactions between objects.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Common-hurdles">Common hurdles<a class="anchor-link" href="#Common-hurdles">&#194;&#182;</a></h2><ul>
+<li>Track initaition and termination  </li>
+<li>Occlusion handling    </li>
+<li>Merging/switching </li>
+<li>Drifting  due to  wrong   update  of  the target   model  </li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Existing-Methods">Existing Methods<a class="anchor-link" href="#Existing-Methods">&#194;&#182;</a></h2><ul>
+<li>Various Classical tracking methods, KLT Tracker etc.</li>
+<li>Recent CNN-Based:<ul>
+<li>Learning Multi-Domain Convolutional Neural Networks for Visual Tracking CVPR'16</li>
+<li>Siamese Instance Search for Tracking, CVPR'16</li>
+</ul>
+</li>
+<li>They still require computationally inefficient search algorithms, such as sliding window or candidate sampling.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-RL:">Why RL:<a class="anchor-link" href="#Why-RL:">&#194;&#182;</a></h2><ul>
+<li>No post-processing: bounding box regression</li>
+<li>Fewer searching steps than sliding window or candidate sampling approaches</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Focus-of-this-paper:">Focus of this paper:<a class="anchor-link" href="#Focus-of-this-paper:">&#194;&#182;</a></h2><h3 id="Solution-to-existing-works-for:">Solution to existing works for:<a class="anchor-link" href="#Solution-to-existing-works-for:">&#194;&#182;</a></h3><p>1) Present better algorithm than the existing inefficient search algorithms that explore the region of interest and select the best candidate by matching with the tracking model, and</p>
+<p>2) Presenting a method to train using unlabeled frames in a semi-supervised case.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MDP-Formulation:">MDP Formulation:<a class="anchor-link" href="#MDP-Formulation:">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Visual tracking solves the problem of finding the position of the target in a new frame from the current position.</p>
+</li>
+<li><p>The proposed tracker dynamically pursues the target by sequential actions</p>
+</li>
+<li><p>The tracker is defined as an agent of whose goal is to capture the target with a bounding box shape.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-MDP-Parameters:"><center>The MDP Parameters:</center><a class="anchor-link" href="#The-MDP-Parameters:">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="State-Space:">State Space:<a class="anchor-link" href="#State-Space:">&#194;&#182;</a></h1><ul>
+<li><strong>Goal</strong> : Capture Required Information.</li>
+<li><strong>What useful Information must the state capture?</strong></li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>State is defined by tuple ($p_t,d_t$)</li>
+<li>$p_t \in R^{112 \times 112 \times 3}$:  denotes the image patch within the bounding box</li>
+<li>$d_t \in R^{110}$: represents the dynamics of actions denoted by a vector containing the previous $k$ actions at $t$-th iteration</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Action-Space">Action Space<a class="anchor-link" href="#Action-Space">&#194;&#182;</a></h1><ul>
+<li>In this paper: Discrete Actions</li>
+<li>What can be the actions?</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/adnet_3.PNG" style="width:400px;" alt="Example1"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Transition-Probabilities:">Transition Probabilities:<a class="anchor-link" href="#Transition-Probabilities:">&#194;&#182;</a></h1><ul>
+<li>After decision of action at in state $s_t$, the next state $s_{t+1}$ is obtained by the state transition functions.</li>
+<li>Will it be a stochastic output?</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Reward:">Reward:<a class="anchor-link" href="#Reward:">&#194;&#182;</a></h1><p>At the termination step $T$, that is, $a_T$ is ‘stop’ action,$r(s_T )$ is assigned by:</p>
+<center><img src="img/adnet_6.PNG" style="width:400px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/adnet_2.PNG" style="width:700px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Action-Selection:">Action Selection:<a class="anchor-link" href="#Action-Selection:">&#194;&#182;</a></h2><center><img src="img/adnet_5.PNG" style="width:1000px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h2><center><img src="img/adnet_4.PNG" style="width:500px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h2><center><img src="img/adnet_8.PNG" style="width:500px;" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Analysis-on-the-actions.">Analysis on the actions.<a class="anchor-link" href="#Analysis-on-the-actions.">&#194;&#182;</a></h3><ul>
+<li>most of the frames require fewer than five actions to pursue the target in each frame!</li>
+</ul>
+<center><img src="img/adnet_7.PNG" style="width:700px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section></section>
