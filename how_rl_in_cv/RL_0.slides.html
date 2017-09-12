@@ -12055,7 +12055,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>State Repreentation = tuple(o,h)</li>
+<li>State Representation = tuple(o,h)</li>
 <li>o = feature vector of the observed region <ul>
 <li>((fc6) output =&gt; 4,096 dimensional feature vector to represent its content)</li>
 </ul>
@@ -12197,6 +12197,215 @@ b = be the box of an observable region, and</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <center><img src="img/1_7.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Task-2:-Action-Detection-"><center> Task 2: Action Detection </center><a class="anchor-link" href="#-Task-2:-Action-Detection-">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/a.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-the-task?">What is the task?<a class="anchor-link" href="#What-is-the-task?">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/2_13.png" alt="Example1"/></center>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Does an action occur?</li>
+<li>When does the action occur?</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Whats-the-idea-here?">Whats the idea here?<a class="anchor-link" href="#Whats-the-idea-here?">&#194;&#182;</a></h2><ul>
+<li>A class-specific action-detection model.</li>
+<li>It learns to continually adjust the current region to cover th groundtruth more precisely in a self-adapted way</li>
+<li>This is achieved by applying a sequence of transformations to a temporal window that is initially placed in the video at random and finally finds and covers action region as large as possible. </li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#194;&#182;</a></h2><center><img src="img/2_2.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-look-at-it-as-a-RL-problem?">How to look at it as a RL problem?<a class="anchor-link" href="#How-to-look-at-it-as-a-RL-problem?">&#194;&#182;</a></h2><p><strong> Question 1:</strong> How to cast this as a Markov Decision Process?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Answer 1:</strong> The problem is cast as a MDP, in which the agent interacts with the environment and makes a sequence of decisions to achieve the settled goal.</p>
+<ul>
+<li>In our formulation, the environment is the input video clip, </li>
+<li>in which the agent has an observation of the current video segment, called temporal window, </li>
+<li>and through the actions he restructures the position or span of the window, to achieve the goal of locating the actions precisely.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#194;&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><center><img src="img/c.png" alt="Example1"/></center>
+All the actions are regular actions, except <strong>jump</strong>.</p>
+<p>The idea behind this irregular action, is to translate the temporal window to a new position away from the current site to avoid  that the agent traps itself round the present location when there is no motion occurin nearby.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>State Repreentation = composed of two components (current temporal window, history of actions taken)</li>
+<li>current temporal window =&gt; to describe the motion within the current window<ul>
+<li>features extracted from C3D CNN model (pre-trained on Sports-1M)</li>
+<li>((fc6) output =&gt; 4,096 dimensional feature vector to represent its content)</li>
+</ul>
+</li>
+<li>history of actions taken = vector with the history of taken actions<ul>
+<li>The history vector encodes 10 past actions</li>
+<li>Actions encoded as a 7-dimensional binary vector</li>
+</ul>
+</li>
+</ul>
+<p>Motivation behind the history vector: Useful to stabilize search trajectories that might get stuck in repetitive cycles, improving average precision
+by approximately 3 percent points.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Motivation:</p>
+<ul>
+<li>Reward function R awards the agent for ctions that will bring about the improvement of motion localisation accuracy</li>
+<li>And, the agent is penalized for actions that leads to the decline of the accuracy</li>
+<li>Measured using the Intersection-over-Union (IoU) between the current attended temporal window and the groundtruth region of motion</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/x.png" alt="Example1"/></center>
+where,
+w = current window.
+
+g = groundtruth region of motion
+
+<center><img src="img/y.png" alt="Example1"/></center><p>where,
+w and w' are attended windows corresponding to state s and s' respectively.</p>
+<p>n = number of groundtruths within the video</p>
+<center><img src="img/z.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/b.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#194;&#182;</a></h2><center><img src="img/e.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#194;&#182;</a></h2><center><img src="img/f.png" alt="Example1"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-use-RL-here?">Why use RL here?<a class="anchor-link" href="#Why-use-RL-here?">&#194;&#182;</a></h2><center><img src="img/d.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section></section>
