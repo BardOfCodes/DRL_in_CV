@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,6 +1163,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2591,6 +2592,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3081,6 +3083,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8811,9 +8814,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,14 +9016,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9046,16 +9040,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9192,9 +9176,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9284,9 +9265,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9331,9 +9309,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9630,7 +9605,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9651,6 +9625,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11321,7 +11300,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11633,7 +11612,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11647,9 +11625,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11710,10 +11685,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11724,11 +11697,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11854,23 +11825,26 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Reinforcement-Learning-in-Computer-Vision"><center> Reinforcement Learning in Computer Vision</center><a class="anchor-link" href="#-Reinforcement-Learning-in-Computer-Vision">&#194;&#182;</a></h1>
+<h1 id="-Reinforcement-Learning-in-Computer-Vision"><center> Reinforcement Learning in Computer Vision</center><a class="anchor-link" href="#-Reinforcement-Learning-in-Computer-Vision">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11887,7 +11861,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11912,15 +11887,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Task-1:-Object-Detection-"><center> Task 1: Object Detection </center><a class="anchor-link" href="#-Task-1:-Object-Detection-">&#194;&#182;</a></h2>
+<h2 id="-Task-1:-Object-Detection-"><center> Task 1: Object Detection </center><a class="anchor-link" href="#-Task-1:-Object-Detection-">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11928,15 +11905,17 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-the-task?">What is the task?<a class="anchor-link" href="#What-is-the-task?">&#194;&#182;</a></h2>
+<h2 id="What-is-the-task?">What is the task?<a class="anchor-link" href="#What-is-the-task?">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11944,7 +11923,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11968,11 +11948,12 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What's-the-idea-here?">What's the idea here?<a class="anchor-link" href="#What's-the-idea-here?">&#194;&#182;</a></h2><ul>
+<h2 id="What's-the-idea-here?">What's the idea here?<a class="anchor-link" href="#What's-the-idea-here?">&#182;</a></h2><ul>
 <li>A class-specific active detection model that learns to <strong>localize target objects</strong> known by the system. </li>
 <li>Model follows a <strong>top-down search strategy</strong>, which starts by analyzing the whole scene and then proceeds to narrow down the correct location of objects.</li>
 <li>Achieved by applying a <strong>sequence of transformations</strong> to a box that initially covers a large region of the image and is finally reduced to a tight bounding box.</li>
@@ -11981,24 +11962,27 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#194;&#182;</a></h2><center><img src="img/1_2.png" alt="Example1"/></center>
+<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#182;</a></h2><center><img src="img/1_2.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-look-it-as-a-RL-problem?">How to look it as a RL problem?<a class="anchor-link" href="#How-to-look-it-as-a-RL-problem?">&#194;&#182;</a></h2><p><strong>Question 1</strong>: How to think of this as a <strong>Sequential Decision Making</strong> Problem?</p>
+<h2 id="How-to-look-it-as-a-RL-problem?">How to look it as a RL problem?<a class="anchor-link" href="#How-to-look-it-as-a-RL-problem?">&#182;</a></h2><p><strong>Question 1</strong>: How to think of this as a <strong>Sequential Decision Making</strong> Problem?</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12007,7 +11991,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12016,7 +12001,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12025,15 +12011,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#194;&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#194;&#182;</a></h3>
+<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12042,15 +12030,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#194;&#182;</a></h3>
+<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12072,15 +12062,17 @@ by approximately 3 percent points.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#194;&#182;</a></h3>
+<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12093,7 +12085,8 @@ by approximately 3 percent points.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12103,7 +12096,8 @@ by approximately 3 percent points.</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12114,7 +12108,8 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12128,23 +12123,26 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/1_4.png" alt="Example1"/></center>
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#182;</a></h2><center><img src="img/1_4.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#194;&#182;</a></h2>
+<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12152,15 +12150,17 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#194;&#182;</a></h2>
+<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12168,7 +12168,8 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12176,15 +12177,17 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-to-use-RL-here?">Why to use RL here?<a class="anchor-link" href="#Why-to-use-RL-here?">&#194;&#182;</a></h2>
+<h2 id="Why-to-use-RL-here?">Why to use RL here?<a class="anchor-link" href="#Why-to-use-RL-here?">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12192,7 +12195,8 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12200,15 +12204,17 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Task-2:-Action-Detection-"><center> Task 2: Action Detection </center><a class="anchor-link" href="#-Task-2:-Action-Detection-">&#194;&#182;</a></h2>
+<h2 id="-Task-2:-Action-Detection-"><center> Task 2: Action Detection </center><a class="anchor-link" href="#-Task-2:-Action-Detection-">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12216,15 +12222,17 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-the-task?">What is the task?<a class="anchor-link" href="#What-is-the-task?">&#194;&#182;</a></h2>
+<h2 id="What-is-the-task?">What is the task?<a class="anchor-link" href="#What-is-the-task?">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12232,7 +12240,8 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12244,11 +12253,12 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Whats-the-idea-here?">Whats the idea here?<a class="anchor-link" href="#Whats-the-idea-here?">&#194;&#182;</a></h2><ul>
+<h2 id="Whats-the-idea-here?">Whats the idea here?<a class="anchor-link" href="#Whats-the-idea-here?">&#182;</a></h2><ul>
 <li>A class-specific action-detection model.</li>
 <li>It learns to continually adjust the current region to cover th groundtruth more precisely in a self-adapted way</li>
 <li>This is achieved by applying a sequence of transformations to a temporal window that is initially placed in the video at random and finally finds and covers action region as large as possible. </li>
@@ -12257,24 +12267,27 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#194;&#182;</a></h2><center><img src="img/2_2.png" alt="Example1"/></center>
+<h2 id="Example-Output">Example Output<a class="anchor-link" href="#Example-Output">&#182;</a></h2><center><img src="img/2_2.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-look-at-it-as-a-RL-problem?">How to look at it as a RL problem?<a class="anchor-link" href="#How-to-look-at-it-as-a-RL-problem?">&#194;&#182;</a></h2><p><strong> Question 1:</strong> How to cast this as a Markov Decision Process?</p>
+<h2 id="How-to-look-at-it-as-a-RL-problem?">How to look at it as a RL problem?<a class="anchor-link" href="#How-to-look-at-it-as-a-RL-problem?">&#182;</a></h2><p><strong> Question 1:</strong> How to cast this as a Markov Decision Process?</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12288,15 +12301,17 @@ b = be the box of an observable region, and</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#194;&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#194;&#182;</a></h3>
+<h2 id="Identifying-MDP-Parameters">Identifying MDP Parameters<a class="anchor-link" href="#Identifying-MDP-Parameters">&#182;</a></h2><h3 id="Action-Space?">Action Space?<a class="anchor-link" href="#Action-Space?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12307,15 +12322,17 @@ All the actions are regular actions, except <strong>jump</strong>.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#194;&#182;</a></h3>
+<h3 id="State-Space?">State Space?<a class="anchor-link" href="#State-Space?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12338,15 +12355,17 @@ by approximately 3 percent points.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#194;&#182;</a></h3>
+<h3 id="Rewards?">Rewards?<a class="anchor-link" href="#Rewards?">&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12360,7 +12379,8 @@ by approximately 3 percent points.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12377,47 +12397,53 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/b.png" alt="Example1"/></center>
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#182;</a></h2><center><img src="img/b.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#194;&#182;</a></h2><center><img src="img/e.png" alt="Example1"/></center>
+<h2 id="Some-Quantitative-Results">Some Quantitative Results<a class="anchor-link" href="#Some-Quantitative-Results">&#182;</a></h2><center><img src="img/e.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#194;&#182;</a></h2><center><img src="img/f.png" alt="Example1"/></center>
+<h2 id="Some-Qualitative-Results">Some Qualitative Results<a class="anchor-link" href="#Some-Qualitative-Results">&#182;</a></h2><center><img src="img/f.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-use-RL-here?">Why use RL here?<a class="anchor-link" href="#Why-use-RL-here?">&#194;&#182;</a></h2><center><img src="img/d.png" alt="Example1"/></center>
+<h2 id="Why-use-RL-here?">Why use RL here?<a class="anchor-link" href="#Why-use-RL-here?">&#182;</a></h2><center><img src="img/d.png" alt="Example1"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Task-3:-Visual-Tracking-"><center> Task 3: Visual Tracking </center><a class="anchor-link" href="#-Task-3:-Visual-Tracking-">&#194;&#182;</a></h2>
+<h2 id="-Task-3:-Visual-Tracking-"><center> Task 3: Visual Tracking </center><a class="anchor-link" href="#-Task-3:-Visual-Tracking-">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12425,25 +12451,27 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Task-at-hand:">The Task at hand:<a class="anchor-link" href="#The-Task-at-hand:">&#194;&#182;</a></h2><h3 id="Single-Line:">Single Line:<a class="anchor-link" href="#Single-Line:">&#194;&#182;</a></h3><ul>
+<h2 id="The-Task-at-hand:">The Task at hand:<a class="anchor-link" href="#The-Task-at-hand:">&#182;</a></h2><h3 id="Single-Line:">Single Line:<a class="anchor-link" href="#Single-Line:">&#182;</a></h3><ul>
 <li>Visual tracking solves the problem of finding the position of the target in a new frame from the current position.</li>
 </ul>
-<h3 id="Definition:">Definition:<a class="anchor-link" href="#Definition:">&#194;&#182;</a></h3><ul>
+<h3 id="Definition:">Definition:<a class="anchor-link" href="#Definition:">&#182;</a></h3><ul>
 <li>Visual Tracking is the process of locating, identifying, and determining the dynamic configuration of one or many moving (possibly deformable) objects (or parts of objects) in each frame of one or several cameras</li>
 </ul>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tracking-Challenges">Tracking Challenges<a class="anchor-link" href="#Tracking-Challenges">&#194;&#182;</a></h2><ul>
+<h2 id="Tracking-Challenges">Tracking Challenges<a class="anchor-link" href="#Tracking-Challenges">&#182;</a></h2><ul>
 <li><strong>Object Modeling</strong>: how to define what an object is in terms that can be interpreted by a computer ?</li>
 <li><strong>Appearance Change</strong>: The observation of an object changes according to many parameters (illumination conditions, occlusions, shape variation...)</li>
 <li><strong>Kinematic Modelling</strong>: How to inject priors on object kinematic and interactions between objects.</li>
@@ -12452,25 +12480,27 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Common-hurdles">Common hurdles<a class="anchor-link" href="#Common-hurdles">&#194;&#182;</a></h2><ul>
-<li>Track initaition and termination  </li>
-<li>Occlusion handling    </li>
-<li>Merging/switching </li>
-<li>Drifting  due to  wrong   update  of  the target   model  </li>
+<h2 id="Common-hurdles">Common hurdles<a class="anchor-link" href="#Common-hurdles">&#182;</a></h2><ul>
+<li>Track    initaition and termination    </li>
+<li>Occlusion    handling    </li>
+<li>Merging/switching    </li>
+<li>Drifting    due    to    wrong    update    of    the    target     model    </li>
 </ul>
 
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Existing-Methods">Existing Methods<a class="anchor-link" href="#Existing-Methods">&#194;&#182;</a></h2><ul>
+<h2 id="Existing-Methods">Existing Methods<a class="anchor-link" href="#Existing-Methods">&#182;</a></h2><ul>
 <li>Various Classical tracking methods, KLT Tracker etc.</li>
 <li>Recent CNN-Based:<ul>
 <li>Learning Multi-Domain Convolutional Neural Networks for Visual Tracking CVPR'16</li>
@@ -12483,11 +12513,12 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-RL:">Why RL:<a class="anchor-link" href="#Why-RL:">&#194;&#182;</a></h2><ul>
+<h2 id="Why-RL:">Why RL:<a class="anchor-link" href="#Why-RL:">&#182;</a></h2><ul>
 <li>No post-processing: bounding box regression</li>
 <li>Fewer searching steps than sliding window or candidate sampling approaches</li>
 </ul>
@@ -12495,25 +12526,28 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Focus-of-this-paper:">Focus of this paper:<a class="anchor-link" href="#Focus-of-this-paper:">&#194;&#182;</a></h2><h3 id="Solution-to-existing-works-for:">Solution to existing works for:<a class="anchor-link" href="#Solution-to-existing-works-for:">&#194;&#182;</a></h3><p>1) Present better algorithm than the existing inefficient search algorithms that explore the region of interest and select the best candidate by matching with the tracking model, and</p>
+<h2 id="Focus-of-this-paper:">Focus of this paper:<a class="anchor-link" href="#Focus-of-this-paper:">&#182;</a></h2><h3 id="Solution-to-existing-works-for:">Solution to existing works for:<a class="anchor-link" href="#Solution-to-existing-works-for:">&#182;</a></h3><p>1) Present better algorithm than the existing inefficient search algorithms that explore the region of interest and select the best candidate by matching with the tracking model, and</p>
 <p>2) Presenting a method to train using unlabeled frames in a semi-supervised case.</p>
 
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MDP-Formulation:">MDP Formulation:<a class="anchor-link" href="#MDP-Formulation:">&#194;&#182;</a></h2>
+<h2 id="MDP-Formulation:">MDP Formulation:<a class="anchor-link" href="#MDP-Formulation:">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12529,19 +12563,21 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-MDP-Parameters:"><center>The MDP Parameters:</center><a class="anchor-link" href="#The-MDP-Parameters:">&#194;&#182;</a></h1>
+<h1 id="The-MDP-Parameters:"><center>The MDP Parameters:</center><a class="anchor-link" href="#The-MDP-Parameters:">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="State-Space:">State Space:<a class="anchor-link" href="#State-Space:">&#194;&#182;</a></h1><ul>
+<h1 id="State-Space:">State Space:<a class="anchor-link" href="#State-Space:">&#182;</a></h1><ul>
 <li><strong>Goal</strong> : Capture Required Information.</li>
 <li><strong>What useful Information must the state capture?</strong></li>
 </ul>
@@ -12549,7 +12585,8 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12562,11 +12599,12 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Action-Space">Action Space<a class="anchor-link" href="#Action-Space">&#194;&#182;</a></h1><ul>
+<h1 id="Action-Space">Action Space<a class="anchor-link" href="#Action-Space">&#182;</a></h1><ul>
 <li>In this paper: Discrete Actions</li>
 <li>What can be the actions?</li>
 </ul>
@@ -12574,7 +12612,8 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12582,11 +12621,12 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Transition-Probabilities:">Transition Probabilities:<a class="anchor-link" href="#Transition-Probabilities:">&#194;&#182;</a></h1><ul>
+<h1 id="Transition-Probabilities:">Transition Probabilities:<a class="anchor-link" href="#Transition-Probabilities:">&#182;</a></h1><ul>
 <li>After decision of action at in state $s_t$, the next state $s_{t+1}$ is obtained by the state transition functions.</li>
 <li>Will it be a stochastic output?</li>
 </ul>
@@ -12594,52 +12634,58 @@ w and w' are attended windows corresponding to state s and s' respectively.</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Reward:">Reward:<a class="anchor-link" href="#Reward:">&#194;&#182;</a></h1><p>At the termination step $T$, that is, $a_T$ is ‘stop’ action,$r(s_T )$ is assigned by:</p>
+<h1 id="Reward:">Reward:<a class="anchor-link" href="#Reward:">&#182;</a></h1><p>At the termination step $T$, that is, $a_T$ is ‘stop’ action,$r(s_T )$ is assigned by:</p>
 <center><img src="img/adnet_6.PNG" style="width:400px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#194;&#182;</a></h2><center><img src="img/adnet_2.PNG" style="width:700px;" alt="Example1"/></center>
+<h2 id="Network-Architecture">Network Architecture<a class="anchor-link" href="#Network-Architecture">&#182;</a></h2><center><img src="img/adnet_2.PNG" style="width:700px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Action-Selection:">Action Selection:<a class="anchor-link" href="#Action-Selection:">&#194;&#182;</a></h2><center><img src="img/adnet_5.PNG" style="width:1000px;" alt="Example1"/></center>
+<h2 id="Action-Selection:">Action Selection:<a class="anchor-link" href="#Action-Selection:">&#182;</a></h2><center><img src="img/adnet_5.PNG" style="width:1000px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h2><center><img src="img/adnet_4.PNG" style="width:500px;" alt="Example1"/></center>
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><center><img src="img/adnet_4.PNG" style="width:500px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h2><center><img src="img/adnet_8.PNG" style="width:500px;" alt="Example1"/></center>
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><center><img src="img/adnet_8.PNG" style="width:500px;" alt="Example1"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Analysis-on-the-actions.">Analysis on the actions.<a class="anchor-link" href="#Analysis-on-the-actions.">&#194;&#182;</a></h3><ul>
+<h3 id="Analysis-on-the-actions.">Analysis on the actions.<a class="anchor-link" href="#Analysis-on-the-actions.">&#182;</a></h3><ul>
 <li>most of the frames require fewer than five actions to pursue the target in each frame!</li>
 </ul>
 <center><img src="img/adnet_7.PNG" style="width:700px;" alt="Example1"/></center>
