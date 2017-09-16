@@ -27,3 +27,6 @@
 
 
 ## Summary
+* We learnt the importance of modeling problems into MDPs. 
+
+* We learnt the Bellman Expectation and Optimality Equations that will be used extensively in the coming slides. 

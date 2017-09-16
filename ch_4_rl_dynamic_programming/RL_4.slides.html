@@ -11897,7 +11897,10 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
+<li>Prediction<ul>
 <li>Iterative Policy Evaluation</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -11908,7 +11911,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Policy Improvement</li>
+<li>Policy Improvement Theorem</li>
 </ul>
 
 </div>
@@ -11930,29 +11933,11 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
+<li>Control<ul>
 <li>Policy Iteration</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
 <li>Value Iteration</li>
 </ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Synchronous Dynamic Programming Algorithms</li>
+</li>
 </ul>
 
 </div>
@@ -11963,7 +11948,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Asynchronous Dynamic Programming</li>
+<li>Synchronous vs Asynchronous Dynamic Programming Algorithms</li>
 </ul>
 
 </div>
@@ -11992,8 +11977,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Dynamic</strong> sequential or temporal component to the problem</p>
-<p><strong>Programming</strong> optimising a “program”, i.e. a policy</p>
+<h2 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#194;&#182;</a></h2><p><strong>Dynamic</strong>: sequential or temporal component to the problem</p>
+<p><strong>Programming</strong>: optimising a “program”, i.e. a policy</p>
 <ul>
 <li>A method for solving complex problems</li>
 <li>By breaking them down into subproblems<ul>
@@ -12011,24 +11996,139 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Requirements-for-Dynamic-Programming">Requirements for Dynamic Programming<a class="anchor-link" href="#Requirements-for-Dynamic-Programming">&#194;&#182;</a></h2><p>Dynamic Programming is a very general solution method for problems which have two properties:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><strong>Optimal substructure</strong><ul>
 <li>Principle of optimality applies</li>
 <li>Optimal solution can be decomposed into subproblems</li>
 </ul>
 </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
 <li><strong>Overlapping subproblems</strong><ul>
 <li>Subproblems recur many times</li>
 <li>Solutions can be cached and reused</li>
 </ul>
 </li>
-<li>Markov decision processes satisfy both properties<ul>
-<li>Bellman equation gives recursive decomposition</li>
-<li>Value function stores and reuses solutions</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples-of-DP-problems:">Examples of DP problems:<a class="anchor-link" href="#Examples-of-DP-problems:">&#194;&#182;</a></h2><ul>
+<li><p>#### Travelling salesman problem:</p>
+<center><img src="img/dp_ex_1.PNG" alt="travellingsalesman" style="width: 300px;"/></center><ul>
+<li>Optimal substructure?</li>
+<li>Overlapping subproblems?</li>
 </ul>
 </li>
 </ul>
 
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Algorithms like Dijsktra's algorithm for solving the problem.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>### Other Use Cases:<ul>
+<li>String Sequence alignment</li>
+<li>Scheduling </li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DP-in-Markov-Decision-Process">DP in Markov Decision Process<a class="anchor-link" href="#DP-in-Markov-Decision-Process">&#194;&#182;</a></h3><ul>
+<li><p>Markov decision processes satisfy both properties</p>
+<ul>
+<li>Bellman equation gives recursive decomposition</li>
+<li>Value function stores and reuses solutions</li>
+</ul>
+</li>
+<li><p>Dynamic programming (DP) in MDP world refers to a collection of algorithms that can be used to compute optimal policies</p>
+<ul>
+<li>given a perfect model of the environment as a Markov decision process (MDP).</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Essential foundation for the understanding of the other RL methods</li>
+<li>All other RL methods can be viewed as attempts to achieve much the same effect as DP, only with <ul>
+<li>less computation and</li>
+<li>without assuming a perfect model of the environment.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Assumption:">Assumption:<a class="anchor-link" href="#Assumption:">&#194;&#182;</a></h4><p>We assume that the environment is a finite MDP:</p>
+<ul>
+<li>Finite Set of States</li>
+<li>Finite Set of Actions</li>
+<li>Finite Set of Rewards</li>
+</ul>
+<p>DP possible in Continuous Spaces as well, but more complex.(Will be seen in future Chapters)</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies."><center>The key idea of DP, and of reinforcement learning generally, is the use of value functions to organize and structure the search for good policies.</center><a class="anchor-link" href="#The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies.">&#194;&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12074,28 +12174,23 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/a.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/aaa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;img/b.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;RewardHypothesis&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;width: 1000px;&quot;</span><span class="o">/&gt;&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2>
+<center><img src="img/b.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Policy-Evaluation">Pseudocode: Policy Evaluation<a class="anchor-link" href="#Pseudocode:-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/s11.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12123,7 +12218,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/d.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/d.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12131,7 +12226,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/e.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12147,7 +12242,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/e1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12155,7 +12250,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/e2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12163,7 +12258,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/e3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12179,7 +12274,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/p1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/p1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12187,7 +12282,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2>
+<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/s2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12212,7 +12307,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12231,7 +12326,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <h2 id="Principle-of-Optimality">Principle of Optimality<a class="anchor-link" href="#Principle-of-Optimality">&#194;&#182;</a></h2><p>Any optimal policy can be subdivided into two components:</p>
 <ul>
 <li>An optimal first action $A_∗$</li>
-<li>Followed by an optimal policy from successor state S'<center><img src="img/v1.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
+<li>Followed by an optimal policy from successor state S'<center><img src="img/v1.png" alt="RewardHypothesis" style="width: 700px;"/></center></li>
 </ul>
 
 </div>
@@ -12241,7 +12336,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12249,7 +12344,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#194;&#182;</a></h2>
+<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/s3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12257,7 +12352,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#194;&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#194;&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12265,7 +12360,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h1 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#194;&#182;</a></h1><center><img src="img/sa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<center><img src="img/sb.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12273,7 +12369,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/v5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/v5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12289,10 +12385,63 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/s1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/s1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
-</div></section></section><section><section>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problems-with-Synchronous-DP">Problems with Synchronous DP<a class="anchor-link" href="#Problems-with-Synchronous-DP">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Involve operations over the entire state set of the MDP:<ul>
+<li>Require sweeps of the state set.</li>
+<li>Even a single sweep can be prohibitively expensive.</li>
+<li>Game of backgammon has over $10^{20}$ states.</li>
+<li>value iteration backup at a million states per second ==&gt; a thousand years to complete a single sweep.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Algorithm gets locked into a long sweep before it can make progress improving a policy.<ul>
+<li>take advantage of latest updates to backups so as to improve the algorithm’s rate of progress.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Skip backing up some states entirely if they are not relevant to optimal behavior.<ul>
+<li>Update States related to the optimal behaviour only.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12330,6 +12479,30 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="In-Place-Dynamic-Programming">In Place Dynamic Programming<a class="anchor-link" href="#In-Place-Dynamic-Programming">&#194;&#182;</a></h2><center><img src="img/async_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prioritised-Sweeping">Prioritised Sweeping<a class="anchor-link" href="#Prioritised-Sweeping">&#194;&#182;</a></h2><center><img src="img/async_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Real-time-Dynamic-Programming">Real-time Dynamic Programming<a class="anchor-link" href="#Real-time-Dynamic-Programming">&#194;&#182;</a></h2><center><img src="img/async_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12343,7 +12516,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#194;&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#194;&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12351,7 +12524,39 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#194;&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#194;&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
+<li>Familiarity with the basic ideas and algorithms of dynamic programming in solving finite MDPs.<ul>
+<li>Policy Evaluation</li>
+<li>Policy Improvement</li>
+</ul>
+</li>
+<li>Two Control Algorithms with DP<ul>
+<li>Policy Iteration</li>
+<li>Value Iteration</li>
+</ul>
+</li>
+<li>Synchronous Vs Asynchronous Algorithms for implementing DP in RL<ul>
+<li>In-place dynamic programming, Prioritised sweeping, Real-time dynamic programming</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </div></section></section>
