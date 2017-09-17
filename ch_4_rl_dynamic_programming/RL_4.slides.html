@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,6 +1163,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2591,6 +2592,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3081,6 +3083,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8811,9 +8814,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,14 +9016,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9046,16 +9040,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9192,9 +9176,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9284,9 +9265,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9331,9 +9309,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9630,7 +9605,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9651,6 +9625,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11321,7 +11300,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11633,7 +11612,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11647,9 +11625,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11710,10 +11685,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11724,11 +11697,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11854,23 +11825,26 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dynamic-Programming-Methods"><center>Dynamic Programming Methods</center><a class="anchor-link" href="#Dynamic-Programming-Methods">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-4,-Sutton-and-Barto"><center> Reference: Chapter 4, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-4,-Sutton-and-Barto">&#194;&#182;</a></h3>
+<h1 id="Dynamic-Programming-Methods"><center>Dynamic Programming Methods</center><a class="anchor-link" href="#Dynamic-Programming-Methods">&#182;</a></h1><h3 id="-Reference:-Chapter-4,-Sutton-and-Barto"><center> Reference: Chapter 4, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-4,-Sutton-and-Barto">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
+<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11881,7 +11855,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11892,7 +11867,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11906,7 +11882,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11917,7 +11894,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11928,7 +11906,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11943,7 +11922,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11954,7 +11934,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11965,19 +11946,21 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#194;&#182;</a></h1>
+<h1 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#194;&#182;</a></h2><p><strong>Dynamic</strong>: sequential or temporal component to the problem</p>
+<h2 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#182;</a></h2><p><strong>Dynamic</strong>: sequential or temporal component to the problem</p>
 <p><strong>Programming</strong>: optimising a “program”, i.e. a policy</p>
 <ul>
 <li>A method for solving complex problems</li>
@@ -11991,16 +11974,18 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Requirements-for-Dynamic-Programming">Requirements for Dynamic Programming<a class="anchor-link" href="#Requirements-for-Dynamic-Programming">&#194;&#182;</a></h2><p>Dynamic Programming is a very general solution method for problems which have two properties:</p>
+<h2 id="Requirements-for-Dynamic-Programming">Requirements for Dynamic Programming<a class="anchor-link" href="#Requirements-for-Dynamic-Programming">&#182;</a></h2><p>Dynamic Programming is a very general solution method for problems which have two properties:</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12015,7 +12000,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12030,11 +12016,12 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examples-of-DP-problems:">Examples of DP problems:<a class="anchor-link" href="#Examples-of-DP-problems:">&#194;&#182;</a></h2><ul>
+<h2 id="Examples-of-DP-problems:">Examples of DP problems:<a class="anchor-link" href="#Examples-of-DP-problems:">&#182;</a></h2><ul>
 <li><p>#### Travelling salesman problem:</p>
 <center><img src="img/dp_ex_1.PNG" alt="travellingsalesman" style="width: 300px;"/></center><ul>
 <li>Optimal substructure?</li>
@@ -12046,7 +12033,8 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12057,7 +12045,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12072,11 +12061,12 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DP-in-Markov-Decision-Process">DP in Markov Decision Process<a class="anchor-link" href="#DP-in-Markov-Decision-Process">&#194;&#182;</a></h3><ul>
+<h3 id="DP-in-Markov-Decision-Process">DP in Markov Decision Process<a class="anchor-link" href="#DP-in-Markov-Decision-Process">&#182;</a></h3><ul>
 <li><p>Markov decision processes satisfy both properties</p>
 <ul>
 <li>Bellman equation gives recursive decomposition</li>
@@ -12093,7 +12083,8 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12109,11 +12100,12 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Assumption:">Assumption:<a class="anchor-link" href="#Assumption:">&#194;&#182;</a></h4><p>We assume that the environment is a finite MDP:</p>
+<h4 id="Assumption:">Assumption:<a class="anchor-link" href="#Assumption:">&#182;</a></h4><p>We assume that the environment is a finite MDP:</p>
 <ul>
 <li>Finite Set of States</li>
 <li>Finite Set of Actions</li>
@@ -12124,23 +12116,26 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies."><center>The key idea of DP, and of reinforcement learning generally, is the use of value functions to organize and structure the search for good policies.</center><a class="anchor-link" href="#The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies.">&#194;&#182;</a></h3>
+<h3 id="The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies."><center>The key idea of DP, and of reinforcement learning generally, is the use of value functions to organize and structure the search for good policies.</center><a class="anchor-link" href="#The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies.">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Planning-by-DP-in-MDP-"><center> Planning by DP in MDP </center><a class="anchor-link" href="#-Planning-by-DP-in-MDP-">&#194;&#182;</a></h1>
+<h1 id="-Planning-by-DP-in-MDP-"><center> Planning by DP in MDP </center><a class="anchor-link" href="#-Planning-by-DP-in-MDP-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12148,12 +12143,12 @@ a.anchor-link {
 <li>Dynamic programming assumes full knowledge of the MDP</li>
 <li>It is used for planning in an MDP </li>
 <li>For prediction:<ul>
-<li>Input: MDP $&lt; S, A, P, R, γ&gt;$ and policy $π$</li>
+<li>Input: MDP $< S, A, P, R, γ>$ and policy $π$</li>
 <li>Output: value function $v_π$</li>
 </ul>
 </li>
 <li>Or for control:<ul>
-<li>Input: MDP $&lt;S, A, P, R, γ&gt;$</li>
+<li>Input: MDP $<S, A, P, R, γ>$</li>
 <li>Output: optimal value function $v_∗$ and optimal policy $π_∗$</li>
 </ul>
 </li>
@@ -12162,15 +12157,17 @@ a.anchor-link {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Iterative-Policy-Evaluation-"><center> Iterative Policy Evaluation </center><a class="anchor-link" href="#-Iterative-Policy-Evaluation-">&#194;&#182;</a></h1>
+<h1 id="-Iterative-Policy-Evaluation-"><center> Iterative Policy Evaluation </center><a class="anchor-link" href="#-Iterative-Policy-Evaluation-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12178,7 +12175,8 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12186,27 +12184,30 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Evaluation">Pseudocode: Policy Evaluation<a class="anchor-link" href="#Pseudocode:-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/s11.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-Policy-Evaluation">Pseudocode: Policy Evaluation<a class="anchor-link" href="#Pseudocode:-Policy-Evaluation">&#182;</a></h2><center><img src="img/s11.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Policy-Improvement-"><center> Policy Improvement </center><a class="anchor-link" href="#-Policy-Improvement-">&#194;&#182;</a></h1>
+<h1 id="-Policy-Improvement-"><center> Policy Improvement </center><a class="anchor-link" href="#-Policy-Improvement-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Improvement-Theorem">Policy Improvement Theorem<a class="anchor-link" href="#Policy-Improvement-Theorem">&#194;&#182;</a></h2><p>Let $\pi$ and $\pi'$ be any pair of deterministic policies such that, for all s $\epsilon$ S,
+<h2 id="Policy-Improvement-Theorem">Policy Improvement Theorem<a class="anchor-link" href="#Policy-Improvement-Theorem">&#182;</a></h2><p>Let $\pi$ and $\pi'$ be any pair of deterministic policies such that, for all s $\epsilon$ S,
 $$q_\pi(s,\pi'(s)) \geq v_{\pi}(s)$$
 Then the policy $ \pi '$ must be as good as, or better than $\pi$. That is it must obtain greater or equal expected return from all states s $\epsilon$ S:
 $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
@@ -12214,7 +12215,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12222,7 +12224,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12230,15 +12233,17 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-"><center> Example: Gridworld (Policy Evaluation and Policy Improvement) </center><a class="anchor-link" href="#-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-">&#194;&#182;</a></h1>
+<h1 id="-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-"><center> Example: Gridworld (Policy Evaluation and Policy Improvement) </center><a class="anchor-link" href="#-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12246,7 +12251,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12254,7 +12260,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12262,15 +12269,17 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Policy-Iteration-"><center> Policy Iteration </center><a class="anchor-link" href="#-Policy-Iteration-">&#194;&#182;</a></h1>
+<h1 id="-Policy-Iteration-"><center> Policy Iteration </center><a class="anchor-link" href="#-Policy-Iteration-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12278,19 +12287,21 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/s2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#182;</a></h2><center><img src="img/s2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modified-Policy-Iteration">Modified Policy Iteration<a class="anchor-link" href="#Modified-Policy-Iteration">&#194;&#182;</a></h2><ul>
+<h2 id="Modified-Policy-Iteration">Modified Policy Iteration<a class="anchor-link" href="#Modified-Policy-Iteration">&#182;</a></h2><ul>
 <li>Does policy evaluation need to converge to $v_π$ ?</li>
 <li>Or should we introduce a stopping condition
   e.g. $\epsilon$-convergence of value function</li>
@@ -12303,27 +12314,30 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Value-Iteration-"><center> Value Iteration </center><a class="anchor-link" href="#-Value-Iteration-">&#194;&#182;</a></h1>
+<h1 id="-Value-Iteration-"><center> Value Iteration </center><a class="anchor-link" href="#-Value-Iteration-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Principle-of-Optimality">Principle of Optimality<a class="anchor-link" href="#Principle-of-Optimality">&#194;&#182;</a></h2><p>Any optimal policy can be subdivided into two components:</p>
+<h2 id="Principle-of-Optimality">Principle of Optimality<a class="anchor-link" href="#Principle-of-Optimality">&#182;</a></h2><p>Any optimal policy can be subdivided into two components:</p>
 <ul>
 <li>An optimal first action $A_∗$</li>
 <li>Followed by an optimal policy from successor state S'<center><img src="img/v1.png" alt="RewardHypothesis" style="width: 700px;"/></center></li>
@@ -12332,40 +12346,45 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#194;&#182;</a></h2><center><img src="img/s3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#182;</a></h2><center><img src="img/s3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#194;&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#194;&#182;</a></h1><center><img src="img/sa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h1 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#182;</a></h1><center><img src="img/sa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 <center><img src="img/sb.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12373,15 +12392,17 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Synchronous-Dynamic-Programming-Algorithm-"><center> Synchronous Dynamic Programming Algorithm </center><a class="anchor-link" href="#-Synchronous-Dynamic-Programming-Algorithm-">&#194;&#182;</a></h1>
+<h1 id="-Synchronous-Dynamic-Programming-Algorithm-"><center> Synchronous Dynamic Programming Algorithm </center><a class="anchor-link" href="#-Synchronous-Dynamic-Programming-Algorithm-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12389,15 +12410,17 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problems-with-Synchronous-DP">Problems with Synchronous DP<a class="anchor-link" href="#Problems-with-Synchronous-DP">&#194;&#182;</a></h2>
+<h2 id="Problems-with-Synchronous-DP">Problems with Synchronous DP<a class="anchor-link" href="#Problems-with-Synchronous-DP">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12414,7 +12437,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12428,7 +12452,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12442,15 +12467,17 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Asynchronous-Dynamic-Programming-Methods-"><center> Asynchronous Dynamic Programming Methods </center><a class="anchor-link" href="#-Asynchronous-Dynamic-Programming-Methods-">&#194;&#182;</a></h1>
+<h1 id="-Asynchronous-Dynamic-Programming-Methods-"><center> Asynchronous Dynamic Programming Methods </center><a class="anchor-link" href="#-Asynchronous-Dynamic-Programming-Methods-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12466,7 +12493,8 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12480,67 +12508,75 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="In-Place-Dynamic-Programming">In Place Dynamic Programming<a class="anchor-link" href="#In-Place-Dynamic-Programming">&#194;&#182;</a></h2><center><img src="img/async_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="In-Place-Dynamic-Programming">In Place Dynamic Programming<a class="anchor-link" href="#In-Place-Dynamic-Programming">&#182;</a></h2><center><img src="img/async_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Prioritised-Sweeping">Prioritised Sweeping<a class="anchor-link" href="#Prioritised-Sweeping">&#194;&#182;</a></h2><center><img src="img/async_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Prioritised-Sweeping">Prioritised Sweeping<a class="anchor-link" href="#Prioritised-Sweeping">&#182;</a></h2><center><img src="img/async_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Real-time-Dynamic-Programming">Real-time Dynamic Programming<a class="anchor-link" href="#Real-time-Dynamic-Programming">&#194;&#182;</a></h2><center><img src="img/async_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Real-time-Dynamic-Programming">Real-time Dynamic Programming<a class="anchor-link" href="#Real-time-Dynamic-Programming">&#182;</a></h2><center><img src="img/async_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Full-Width-Backup/-Sample-Backup-"><center> Full-Width Backup/ Sample Backup </center><a class="anchor-link" href="#-Full-Width-Backup/-Sample-Backup-">&#194;&#182;</a></h1>
+<h1 id="-Full-Width-Backup/-Sample-Backup-"><center> Full-Width Backup/ Sample Backup </center><a class="anchor-link" href="#-Full-Width-Backup/-Sample-Backup-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#194;&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#194;&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h1>
+<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
 <li>Familiarity with the basic ideas and algorithms of dynamic programming in solving finite MDPs.<ul>
 <li>Policy Evaluation</li>
 <li>Policy Improvement</li>
