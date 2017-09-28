@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,6 +1163,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2591,6 +2592,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3081,6 +3083,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8811,9 +8814,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,14 +9016,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9046,16 +9040,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9192,9 +9176,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9284,9 +9265,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9331,9 +9309,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9630,7 +9605,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9651,6 +9625,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11321,7 +11300,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11633,7 +11612,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11647,9 +11625,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11710,10 +11685,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11724,11 +11697,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11854,34 +11825,57 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Monte-Carlo-Methods"><center>Monte Carlo Methods</center><a class="anchor-link" href="#Monte-Carlo-Methods">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-5,-Sutton-and-Barto"><center> Reference: Chapter 5, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-5,-Sutton-and-Barto">&#194;&#182;</a></h3>
+<h1 id="Monte-Carlo-Methods"><center>Monte Carlo Methods</center><a class="anchor-link" href="#Monte-Carlo-Methods">&#182;</a></h1><h3 id="-Reference:-Chapter-5,-Sutton-and-Barto"><center> Reference: Chapter 5, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-5,-Sutton-and-Barto">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
+<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Monte Carlo Prediction</li>
+<li>Introduction<ul>
+<li>Why move to MCMC from DP?</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Monte Carlo Prediction (On-Policy)<ul>
+<li>First-Visit Monte Carlo Policy Evaluation</li>
+<li>Every-Visit monte Carlo Evaluation</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11892,349 +11886,863 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Monte Carlo Control </li>
+<li>Monte-Carlo Control (On-Policy)<ul>
+<li>Building up on Generalised Policy Iteration</li>
+<li>Issues with the method<ul>
+<li>a. Assuming Infinite number of episodes</li>
+<li>b. Problem of “maintaining exploration”</li>
+</ul>
+</li>
+<li>Dealing with a. and b. <ul>
+<li>Two Solutions for Assumption a.</li>
+<li>Ɛ-soft policies for Assumption b.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Monte Carlo Control without Exploring Starts </li>
+<li>On-Policy vs Off-Policy Methods</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Off-policy Prediction via Importance Sampling </li>
+<li>Off-Policy MC Prediction<ul>
+<li>Problem Definition</li>
+<li>Importance Sampling</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Incremental Implementation</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Off-Policy Monte Carlo Control </li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Return-Specific Importance Sampling</li>
+<li>Off-Policy MC Control</li>
 </ul>
 
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Prediction"><center>Monte-Carlo Prediction</center><a class="anchor-link" href="#Monte-Carlo-Prediction">&#194;&#182;</a></h2>
+<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#182;</a></h1>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Policy-Evaluation">Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="First-Visit-Monte-Carlo-Policy-Evaluation">First-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#First-Visit-Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-First-visit-MC-Policy-Evaluation">Pseudocode: First-visit MC Policy Evaluation<a class="anchor-link" href="#Pseudocode:-First-visit-MC-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Every-Visit-Monte-Carlo-Policy-Evaluation">Every-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Every-Visit-Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Incremental-Mean">Incremental Mean<a class="anchor-link" href="#Incremental-Mean">&#194;&#182;</a></h2><center><img src="img/5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Incremental-Monte-Carlo-Updates">Incremental Monte-Carlo Updates<a class="anchor-link" href="#Incremental-Monte-Carlo-Updates">&#194;&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Estimation-of-Action-Values"><center>Monte Carlo Estimation of Action Values</center><a class="anchor-link" href="#Monte-Carlo-Estimation-of-Action-Values">&#194;&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-compute-action-values,-instead-of-state-values?">Why compute action-values, instead of state-values?<a class="anchor-link" href="#Why-compute-action-values,-instead-of-state-values?">&#194;&#182;</a></h2><p>If a model is not available, then it is particularly useful to estimate action values (q) rather than state values (v).</p>
-<p>With a model, state values alone are sufficient to determine a policy; one simply looks ahead one step and chooses 
-whichever action leads to the best combination of reward and next state.</p>
-<p>Without a model, however, state values alone are not sufficient. One must explicitly estimate the value of each action in order for the values to be useful in
-suggesting a policy. Thus, one of our primary goals for Monte Carlo methods is to estimate $q_{∗}$ .</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Control"><center>Monte Carlo Control</center><a class="anchor-link" href="#Monte-Carlo-Control">&#194;&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-(Refresher)">Generalised Policy Iteration (Refresher)<a class="anchor-link" href="#Generalised-Policy-Iteration-(Refresher)">&#194;&#182;</a></h2><center><img src="img/c1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">Generalised Policy Iteration with Monte carlo Evaluation<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">&#194;&#182;</a></h2><center><img src="img/c2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-Free-Policy-Iteration-Using-Action-Value-Function">Model-Free Policy Iteration Using Action-Value Function<a class="anchor-link" href="#Model-Free-Policy-Iteration-Using-Action-Value-Function">&#194;&#182;</a></h2><center><img src="img/c3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-with-Action-Value-Function">Generalised Policy Iteration with Action-Value Function<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Action-Value-Function">&#194;&#182;</a></h2><center><img src="img/c4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-of-Greedy-Action-Selection">Example of Greedy Action Selection<a class="anchor-link" href="#Example-of-Greedy-Action-Selection">&#194;&#182;</a></h2><center><img src="img/c5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Another-Problem-with-Greedy-in-MC">Another Problem with Greedy in MC<a class="anchor-link" href="#Another-Problem-with-Greedy-in-MC">&#194;&#182;</a></h2><p>Problem =&gt; <strong>Maintaining Exploration</strong></p>
-<p>Solution =&gt; <strong>Assumption of Exploring Starts</strong></p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MC-On-Policy-Control-ES">MC On-Policy Control ES<a class="anchor-link" href="#MC-On-Policy-Control-ES">&#194;&#182;</a></h2><center><img src="img/c6.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Assumptions in this -</p>
-<p>1) Infinite Episodes for Learning</p>
-<p>2) Exploring Starts Assumption</p>
-<p>How to do without <strong>Exploring Starts Assumption</strong>?</p>
-<p>The only general way to ensure that all actions are selected infinitely often is for
-the agent to continue to select them. There are two approaches to ensuring this,
-resulting in what we call on-policy methods and off-policy methods.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="On-Policy-vs-Off-Policy">On Policy vs Off Policy<a class="anchor-link" href="#On-Policy-vs-Off-Policy">&#194;&#182;</a></h2><center><img src="img/c7.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Control-without-Exploring-Starts-"><center>Monte Carlo Control without Exploring Starts </center><a class="anchor-link" href="#Monte-Carlo-Control-without-Exploring-Starts-">&#194;&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\epsilon$-Greedy-Exploration$">$\epsilon$ Greedy Exploration$<a class="anchor-link" href="#$\epsilon$-Greedy-Exploration$">&#194;&#182;</a></h2><center><img src="img/a1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\epsilon$-Greedy-Policy-Improvement">$\epsilon$ Greedy Policy Improvement<a class="anchor-link" href="#$\epsilon$-Greedy-Policy-Improvement">&#194;&#182;</a></h2><center><img src="img/a2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Policy-Iteration">Monte-Carlo Policy Iteration<a class="anchor-link" href="#Monte-Carlo-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/a3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">On-Policy MC Control Without ES ($\epsilon$ soft Policy)<a class="anchor-link" href="#On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">&#194;&#182;</a></h2><center><img src="img/a6.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Off-policy-Prediction-via-Importance-Sampling-"><center>Off-policy Prediction via Importance Sampling </center><a class="anchor-link" href="#Off-policy-Prediction-via-Importance-Sampling-">&#194;&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-Off-Policy-Learning?">What is Off-Policy Learning?<a class="anchor-link" href="#What-is-Off-Policy-Learning?">&#194;&#182;</a></h2><p>Use two policies, one that is learned about and that becomes the optimal policy,
-and one that is more exploratory and is used to generate behavior.
-The policy being learned about is called the target policy, and the policy used to
-generate behavior is called the behavior policy.
-In this case we say that learning is from data “off” the target policy, and the overall
-process is termed off-policy learning.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-Off-Policy-Prediction-Problem?">What is Off Policy Prediction Problem?<a class="anchor-link" href="#What-is-Off-Policy-Prediction-Problem?">&#194;&#182;</a></h2><center><img src="img/a4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#194;&#182;</a></h2><p>1) Ordinary Importance Sampling</p>
-<p>2) Weighted Importance Sampling</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Off-Policy-MC-Prediction">Pseudocode: Off Policy MC Prediction<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Prediction">&#194;&#182;</a></h2><center><img src="img/a5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Off-Policy-MC-Control">Pseudocode: Off Policy MC Control<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Control">&#194;&#182;</a></h2><center><img src="img/a7.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
-<li>Monte Carlo Approach</li>
-<li>On-Policy Prediction</li>
-<li>On-Policy Control (w/o Assumption: Exploring Starts)</li>
-<li>Off-Policy Prediction</li>
-<li>Off-Policy Control</li>
+<ul>
+<li>Last Session we saw Dynamic Programming Approach to Solving MDPs<ul>
+<li>Policy Iteration</li>
+<li>Value Iteration</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
-</div></section></section>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p><strong>Problem</strong>:</p>
+<ul>
+<li>Assumed complete knowledge of the environment.</li>
+<li>In many cases it is easy to generate experience sampled according to the desired probability distributions, </li>
+<li>but infeasible to obtain the distributions in explicit form.</li>
+</ul>
+</li>
+<li><p>Can we use Experience instead for solving the MDP?</p>
+</li>
+<li>How to solve the MDP when we do not have complete knowledge of the environment?</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p><strong>Monte Carlo Methods</strong>: broad class of computational algorithms that rely on repeated random sampling to obtain numerical results.</p>
+</li>
+<li><p>Previously we <strong>computed</strong> value functions from knowledge of the MDP, here we <strong>learn</strong> value functions from sample returns with the MDP.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Monte-Carlo-Prediction"><center>Monte-Carlo Prediction</center><a class="anchor-link" href="#Monte-Carlo-Prediction">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Policy-Evaluation">Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="First-Visit-Monte-Carlo-Policy-Evaluation">First-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#First-Visit-Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-First-visit-MC-Policy-Evaluation">Pseudocode: First-visit MC Policy Evaluation<a class="anchor-link" href="#Pseudocode:-First-visit-MC-Policy-Evaluation">&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Every-Visit-Monte-Carlo-Policy-Evaluation">Every-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Every-Visit-Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Diference?">Diference?<a class="anchor-link" href="#Diference?">&#182;</a></h2><ul>
+<li>"These two Monte Carlo (MC) methods are very similar but have slightly different theoretical properties." - Sutton and Barto</li>
+<li>Both have quadratic convergence to $v_\pi(s)$ with respect to $n$.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Incremental-Monte-Carlo-Updates">Incremental Monte-Carlo Updates<a class="anchor-link" href="#Incremental-Monte-Carlo-Updates">&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Important-Facts">Important Facts<a class="anchor-link" href="#Important-Facts">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The estimates from Monte Carlo methods for each state are independent. <ul>
+<li>The estimate for one state does not build upon the estimate of any other state,</li>
+<li>In other words, Monte Carlo methods do not bootstrap.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We can learn value of only one or a subset of states. <ul>
+<li>We can generate many sample episodes starting from the states of interest,</li>
+<li>Averaging returns from only these states ignoring all others</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Estimation-of-Action-Values"><center>Monte Carlo Estimation of Action Values</center><a class="anchor-link" href="#Monte-Carlo-Estimation-of-Action-Values">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-compute-action-values,-instead-of-state-values?">Why compute action-values, instead of state-values?<a class="anchor-link" href="#Why-compute-action-values,-instead-of-state-values?">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>If a model is not available: particularly useful to estimate <strong>action values q</strong> rather than <strong>state values v</strong>.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>With model, state values alone are sufficient to determine a policy; <ul>
+<li>Simple one step looks ahead  and  </li>
+<li>chooses action which leads to the best combination of reward and next state value.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Without model, however, state values alone are not sufficient. <ul>
+<li>Require explicitly estimate the value of each action for the values to be useful</li>
+<li>Thus, one of our primary goals for Monte Carlo methods is to estimate $q_{∗}$ .</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complication-with-learning-state-action-values">Complication with learning state-action values<a class="anchor-link" href="#Complication-with-learning-state-action-values">&#182;</a></h2><p>Problem =&gt; <strong>Maintaining Exploration</strong></p>
+<p>Solution =&gt; <strong>Assumption of Exploring Starts</strong></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exploring-Starts">Exploring Starts<a class="anchor-link" href="#Exploring-Starts">&#182;</a></h3><ul>
+<li>Every state-action pair has a nonzero probability of being selected as the start.</li>
+<li>However, not always possible:<ul>
+<li>particularly when learning directly from actual interaction with an environment.</li>
+</ul>
+</li>
+<li>But very Useful when possible</li>
+</ul>
+<p><strong>Note:</strong> This assumption cannot be relied upon in general, particularly when learning directly from actual interaction with an environment. We will assume this and go ahead, and later explore how we can do away with this.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Control"><center>Monte Carlo Control</center><a class="anchor-link" href="#Monte-Carlo-Control">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalised-Policy-Iteration-(Refresher)">Generalised Policy Iteration (Refresher)<a class="anchor-link" href="#Generalised-Policy-Iteration-(Refresher)">&#182;</a></h2><center><img src="img/c1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">Generalised Policy Iteration with Monte carlo Evaluation<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">&#182;</a></h2><center><img src="img/c2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Model-Free-Policy-Iteration-Using-Action-Value-Function">Model-Free Policy Iteration Using Action-Value Function<a class="anchor-link" href="#Model-Free-Policy-Iteration-Using-Action-Value-Function">&#182;</a></h2><center><img src="img/c3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generalised-Policy-Iteration-with-Action-Value-Function">Generalised Policy Iteration with Action-Value Function<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Action-Value-Function">&#182;</a></h2><p><center><img src="img/c4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<strong>Greedy Policy Improvement: $\pi(s) = argmax_{a} q(s,a)$</strong></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MC-Control-ES">MC Control ES<a class="anchor-link" href="#MC-Control-ES">&#182;</a></h2><center><img src="img/c6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assumptions-in-MC-Control">Assumptions in MC Control<a class="anchor-link" href="#Assumptions-in-MC-Control">&#182;</a></h2><p>1) Infinite Episodes for Learning</p>
+<p>2) Exploring Starts Assumption</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How to do without <strong>Infinite Episodes for learning</strong>?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Solution 1</strong><ul>
+<li>Approximate $q_{\pi_k}$ in each policy evaluation. </li>
+<li>Measurements and assumptions are made to obtain bounds on the magnitude and probability of error in the estimates, </li>
+<li>Sufficient steps are taken during each policy evaluation to assure that these bounds are sufficiently small.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Solution 2</strong><ul>
+<li>Forgo trying to complete policy evaluation before returning to policy improvement. </li>
+<li>On each evaluation step we move the value function toward $q_{\pi_k}$, but we do not expect to actually get close except over many steps.</li>
+<li>Extreme case: Value Iteration</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-can-you-just-assume-Convergence?">How can you just assume Convergence?<a class="anchor-link" href="#How-can-you-just-assume-Convergence?">&#182;</a></h4>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong><center>"Convergence to this optimal fixed point seems inevitable as the changes to the action-value function decrease
+over time, but has not yet been formally proved. In our opinion, this is one of the
+most fundamental open theoretical questions in reinforcement learning" </center></strong></p>
+<ul>
+<li>Sutton and Barto, Reinforcement Learning: An  Introduction(Draft).</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>How to do without <strong>Exploring Starts Assumption</strong>?</p>
+<ul>
+<li>The only general way to ensure that all actions are selected infinitely often is that<ul>
+<li>the agent to continue to select them. </li>
+<li>There are two approaches to ensuring this: <strong>on-policy</strong> methods and <strong>off-policy</strong> methods.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">Monte Carlo Control without Exploring Starts  (On-Policy)<a class="anchor-link" href="#Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">&#182;</a></h3>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="$\epsilon$-Greedy-Exploration">$\epsilon$-Greedy Exploration<a class="anchor-link" href="#$\epsilon$-Greedy-Exploration">&#182;</a></h2><center><img src="img/a1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="$\epsilon$-Greedy-Policy-Improvement">$\epsilon$-Greedy Policy Improvement<a class="anchor-link" href="#$\epsilon$-Greedy-Policy-Improvement">&#182;</a></h2><center><img src="img/a2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Policy-Iteration">Monte-Carlo Policy Iteration<a class="anchor-link" href="#Monte-Carlo-Policy-Iteration">&#182;</a></h2><center><img src="img/a3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">On-Policy MC Control Without ES ($\epsilon$ soft Policy)<a class="anchor-link" href="#On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">&#182;</a></h2><center><img src="img/a6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="On-Policy-vs-Off-Policy"><center>On Policy vs Off Policy</center><a class="anchor-link" href="#On-Policy-vs-Off-Policy">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Difference-Between-On-Policy-and-Off-Policy">Difference Between On-Policy and Off-Policy<a class="anchor-link" href="#Difference-Between-On-Policy-and-Off-Policy">&#182;</a></h2><center><img src="img/c7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Issues-with-On-Policy-Methods">Issues with On-Policy Methods<a class="anchor-link" href="#Issues-with-On-Policy-Methods">&#182;</a></h2><ul>
+<li>Current Delimma: <ul>
+<li>learn action values conditional on subsequent optimal behavior, </li>
+<li>but behave non-optimally in order to explore all actions (to find the optimal actions)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>On-policy approach is actually a compromise:<ul>
+<li>learns action values not for the optimal policy, but for a near-optimal policy that still explores.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#182;</a></h2><ul>
+<li>Use two policies, <ul>
+<li>one that is learned about and that becomes the optimal policy,</li>
+<li>one that is more exploratory and is used to generate behavior.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Policy being learned about is called the <strong>target</strong> policy,</p>
+</li>
+<li><p>Policy used to generate behavior is called the <strong>behavior</strong> policy.</p>
+</li>
+<li><p>Hence, Learning is from data “off” the target policy, and the overall process is termed <strong>off-policy learning</strong>.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#182;</a></h2><ul>
+<li><p>As the data is due to a different policy, off-policy methods are often</p>
+<ul>
+<li>of greater variance and </li>
+<li>are slower to converge.</li>
+</ul>
+</li>
+<li><p>off-policy methods are more powerful and general.(On-policy is a subset of Off-policy)</p>
+</li>
+<li><p>They can be applied to learn from data generated by a conventional non-learning controller, or from a human expert.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Off-Policy-MC-Prediction-Methods-"><center> Off-Policy MC Prediction Methods </center><a class="anchor-link" href="#-Off-Policy-MC-Prediction-Methods-">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-evaluate-using-off-policy-methods?">How to evaluate using off-policy methods?<a class="anchor-link" href="#How-to-evaluate-using-off-policy-methods?">&#182;</a></h2><ul>
+<li>We wish to estimate $v_\pi$ or $q_\pi$, but <ul>
+<li>Episodes following another policy $\mu$, where $\mu \neq \pi$. </li>
+</ul>
+</li>
+<li><p>Given $\pi$ is the target policy, $\mu$ is the behavior policy,</p>
+</li>
+<li><p>Both policies are considered fixed and given.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>To evaluate action vaules following $\pi$ given episodes from following policy $\mu$ ,</p>
+<ul>
+<li>off-policy methods utilize importance sampling,</li>
+</ul>
+</li>
+<li><p><strong>Importance sampling</strong>: A general technique for estimating expected values under one distribution given samples from another.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Importance sampling</strong>: weight returns according to the relative probability of their trajectories under the target and behavior policies.<ul>
+<li>This ratio is called  the <strong>importance-sampling ratio</strong>.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#182;</a></h2><ul>
+<li>From $S_t$, the probability of the subsequent state–action trajectory, $A_t, S_{t+1}, A_{t+1},... , S_T$, <ul>
+<li>occurring under any policy $\pi$ is<center><img src="img/imp_sam_1.PNG" alt="RewardHypothesis" style="height: 70px;"/></center></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The relative probability of the trajectory under the target and behavior policies (the importance-sampling ratio) is</li>
+</ul>
+<center><img src="img/imp_sam_2.PNG" alt="RewardHypothesis" style="height: 70px;"/></center><ul>
+<li>Importance sampling ratio ends up depending only on the two policies and not on the MDP.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#182;</a></h2><p>1) Ordinary Importance Sampling</p>
+<center><img src="img/imp_sam_3.PNG" alt="RewardHypothesis" style="height: 70px;"/></center>
+2) Weighted Importance Sampling
+<center><img src="img/imp_sam_4.PNG" alt="RewardHypothesis" style="height: 100px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>The ordinary importance-sampling estimator is unbiased whereas the weighted importance-sampling estimator is biased</p>
+</li>
+<li><p>The variance of the ordinary importance-sampling estimator is in general unbounded, whereas in the weighted estimator,assuming bounded returns, the variance of the weighted importance-sampling estimator converges to zero.</p>
+</li>
+<li><p>Weighted estimator usually has dramatically lower variance and is strongly preferred.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/imp_sam_5.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Off-Policy-MC-Prediction">Pseudocode: Off Policy MC Prediction<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Prediction">&#182;</a></h2><center><img src="img/a5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="-Off-Policy-MC-Control-"><center> Off Policy MC Control </center><a class="anchor-link" href="#-Off-Policy-MC-Control-">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Pseudocode:-Off-Policy-MC-Control">Pseudocode: Off Policy MC Control<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Control">&#182;</a></h2><center><img src="img/a7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>** Return-Specific Importance Sampling** - Refer Sutton and Barto, Reinforcement learning: An introduction(Draft).</center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
+<li>Monte Carlo Approach</li>
+<li>On-Policy Prediction<ul>
+<li>On-Policy Control (w/o Assumption: Exploring Starts)</li>
+</ul>
+</li>
+<li>Off-Policy Prediction<ul>
+<li>Off-Policy Control</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>MC has several advantages over DP:<ul>
+<li>Can learn V and Q directly from interaction with environment</li>
+<li>No need for full models</li>
+<li>No need to learn about ALL states</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>MC methods provide an alternate policy evaluation process<ul>
+<li>No bootstrapping, i.e. updating not dependent on successor states (as opposed to DP)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One issue to watch for: maintaining sufficient exploration</p>
+<ul>
+<li>exploring starts, </li>
+<li>soft policies</li>
+<li>off-policy methods</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>RL_4 slides</title>
+<title>RL_6 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11830,7 +11830,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dynamic-Programming-Methods"><center>Dynamic Programming Methods</center><a class="anchor-link" href="#Dynamic-Programming-Methods">&#182;</a></h1><h3 id="-Reference:-Chapter-4,-Sutton-and-Barto"><center> Reference: Chapter 4, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-4,-Sutton-and-Barto">&#182;</a></h3>
+<h1 id="Temporal-Difference-Learning"><center>Temporal Difference Learning</center><a class="anchor-link" href="#Temporal-Difference-Learning">&#182;</a></h1><h3 id="-Reference:-Chapter-6,-Sutton-and-Barto-"><center> Reference: Chapter 6, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-6,-Sutton-and-Barto-">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11839,7 +11839,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h2>
+<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -11849,7 +11849,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Recap: What is Dynamic Programming?</li>
+<li>Introduction to Temporal Difference methods.</li>
 </ul>
 
 </div>
@@ -11861,7 +11861,7 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Planning by DP in MDP</li>
+<li>Properties of Temporal Difference Methods</li>
 </ul>
 
 </div>
@@ -11873,593 +11873,11 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Prediction<ul>
-<li>Iterative Policy Evaluation</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Policy Improvement Theorem</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Example: Gridworld (Policy Evaluation and Policy Improvement)</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Control<ul>
-<li>Policy Iteration</li>
-<li>Value Iteration</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Synchronous vs Asynchronous Dynamic Programming Algorithms</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Full-Width Backups/Sample Backups</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Recap:-What-is-Dynamic-Programming"><center>Recap: What is Dynamic Programming</center><a class="anchor-link" href="#Recap:-What-is-Dynamic-Programming">&#182;</a></h2><p><strong>Dynamic</strong>: sequential or temporal component to the problem</p>
-<p><strong>Programming</strong>: optimising a “program”, i.e. a policy</p>
-<ul>
-<li>A method for solving complex problems</li>
-<li>By breaking them down into subproblems<ul>
-<li>Solve the subproblems</li>
-<li>Combine solutions to subproblems</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Requirements-for-Dynamic-Programming">Requirements for Dynamic Programming<a class="anchor-link" href="#Requirements-for-Dynamic-Programming">&#182;</a></h2><p>Dynamic Programming is a very general solution method for problems which have two properties:</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Optimal substructure</strong><ul>
-<li>Principle of optimality applies</li>
-<li>Optimal solution can be decomposed into subproblems</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Overlapping subproblems</strong><ul>
-<li>Subproblems recur many times</li>
-<li>Solutions can be cached and reused</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examples-of-DP-problems:">Examples of DP problems:<a class="anchor-link" href="#Examples-of-DP-problems:">&#182;</a></h2><ul>
-<li><p>#### Travelling salesman problem:</p>
-<center><img src="img/dp_ex_1.PNG" alt="travellingsalesman" style="width: 300px;"/></center><ul>
-<li>Optimal substructure?</li>
-<li>Overlapping subproblems?</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Algorithms like Dijsktra's algorithm for solving the problem.</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>### Other Use Cases:<ul>
-<li>String Sequence alignment</li>
-<li>Scheduling </li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="DP-in-Markov-Decision-Process">DP in Markov Decision Process<a class="anchor-link" href="#DP-in-Markov-Decision-Process">&#182;</a></h3><ul>
-<li><p>Markov decision processes satisfy both properties</p>
-<ul>
-<li>Bellman equation gives recursive decomposition</li>
-<li>Value function stores and reuses solutions</li>
-</ul>
-</li>
-<li><p>Dynamic programming (DP) in MDP world refers to a collection of algorithms that can be used to compute optimal policies</p>
-<ul>
-<li>given a perfect model of the environment as a Markov decision process (MDP).</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Essential foundation for the understanding of the other RL methods</li>
-<li>All other RL methods can be viewed as attempts to achieve much the same effect as DP, only with <ul>
-<li>less computation and</li>
-<li>without assuming a perfect model of the environment.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Assumption:">Assumption:<a class="anchor-link" href="#Assumption:">&#182;</a></h4><p>We assume that the environment is a finite MDP:</p>
-<ul>
-<li>Finite Set of States</li>
-<li>Finite Set of Actions</li>
-<li>Finite Set of Rewards</li>
-</ul>
-<p>DP possible in Continuous Spaces as well, but more complex.(Will be seen in future Chapters)</p>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies."><center>The key idea of DP, and of reinforcement learning generally, is the use of value functions to organize and structure the search for good policies.</center><a class="anchor-link" href="#The-key-idea-of-DP,-and-of-reinforcement-learning-generally,-is-the-use-of-value-functions-to-organize-and-structure-the-search-for-good-policies.">&#182;</a></h3>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Planning-by-DP-in-MDP-"><center> Planning by DP in MDP </center><a class="anchor-link" href="#-Planning-by-DP-in-MDP-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Dynamic programming assumes full knowledge of the MDP</li>
-<li>It is used for planning in an MDP </li>
-<li>For prediction:<ul>
-<li>Input: MDP $< S, A, P, R, γ>$ and policy $π$</li>
-<li>Output: value function $v_π$</li>
-</ul>
-</li>
-<li>Or for control:<ul>
-<li>Input: MDP $<S, A, P, R, γ>$</li>
-<li>Output: optimal value function $v_∗$ and optimal policy $π_∗$</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Iterative-Policy-Evaluation-"><center> Iterative Policy Evaluation </center><a class="anchor-link" href="#-Iterative-Policy-Evaluation-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/aaa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/b.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Evaluation">Pseudocode: Policy Evaluation<a class="anchor-link" href="#Pseudocode:-Policy-Evaluation">&#182;</a></h2><center><img src="img/s11.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Policy-Improvement-"><center> Policy Improvement </center><a class="anchor-link" href="#-Policy-Improvement-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Improvement-Theorem">Policy Improvement Theorem<a class="anchor-link" href="#Policy-Improvement-Theorem">&#182;</a></h2><p>Let $\pi$ and $\pi'$ be any pair of deterministic policies such that, for all s $\epsilon$ S,
-$$q_\pi(s,\pi'(s)) \geq v_{\pi}(s)$$
-Then the policy $ \pi '$ must be as good as, or better than $\pi$. That is it must obtain greater or equal expected return from all states s $\epsilon$ S:
-$$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/d.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-"><center> Example: Gridworld (Policy Evaluation and Policy Improvement) </center><a class="anchor-link" href="#-Example:-Gridworld-(Policy-Evaluation-and-Policy-Improvement)-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/e3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Policy-Iteration-"><center> Policy Iteration </center><a class="anchor-link" href="#-Policy-Iteration-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/p1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Policy-Iteration">Pseudocode: Policy Iteration<a class="anchor-link" href="#Pseudocode:-Policy-Iteration">&#182;</a></h2><center><img src="img/s2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Modified-Policy-Iteration">Modified Policy Iteration<a class="anchor-link" href="#Modified-Policy-Iteration">&#182;</a></h2><ul>
-<li>Does policy evaluation need to converge to $v_π$ ?</li>
-<li>Or should we introduce a stopping condition
-  e.g. $\epsilon$-convergence of value function</li>
-<li>Or simply stop after k iterations of iterative policy evaluation?</li>
-<li>For example, in the small gridworld k = 3 was sufficient to achieve optimal policy</li>
-<li>Why not update policy every iteration? i.e. stop after k = 1</li>
-<li>This is equivalent to <strong>value iteration</strong> (next section)</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration">Generalised Policy Iteration<a class="anchor-link" href="#Generalised-Policy-Iteration">&#182;</a></h2><center><img src="img/p2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Value-Iteration-"><center> Value Iteration </center><a class="anchor-link" href="#-Value-Iteration-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Principle-of-Optimality">Principle of Optimality<a class="anchor-link" href="#Principle-of-Optimality">&#182;</a></h2><p>Any optimal policy can be subdivided into two components:</p>
-<ul>
-<li>An optimal first action $A_∗$</li>
-<li>Followed by an optimal policy from successor state S'<center><img src="img/v1.png" alt="RewardHypothesis" style="width: 700px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deterministic-Value-Iteration">Deterministic Value Iteration<a class="anchor-link" href="#Deterministic-Value-Iteration">&#182;</a></h2><center><img src="img/v2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Value-Iteration">Pseudocode: Value Iteration<a class="anchor-link" href="#Pseudocode:-Value-Iteration">&#182;</a></h2><center><img src="img/s3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example:-Shortest-Path">Example: Shortest Path<a class="anchor-link" href="#Example:-Shortest-Path">&#182;</a></h2><center><img src="img/v3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Value-Iteration">Value Iteration<a class="anchor-link" href="#Value-Iteration">&#182;</a></h1><center><img src="img/sa.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-<center><img src="img/sb.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/v5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Synchronous-Dynamic-Programming-Algorithm-"><center> Synchronous Dynamic Programming Algorithm </center><a class="anchor-link" href="#-Synchronous-Dynamic-Programming-Algorithm-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/s1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Problems-with-Synchronous-DP">Problems with Synchronous DP<a class="anchor-link" href="#Problems-with-Synchronous-DP">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Involve operations over the entire state set of the MDP:<ul>
-<li>Require sweeps of the state set.</li>
-<li>Even a single sweep can be prohibitively expensive.</li>
-<li>Game of backgammon has over $10^{20}$ states.</li>
-<li>value iteration backup at a million states per second ==&gt; a thousand years to complete a single sweep.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Algorithm gets locked into a long sweep before it can make progress improving a policy.<ul>
-<li>take advantage of latest updates to backups so as to improve the algorithm’s rate of progress.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Skip backing up some states entirely if they are not relevant to optimal behavior.<ul>
-<li>Update States related to the optimal behaviour only.</li>
+<li>One-step, tabular, modelfree TD methods<ul>
+<li>SARSA</li>
+<li>Q-learning</li>
+<li>Expected SARSA</li>
+<li>Double Q- learning</li>
 </ul>
 </li>
 </ul>
@@ -12472,159 +11890,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Asynchronous-Dynamic-Programming-Methods-"><center> Asynchronous Dynamic Programming Methods </center><a class="anchor-link" href="#-Asynchronous-Dynamic-Programming-Methods-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>DP methods described so far used synchronous backups</li>
-<li>i.e. all states are backed up in parallel</li>
-<li>Asynchronous DP backs up states individually, in any order</li>
-<li>For each selected state, apply the appropriate backup</li>
-<li>Can significantly reduce computation</li>
-<li>Guaranteed to converge if all states continue to be selected</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Three simple ideas for asynchronous dynamic programming:</p>
-<ul>
-<li>In-place dynamic programming</li>
-<li>Prioritised sweeping</li>
-<li>Real-time dynamic programming</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="In-Place-Dynamic-Programming">In Place Dynamic Programming<a class="anchor-link" href="#In-Place-Dynamic-Programming">&#182;</a></h2><center><img src="img/async_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Prioritised-Sweeping">Prioritised Sweeping<a class="anchor-link" href="#Prioritised-Sweeping">&#182;</a></h2><center><img src="img/async_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Real-time-Dynamic-Programming">Real-time Dynamic Programming<a class="anchor-link" href="#Real-time-Dynamic-Programming">&#182;</a></h2><center><img src="img/async_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Full-Width-Backup/-Sample-Backup-"><center> Full-Width Backup/ Sample Backup </center><a class="anchor-link" href="#-Full-Width-Backup/-Sample-Backup-">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Full-Width-Backup">Full-Width Backup<a class="anchor-link" href="#Full-Width-Backup">&#182;</a></h2><center><img src="img/b1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sample-Backup">Sample Backup<a class="anchor-link" href="#Sample-Backup">&#182;</a></h2><center><img src="img/b2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
-<li>Familiarity with the basic ideas and algorithms of dynamic programming in solving finite MDPs.<ul>
-<li>Policy Evaluation</li>
-<li>Policy Improvement</li>
-</ul>
-</li>
-<li>Two Control Algorithms with DP<ul>
-<li>Policy Iteration</li>
-<li>Value Iteration</li>
-</ul>
-</li>
-<li>Synchronous Vs Asynchronous Algorithms for implementing DP in RL<ul>
-<li>In-place dynamic programming, Prioritised sweeping, Real-time dynamic programming</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Extra-Material"><center> Extra Material</center><a class="anchor-link" href="#-Extra-Material">&#182;</a></h1><p>1) Proof of convergence for value iteration and policy iteration.</p>
-<p>2) Examples of Asynchronous DP in action</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Convergence-of-presented-algorithms"><center>Convergence of presented algorithms</center><a class="anchor-link" href="#Convergence-of-presented-algorithms">&#182;</a></h2><p>1) How do we know that value iteration converges to the optimal values for the given policy $v_*$?</p>
-<p>2) Or that iterative policy evaluation converges to $v_\pi$?</p>
-<p>3) Is the solution unique?</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Basic-Components-of-Proof:">Basic Components of Proof:<a class="anchor-link" href="#Basic-Components-of-Proof:">&#182;</a></h2>
+<h1 id="Temporal-Difference"><center>Temporal Difference</center><a class="anchor-link" href="#Temporal-Difference">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -12634,12 +11900,278 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Value Function Space</strong><ul>
-<li>the vector space $V$ over value functions</li>
-<li>There are |S| dimensions</li>
-<li>Each point in this space fully specifies a value function v(s)</li>
+<li>One of the central and most novel Ideas in Reinforcement learning.</li>
+<li>A one line Explaination is: In temporal Difference we improve Guesses towards Guesses before reaching terminal states.</li>
 </ul>
-</li>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Methods">Monte Carlo Methods<a class="anchor-link" href="#Monte-Carlo-Methods">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Roughly speaking, Monte Carlo methods wait until the return following the visit is known, then use that return as a target for $V(S_t)$.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Constant-$\alpha$-MC">Constant $\alpha$ MC<a class="anchor-link" href="#Constant-$\alpha$-MC">&#182;</a></h4>$$
+V(S_t) = V(S_t) + \alpha\big[ G_t - V(S_t) \big]
+$$
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$G_t$ is the actual return following time t,</li>
+<li>$\alpha$ is a constant step-size parameter.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#182;</a></h2><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DP-methods">DP methods<a class="anchor-link" href="#DP-methods">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although DP methods update at every iteration, they use a model of the environment for the update. Basically they use, $p(s',r|s,a)$, the transition probability values.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Iterative-policy-evaluation-in-DP">Iterative policy evaluation in DP<a class="anchor-link" href="#Iterative-policy-evaluation-in-DP">&#182;</a></h4>$$
+V (s) = \sum_{a}\pi(a|s) \sum_{s',r}{p(s',r|s,a)\big[ r+\gamma V(s') \big]}
+$$
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#182;</a></h2><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Temporal-Difference-Prediction">Temporal Difference Prediction<a class="anchor-link" href="#Temporal-Difference-Prediction">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TD methods need wait only until the next time step.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="TD(0)">TD(0)<a class="anchor-link" href="#TD(0)">&#182;</a></h4>$$
+V(S_t) = V(S_t) + \alpha\big[ R_{t+1} +\gamma V(S_{t+1})- V(S_t) \big]
+$$
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>target for the Monte Carlo update is $G_t$, whereas the target for the TD update is $R_{t+1} + \gamma V(S_{t+1})$.</li>
+<li>Because the TD method bases its update in part on an existing estimate, we say that it is a bootstrapping method, like DP.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#182;</a></h2><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#182;</a></h4><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#182;</a></h4><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#182;</a></h4><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/bootsam.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$"><center>$ v_\pi (s) = E_\pi[G_t | S_t=s] = E_\pi[R_{t+1} + \gamma v_\pi(S_{t+1})| S_t = s]$</center><a class="anchor-link" href="#$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Monte Carlo methods use an estimate of the first as a target,</li>
+<li>DP methods use an estimate of second as a target.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/TDex1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/tdex2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tabular-TD-for-estimating-$v_\pi$">Tabular TD for estimating $v_\pi$<a class="anchor-link" href="#Tabular-TD-for-estimating-$v_\pi$">&#182;</a></h3><p><strong>Input</strong>: the policy $\pi$ to be evaluated<br>
+<strong>Initialize</strong> $V(s)$ arbitrarily (e.g., $V(s) = 0, \forall s \in S_+$)<br>
+<strong>Repeat</strong> (for each episode):<br>
+$\quad$Initialize $S$<br>
+$\quad$Repeat (for each step of episode):<br>
+$\quad$$\quad$ $A =$ action given by $\pi$ for $S$<br>
+$\quad$$\quad$Take action $A$, observe $R, S'$<br>
+$\quad$$\quad V (S) = V (S) + \alpha\big[R + \gamma V (S') − V (S)\big]$<br>
+$\quad$$\quad$S = S'<br>
+$\quad$until S is terminal</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="TD-error">TD error<a class="anchor-link" href="#TD-error">&#182;</a></h3><p>$ \delta_t = R_{t+1} + \gamma V (S_{t+1}) − V (S_t)$</p>
+<h3 id="Monte-carlo-error">Monte carlo error<a class="anchor-link" href="#Monte-carlo-error">&#182;</a></h3><p>$G_t - V(S_t) = \sum^{T-t-1}_{k=0}{\delta_{t+k}}$</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Properties-of-Temporal-Difference-Methods"><center>Properties of Temporal Difference Methods</center><a class="anchor-link" href="#Properties-of-Temporal-Difference-Methods">&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Advantage-of-TD-Methods">Advantage of TD Methods<a class="anchor-link" href="#Advantage-of-TD-Methods">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Compared to DP methods, they do not require model of the environment, its rewards, and next state probability distribubtion.</li>
 </ul>
 
 </div>
@@ -12651,36 +12183,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Value Function $\infty$-Norm</strong><ul>
-<li>distance between state-value functions $u$ and $v$ by the $\infty$-norm  </li>
-<li>$$ ||u-v ||_{\infty} = max_{s \in S}|u(s) - v(s)|$$</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Basic-Components-of-Proof:">Basic Components of Proof:<a class="anchor-link" href="#Basic-Components-of-Proof:">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Contraction Mapping</strong><ul>
-<li>A contraction mapping, on a metric space $(M,d)$ is a function $f$ from $M$ to itself, with the property that there is some nonnegative real number $0 \leq  k \le 1$ such that for all $x$ and $y$ in $M$,</li>
-<li>$$ d(f(x),f(y)) \leq k d(x,y) $$</li>
-</ul>
-</li>
+<li>Compared to Monte Carlo methods, they are naturally implemented in an on-line, fully incremental fashion.</li>
 </ul>
 
 </div>
@@ -12692,7 +12195,65 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Contraction mapping Theorem</strong><center><img src="img/contr_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center></li>
+<li>Compared to Monte Carlo methods, TD can learn from incomplete sequences, can works in continuing (non-terminating) environments.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> Some important points </strong></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>TD target $R_{t+1} + \gamma V(S_{t+1})$ is biased estimate of $v_\pi(S_t)$ </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>TD target has much lower variance than the MC target(returns $G_t$)</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>For any fixed policy $\pi$, the TD algorithm has been proved to converge to $v_\pi$.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Which method learns faster? Which makes the more efficient use of limited data? Not answered yet. Its an open question.</li>
 </ul>
 
 </div>
@@ -12703,50 +12264,109 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Backup-is-a-Contraction">Bellman Expectation Backup is a Contraction<a class="anchor-link" href="#Bellman-Expectation-Backup-is-a-Contraction">&#182;</a></h2><center><img src="img/b.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h3 id="Batch-Update">Batch Update<a class="anchor-link" href="#Batch-Update">&#182;</a></h3><p>Suppose you have a fixed number of episodes,</p>
+
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Expectation-Backup-is-a-Contraction">Bellman Expectation Backup is a Contraction<a class="anchor-link" href="#Bellman-Expectation-Backup-is-a-Contraction">&#182;</a></h2><center><img src="img/contr_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Backup-is-a-Contraction">Bellman Optimality Backup is a Contraction<a class="anchor-link" href="#Bellman-Optimality-Backup-is-a-Contraction">&#182;</a></h2><center><img src="img/v5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bellman-Optimality-Backup-is-a-Contraction">Bellman Optimality Backup is a Contraction<a class="anchor-link" href="#Bellman-Optimality-Backup-is-a-Contraction">&#182;</a></h2><center><img src="img/contr_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hence,">Hence,<a class="anchor-link" href="#Hence,">&#182;</a></h2><ul>
-<li>The Bellman expectation operator $T_\pi$ has a unique fixed point.</li>
-<li>$v_\pi$ is a fixed point of $T\pi$ (by Bellman expectation equation)</li>
-<li>By contraction mapping theorem,<ul>
-<li>Iterative policy evaluation converges on $v_\pi$</li>
-<li>Policy iteration converges on $v_∗$</li>
+<ul>
+<li>Given an approximate value function, V , we calculate the increments for every time step $t$ at which a non-terminal state is visited, but the value function is changed only once, by the sum of all the increments.</li>
 </ul>
-</li>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Then all the available experience is processed again with the new value function to produce a new overall increment, and so on, until the value function converges. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We call this <strong>batch updating</strong> because updates are made only after processing each complete batch of training data.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-"><center>Batch Monte Carlo methods always find the estimates that minimize mean-squared error on the training set, </center><a class="anchor-link" href="#Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process."><center> Whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.</center><a class="anchor-link" href="#-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process.">&#182;</a></h2>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions."><center> Batch TD(0) converges to the certainty-equivalence estimate.</center> <center> Non-Batch methods can be understood as moving roughly in these directions.</center><a class="anchor-link" href="#-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions.">&#182;</a></h3>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>The following episodes are observed:</p>
+<p>1) A, 0, B, 0 <br>
+2) B, 1<br>
+3) B, 1 <br>
+4) B, 1<br>
+5) B, 1 <br>
+6) B, 1<br>
+7) B, 1 <br>
+8) B, 0<br></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Given this batch of data, what would you say are the optimal predictions, the best values for the estimates $V (A)$ and $V (B)$?</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Clearly, Optimal Value of B is the optimal value for $V (B)$ is $3/4$,</li>
 </ul>
 
 </div>
@@ -12757,13 +12377,281 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Similarly,</strong></p>
 <ul>
-<li>The Bellman optimality operator $T_*$ has a unique fixed point.</li>
-<li>$v_∗$ is a fixed point of $T_∗$ (by Bellman optimality equation)</li>
-<li>By contraction mapping theorem,<ul>
-<li>Value iteration converges on $v_∗$</li>
+<li>But $V(A)$? Two reasonable answers:</li>
 </ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>100% of the times the process was in state A it traversed immediately to B. With no disconting, $V(A)=V(B)$.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We have seen A once and the return that followed it was 0; we therefore estimate $V (A)$ as 0.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, which estimate does TD(0) make and which one does $\alpha-MC$ make?</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the process is seen as an instance of the following markov process:</p>
+<center><img src="img/tdmarkov.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The First solution is right. This is the estimate that TD(0) makes.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>If the process is Markov, we expect that the first answer will produce lower error on future data, even though the Monte Carlo answer is better on the existing data.</strong></p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="One-step,-tabular,-modelfree-TD-methods"><center>One-step, tabular, modelfree TD methods</center><a class="anchor-link" href="#One-step,-tabular,-modelfree-TD-methods">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Sarsa:-On-Policy-TD-Control"><center>Sarsa: On-Policy TD Control</center><a class="anchor-link" href="#Sarsa:-On-Policy-TD-Control">&#182;</a></h1><p>First, we estimate $q_\pi (s,a)$ instead of $v(s)$. The TD(0) equation for that would be</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+Q(S_t, A_t) = Q(S_t, A_t) + \alpha \big[ R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) − Q(S_t, A_t) \big] 
+$$
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>(update is done after every transition from a nonterminal state $S_t$).</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This rule uses every element of the quintuple of events, $(S_t, A<em>t, R</em>{t+1}, S<em>{t+1}, A</em>{t+1}), that make up a transition from one state–action pair to the next.</p>
+<p>Hence this algorithm is named <strong>Sarsa</strong>.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sarsa:-An-on-policy-TD-control-algorithm">Sarsa: An on-policy TD control algorithm<a class="anchor-link" href="#Sarsa:-An-on-policy-TD-control-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
+<strong>Repeat</strong> (for each episode):<br>
+$\quad$Initialize $S$<br>
+$\quad$Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)<br>
+$\quad$<strong>Repeat</strong> (for each step of episode):<br>
+$\quad \quad$ Take action $A$, observe $R, S'$<br>
+$\quad \quad$ Choose $A'$ from $S'$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)<br>
+$\quad \quad$ $Q(S, A) = Q(S, A) + \alpha \big[ R + \gamma Q(S', A') − Q(S, A) \big] $ <br>
+$\quad \quad$ $S = S'; A = A';$<br>
+$\quad$ until $S$ is terminal</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Q-learning:-Off-Policy-TD-Control"><center>Q-learning: Off-Policy TD Control</center><a class="anchor-link" href="#Q-learning:-Off-Policy-TD-Control">&#182;</a></h1><p>As in value-iteration, we take the  $Q(S', A')$, corresponding to the maximum from all possible action, instead of the actual action A' taken.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+Q(S_t, A_t) = Q(S_t, A_t) + \alpha \big[ R_{t+1} + \gamma {max}_a Q(S_{t+1}, a) − Q(S_t, A_t) \big] 
+$$
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong> The learned action-value function, $Q$, directly approximates $q∗$, the optimal action-value function, independent of the policy being followed</strong>.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#182;</a></h4><center><img src="img/backup_q.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Q-learning:-An-off-policy-TD-control-algorithm">Q-learning: An off-policy TD control algorithm<a class="anchor-link" href="#Q-learning:-An-off-policy-TD-control-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
+<strong>Repeat</strong> (for each episode):<br>
+$\quad$Initialize $S$<br>
+$\quad$<strong>Repeat</strong> (for each step of episode):<br>
+$\quad \quad$ Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)<br>
+$\quad \quad$ Take action $A$, observe $R, S'$<br>
+$\quad \quad$ $Q(S, A) = Q(S, A) + \alpha \big[ R +\gamma {max}_a Q(S', a) − Q(S, A) \big] $ <br>
+$\quad \quad$ $S = S';$<br>
+$\quad$ until $S$ is terminal</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example-:-Cliff-Walking">Example : Cliff Walking<a class="anchor-link" href="#Example-:-Cliff-Walking">&#182;</a></h2><center><img src="img/cliff.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>A standard undiscounted, episodic task, with start and goal states, </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>the usual actions causing movement up, down, right, and left. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Reward is −1 on all transitions except those into the region marked “The Cliff.” </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Stepping into this region incurs a reward of −100 and sends the agent instantly back to the start.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Q-learning-Vs-Sarsa">Q-learning Vs Sarsa<a class="anchor-link" href="#Q-learning-Vs-Sarsa">&#182;</a></h2><center><img src="img/qvssarsa.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Q-learning learns values for the optimal policy, that which travels right along the edge of the cliff. </li>
+<li><p>Unfortunately, this results in its occasionally falling off the cliff because of the $\epsilon$-greedy action selection.</p>
+</li>
+<li><p>Sarsa, takes the action selection into account and learns the longer but safer path through the upper part of the grid.</p>
 </li>
 </ul>
 
@@ -12775,45 +12663,39 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Real-Life-Examples-of-Asynchronous-DP">Real Life Examples of Asynchronous DP<a class="anchor-link" href="#Real-Life-Examples-of-Asynchronous-DP">&#182;</a></h2>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Real-Life-Examples-of-Asynchronous-DP">Real Life Examples of Asynchronous DP<a class="anchor-link" href="#Real-Life-Examples-of-Asynchronous-DP">&#182;</a></h2><ul>
-<li><p>Asynchronous DP Algorithms outlined previously:</p>
-<ul>
-<li>In-place dynamic programming</li>
-<li>Prioritised sweeping</li>
-<li>Real-time dynamic programming</li>
-</ul>
-</li>
-<li><p>We will look into one example on how prioritised Sweeping can help improve Policy Evaulations.</p>
-</li>
-</ul>
+<h1 id="Expected-Sarsa"><center>Expected Sarsa</center><a class="anchor-link" href="#Expected-Sarsa">&#182;</a></h1><p>Learning algorithm that is just like Q-learning except that instead of the maximum over next state–action pairs it uses the expected value, taking into account how likely each action is under the current policy.</p>
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Prioritized-Sweeping">Prioritized Sweeping<a class="anchor-link" href="#Prioritized-Sweeping">&#182;</a></h1><center><img src="img/async_ex_1.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+$$
+Q(S_t, A_t) = Q(S_t, A_t) + \alpha \big[ R_{t+1} + \gamma E(Q(S_{t+1}, A_{t+1}|S_{t+1}) − Q(S_t, A_t) \big] 
+$$$$
+Q(S_t, A_t) = Q(S_t, A_t) + \alpha \big[ R_{t+1} + \gamma \sum_{a}{\pi(a|S_t+1)Q(S_{t+1},a)} − Q(S_t, A_t) \big] 
+$$
 </div>
 </div>
-</div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Task">Task<a class="anchor-link" href="#Task">&#182;</a></h2>
+<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#182;</a></h4><center><img src="img/ex_sarsa.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -12823,8 +12705,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>A 500 State MDP</li>
-<li>16 Terminal States, 8 black and 8 white.</li>
+<li>Expected Sarsa is more complex computationally than Sarsa but, in return, it eliminates the variance due to the random selection of $A_{t+1}$.</li>
 </ul>
 
 </div>
@@ -12836,7 +12717,53 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>The prediction problem is to estimate, for every non-terminal state, the long-term probability that it will terminate in a black, rather than a white, circle.</li>
+<li>Expected Sarsa is stable on a wider range of step-size $\alpha$ than Sarsa.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>we can use a policy different from the target policy $\pi$ to generate behavior, in which case Expected Sarsa becomes an off-policy algorithm</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Expected Sarsa may completely dominate both of the other more-well-known TD control algorithms</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Double-Q-Learning"><center>Double Q Learning</center><a class="anchor-link" href="#Double-Q-Learning">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Maximization-Bias">Maximization Bias<a class="anchor-link" href="#Maximization-Bias">&#182;</a></h2><ul>
+<li>All the control algorithms that we have discussed so far involve maximization in the construction of their target policies.</li>
+<li>When maximum over estimated values is used implicitly as an estimate of the maximum value, it can lead to significant positive bias.</li>
 </ul>
 
 </div>
@@ -12847,16 +12774,7 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/async_ex_2.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><center><img src="img/async_ex_3.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/maxbias.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
@@ -12865,7 +12783,49 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><center><img src="img/async_ex_4.PNG" alt="RewardHypothesis" style="width: 700px;"/></center>
+<ul>
+<li>The MDP has two non-terminal states A and B. </li>
+<li>Episodes always start in A with a choice between two actions, <strong>left</strong> and <strong>right</strong>.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The right action transitions immediately to the terminal state with a reward and return of zero. </li>
+<li>The left action transitions to B, also with a reward of zero, from which there are many possible actions.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>All actions from B  cause immediate termination with a reward drawn from a normal distribution with mean $−0.1$ and variance $1.0$. </li>
+<li>Thus, the expected return for any trajectory starting with left is $−0.1$, and thus taking left in state A is always a mistake.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>control methods may favor left because of maximization bias making B appear to have a positive value</strong>.</li>
+</ul>
+
 </div>
 </div>
 </div></div></section><section>
@@ -12874,10 +12834,53 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion:">Conclusion:<a class="anchor-link" href="#Conclusion:">&#182;</a></h2><ul>
-<li>Model-free methods perform well in real time but make weak use of their data. </li>
-<li>Classical methods make good use of their data but are often impractically slow. </li>
-<li><strong>Techniques such as prioritized sweeping are interesting because they may be able to achieve both.</strong></li>
+<h2 id="How-to-avoid-maximing-bias?">How to avoid maximing bias?<a class="anchor-link" href="#How-to-avoid-maximing-bias?">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Consider a bandit case in which we have noisy estimates of the value of each of many actions, obtained as sample averages of the rewards received on all the plays with each action.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>As we discussed above, there will be a positive maximization bias if we use the maximum of the estimates as an estimate of the maximum of the true values. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>One way to view the problem is that it is due to using the same samples (plays), both to determine the maximizing action and to estimate its value.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Suppose we divided the plays in two sets and used them to learn two independent estimates, call them $Q_1(a)$ and $Q_2(a)$, each an estimate of the true value $q(a)$, for all $a \in A$.</li>
 </ul>
 
 </div>
@@ -12889,13 +12892,80 @@ $$v_{\pi'}(s) \geq v_{\pi}(s)$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Example of In-place DP in Tutorial</li>
-<li>An example similar to real-time DP will be covered in Chapter 5.</li>
+<li>We could then use one estimate, say $Q_1$, to determine the maximizing action $A_∗ = argmax_a Q_1(a)$, and the other, $Q_2$, to provide the estimate of its value, $Q2(A_∗) = Q_2(argmax_a Q1(a))$.</li>
 </ul>
 
 </div>
 </div>
-</div></div></section></section>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This estimate will then be unbiased in the sense that $E[Q_2(A_∗)] = q(A_∗)$. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We can also repeat the process with the role of the two estimates reversed to yield a second unbiased estimate $Q_1(argmax_a Q_2(a))$. </li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#182;</a></h4><ul>
+<li>Although we learn two estimates, only one estimate is updated on each play;</li>
+<li>Doubled learning doubles the memory requirements, but is no increase at all in the amount of computation per step.</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Double-Q-learning-algorithm">Double Q-learning algorithm<a class="anchor-link" href="#Double-Q-learning-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q_1(s, a),Q_2(s, a), \forall s \in S, a \in A(s)$, arbitrarily, 
+<strong>Initialize</strong> $Q_1($terminal-state$, ·) = Q_2($terminal-state$, ·) = 0$<br>
+<strong>Repeat</strong> (for each episode):<br>
+$\quad$Initialize $S$<br>
+$\quad$<strong>Repeat</strong> (for each step of episode):<br>
+$\quad \quad$ Choose $A$ from $S$ using policy derived from $Q_1$ and $Q_2$ (e.g., $\epsilon$-greedy in $Q_1+Q_2$)<br>
+$\quad \quad$ Take action $A$, observe $R, S'$<br>
+$\quad \quad$ With 0.5 probability: <br>
+$\quad \quad \quad Q_1(S, A) = Q_1(S, A) + \alpha \big[ R +\gamma Q_2(S',argmax_a Q_1(S',a)) − Q_1(S, A) \big] $ <br>
+$\quad \quad$ Else: <br>
+$\quad \quad \quad Q_2(S, A) = Q_2(S, A) + \alpha \big[ R +\gamma Q_1(S',argmax_a Q_2(S',a)) − Q_2(S, A) \big] $ <br>
+$\quad \quad$ $S = S';$<br>
+$\quad$ until $S$ is terminal</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Double-Q-learning-vs-Q-Learning">Double Q-learning vs Q-Learning<a class="anchor-link" href="#Double-Q-learning-vs-Q-Learning">&#182;</a></h2><center><img src="img/doubleq.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
+</div>
+</div>
+</div></section></section>
 </div>
 </div>
 
