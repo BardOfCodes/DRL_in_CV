@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,6 +1163,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2591,6 +2592,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3081,6 +3083,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8811,9 +8814,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,14 +9016,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9046,16 +9040,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9192,9 +9176,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9284,9 +9265,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9331,9 +9309,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9630,7 +9605,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9651,6 +9625,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11321,7 +11300,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11633,7 +11612,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11647,9 +11625,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11710,10 +11685,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11724,11 +11697,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11854,23 +11825,26 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Monte-Carlo-Methods"><center>Monte Carlo Methods</center><a class="anchor-link" href="#Monte-Carlo-Methods">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-5,-Sutton-and-Barto"><center> Reference: Chapter 5, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-5,-Sutton-and-Barto">&#194;&#182;</a></h3>
+<h1 id="Monte-Carlo-Methods"><center>Monte Carlo Methods</center><a class="anchor-link" href="#Monte-Carlo-Methods">&#182;</a></h1><h3 id="-Reference:-Chapter-5,-Sutton-and-Barto"><center> Reference: Chapter 5, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-5,-Sutton-and-Barto">&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
+<h2 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11884,7 +11858,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11899,7 +11874,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11910,7 +11886,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11934,7 +11911,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11945,7 +11923,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11960,7 +11939,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11971,15 +11951,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1>
+<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11994,7 +11976,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12014,7 +11997,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12028,51 +12012,57 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Monte-Carlo-Prediction"><center>Monte-Carlo Prediction</center><a class="anchor-link" href="#Monte-Carlo-Prediction">&#194;&#182;</a></h1>
+<h1 id="Monte-Carlo-Prediction"><center>Monte-Carlo Prediction</center><a class="anchor-link" href="#Monte-Carlo-Prediction">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Policy-Evaluation">Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Monte-Carlo-Policy-Evaluation">Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="First-Visit-Monte-Carlo-Policy-Evaluation">First-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#First-Visit-Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="First-Visit-Monte-Carlo-Policy-Evaluation">First-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#First-Visit-Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-First-visit-MC-Policy-Evaluation">Pseudocode: First-visit MC Policy Evaluation<a class="anchor-link" href="#Pseudocode:-First-visit-MC-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-First-visit-MC-Policy-Evaluation">Pseudocode: First-visit MC Policy Evaluation<a class="anchor-link" href="#Pseudocode:-First-visit-MC-Policy-Evaluation">&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Every-Visit-Monte-Carlo-Policy-Evaluation">Every-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Every-Visit-Monte-Carlo-Policy-Evaluation">&#194;&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Every-Visit-Monte-Carlo-Policy-Evaluation">Every-Visit Monte-Carlo Policy Evaluation<a class="anchor-link" href="#Every-Visit-Monte-Carlo-Policy-Evaluation">&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Diference?">Diference?<a class="anchor-link" href="#Diference?">&#194;&#182;</a></h2><ul>
+<h2 id="Diference?">Diference?<a class="anchor-link" href="#Diference?">&#182;</a></h2><ul>
 <li>"These two Monte Carlo (MC) methods are very similar but have slightly different theoretical properties." - Sutton and Barto</li>
 <li>Both have quadratic convergence to $v_\pi(s)$ with respect to $n$.</li>
 </ul>
@@ -12080,23 +12070,26 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Incremental-Monte-Carlo-Updates">Incremental Monte-Carlo Updates<a class="anchor-link" href="#Incremental-Monte-Carlo-Updates">&#194;&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Incremental-Monte-Carlo-Updates">Incremental Monte-Carlo Updates<a class="anchor-link" href="#Incremental-Monte-Carlo-Updates">&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Important-Facts">Important Facts<a class="anchor-link" href="#Important-Facts">&#194;&#182;</a></h2>
+<h2 id="Important-Facts">Important Facts<a class="anchor-link" href="#Important-Facts">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12111,7 +12104,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12126,23 +12120,26 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Estimation-of-Action-Values"><center>Monte Carlo Estimation of Action Values</center><a class="anchor-link" href="#Monte-Carlo-Estimation-of-Action-Values">&#194;&#182;</a></h2>
+<h2 id="Monte-Carlo-Estimation-of-Action-Values"><center>Monte Carlo Estimation of Action Values</center><a class="anchor-link" href="#Monte-Carlo-Estimation-of-Action-Values">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-compute-action-values,-instead-of-state-values?">Why compute action-values, instead of state-values?<a class="anchor-link" href="#Why-compute-action-values,-instead-of-state-values?">&#194;&#182;</a></h2>
+<h2 id="Why-compute-action-values,-instead-of-state-values?">Why compute action-values, instead of state-values?<a class="anchor-link" href="#Why-compute-action-values,-instead-of-state-values?">&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12153,7 +12150,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12168,7 +12166,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12183,21 +12182,23 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Complication-with-learning-state-action-values">Complication with learning state-action values<a class="anchor-link" href="#Complication-with-learning-state-action-values">&#194;&#182;</a></h2><p>Problem =&gt; <strong>Maintaining Exploration</strong></p>
+<h2 id="Complication-with-learning-state-action-values">Complication with learning state-action values<a class="anchor-link" href="#Complication-with-learning-state-action-values">&#182;</a></h2><p>Problem =&gt; <strong>Maintaining Exploration</strong></p>
 <p>Solution =&gt; <strong>Assumption of Exploring Starts</strong></p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Exploring-Starts">Exploring Starts<a class="anchor-link" href="#Exploring-Starts">&#194;&#182;</a></h3><ul>
+<h3 id="Exploring-Starts">Exploring Starts<a class="anchor-link" href="#Exploring-Starts">&#182;</a></h3><ul>
 <li>Every state-action pair has a nonzero probability of being selected as the start.</li>
 <li>However, not always possible:<ul>
 <li>particularly when learning directly from actual interaction with an environment.</li>
@@ -12210,75 +12211,75 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Control"><center>Monte Carlo Control</center><a class="anchor-link" href="#Monte-Carlo-Control">&#194;&#182;</a></h2>
+<h2 id="Monte-Carlo-Control"><center>Monte Carlo Control</center><a class="anchor-link" href="#Monte-Carlo-Control">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-(Refresher)">Generalised Policy Iteration (Refresher)<a class="anchor-link" href="#Generalised-Policy-Iteration-(Refresher)">&#194;&#182;</a></h2><center><img src="img/c1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Generalised-Policy-Iteration-(Refresher)">Generalised Policy Iteration (Refresher)<a class="anchor-link" href="#Generalised-Policy-Iteration-(Refresher)">&#182;</a></h2><center><img src="img/c1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">Generalised Policy Iteration with Monte carlo Evaluation<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">&#194;&#182;</a></h2><center><img src="img/c2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">Generalised Policy Iteration with Monte carlo Evaluation<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Monte-carlo-Evaluation">&#182;</a></h2><center><img src="img/c2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-Free-Policy-Iteration-Using-Action-Value-Function">Model-Free Policy Iteration Using Action-Value Function<a class="anchor-link" href="#Model-Free-Policy-Iteration-Using-Action-Value-Function">&#194;&#182;</a></h2><center><img src="img/c3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Model-Free-Policy-Iteration-Using-Action-Value-Function">Model-Free Policy Iteration Using Action-Value Function<a class="anchor-link" href="#Model-Free-Policy-Iteration-Using-Action-Value-Function">&#182;</a></h2><center><img src="img/c3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generalised-Policy-Iteration-with-Action-Value-Function">Generalised Policy Iteration with Action-Value Function<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Action-Value-Function">&#194;&#182;</a></h2><p><center><img src="img/c4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Generalised-Policy-Iteration-with-Action-Value-Function">Generalised Policy Iteration with Action-Value Function<a class="anchor-link" href="#Generalised-Policy-Iteration-with-Action-Value-Function">&#182;</a></h2><p><center><img src="img/c4.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 <strong>Greedy Policy Improvement: $\pi(s) = argmax_{a} q(s,a)$</strong></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-of-Greedy-Action-Selection">Example of Greedy Action Selection<a class="anchor-link" href="#Example-of-Greedy-Action-Selection">&#194;&#182;</a></h2><center><img src="img/c5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="MC-Control-ES">MC Control ES<a class="anchor-link" href="#MC-Control-ES">&#182;</a></h2><center><img src="img/c6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MC-Control-ES">MC Control ES<a class="anchor-link" href="#MC-Control-ES">&#194;&#182;</a></h2><center><img src="img/c6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Assumptions-in-MC-Control">Assumptions in MC Control<a class="anchor-link" href="#Assumptions-in-MC-Control">&#194;&#182;</a></h2><p>1) Infinite Episodes for Learning</p>
+<h2 id="Assumptions-in-MC-Control">Assumptions in MC Control<a class="anchor-link" href="#Assumptions-in-MC-Control">&#182;</a></h2><p>1) Infinite Episodes for Learning</p>
 <p>2) Exploring Starts Assumption</p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12287,7 +12288,8 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12303,7 +12305,8 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12319,15 +12322,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-can-you-just-assume-Convergence?">How can you just assume Convergence?<a class="anchor-link" href="#How-can-you-just-assume-Convergence?">&#194;&#182;</a></h4>
+<h4 id="How-can-you-just-assume-Convergence?">How can you just assume Convergence?<a class="anchor-link" href="#How-can-you-just-assume-Convergence?">&#182;</a></h4>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12341,7 +12346,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12357,67 +12363,75 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">Monte Carlo Control without Exploring Starts  (On-Policy)<a class="anchor-link" href="#Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">&#194;&#182;</a></h3>
+<h3 id="Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">Monte Carlo Control without Exploring Starts  (On-Policy)<a class="anchor-link" href="#Monte-Carlo-Control-without-Exploring-Starts--(On-Policy)">&#182;</a></h3>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\epsilon$-Greedy-Exploration">$\epsilon$-Greedy Exploration<a class="anchor-link" href="#$\epsilon$-Greedy-Exploration">&#194;&#182;</a></h2><center><img src="img/a1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="$\epsilon$-Greedy-Exploration">$\epsilon$-Greedy Exploration<a class="anchor-link" href="#$\epsilon$-Greedy-Exploration">&#182;</a></h2><center><img src="img/a1.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\epsilon$-Greedy-Policy-Improvement">$\epsilon$-Greedy Policy Improvement<a class="anchor-link" href="#$\epsilon$-Greedy-Policy-Improvement">&#194;&#182;</a></h2><center><img src="img/a2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="$\epsilon$-Greedy-Policy-Improvement">$\epsilon$-Greedy Policy Improvement<a class="anchor-link" href="#$\epsilon$-Greedy-Policy-Improvement">&#182;</a></h2><center><img src="img/a2.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Policy-Iteration">Monte-Carlo Policy Iteration<a class="anchor-link" href="#Monte-Carlo-Policy-Iteration">&#194;&#182;</a></h2><center><img src="img/a3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Monte-Carlo-Policy-Iteration">Monte-Carlo Policy Iteration<a class="anchor-link" href="#Monte-Carlo-Policy-Iteration">&#182;</a></h2><center><img src="img/a3.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">On-Policy MC Control Without ES ($\epsilon$ soft Policy)<a class="anchor-link" href="#On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">&#194;&#182;</a></h2><center><img src="img/a6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">On-Policy MC Control Without ES ($\epsilon$ soft Policy)<a class="anchor-link" href="#On-Policy-MC-Control-Without-ES-($\epsilon$-soft-Policy)">&#182;</a></h2><center><img src="img/a6.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="On-Policy-vs-Off-Policy"><center>On Policy vs Off Policy</center><a class="anchor-link" href="#On-Policy-vs-Off-Policy">&#194;&#182;</a></h1>
+<h1 id="On-Policy-vs-Off-Policy"><center>On Policy vs Off Policy</center><a class="anchor-link" href="#On-Policy-vs-Off-Policy">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Difference-Between-On-Policy-and-Off-Policy">Difference Between On-Policy and Off-Policy<a class="anchor-link" href="#Difference-Between-On-Policy-and-Off-Policy">&#194;&#182;</a></h2><center><img src="img/c7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Difference-Between-On-Policy-and-Off-Policy">Difference Between On-Policy and Off-Policy<a class="anchor-link" href="#Difference-Between-On-Policy-and-Off-Policy">&#182;</a></h2><center><img src="img/c7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Issues-with-On-Policy-Methods">Issues with On-Policy Methods<a class="anchor-link" href="#Issues-with-On-Policy-Methods">&#194;&#182;</a></h2><ul>
+<h2 id="Issues-with-On-Policy-Methods">Issues with On-Policy Methods<a class="anchor-link" href="#Issues-with-On-Policy-Methods">&#182;</a></h2><ul>
 <li>Current Delimma: <ul>
 <li>learn action values conditional on subsequent optimal behavior, </li>
 <li>but behave non-optimally in order to explore all actions (to find the optimal actions)</li>
@@ -12428,7 +12442,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12442,11 +12457,12 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#194;&#182;</a></h2><ul>
+<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#182;</a></h2><ul>
 <li>Use two policies, <ul>
 <li>one that is learned about and that becomes the optimal policy,</li>
 <li>one that is more exploratory and is used to generate behavior.</li>
@@ -12457,7 +12473,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12473,11 +12490,12 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#194;&#182;</a></h2><ul>
+<h2 id="Off-Policy-Learning">Off-Policy Learning<a class="anchor-link" href="#Off-Policy-Learning">&#182;</a></h2><ul>
 <li><p>As the data is due to a different policy, off-policy methods are often</p>
 <ul>
 <li>of greater variance and </li>
@@ -12493,19 +12511,21 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Off-Policy-MC-Prediction-Methods-"><center> Off-Policy MC Prediction Methods </center><a class="anchor-link" href="#-Off-Policy-MC-Prediction-Methods-">&#194;&#182;</a></h1>
+<h1 id="-Off-Policy-MC-Prediction-Methods-"><center> Off-Policy MC Prediction Methods </center><a class="anchor-link" href="#-Off-Policy-MC-Prediction-Methods-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-evaluate-using-off-policy-methods?">How to evaluate using off-policy methods?<a class="anchor-link" href="#How-to-evaluate-using-off-policy-methods?">&#194;&#182;</a></h2><ul>
+<h2 id="How-to-evaluate-using-off-policy-methods?">How to evaluate using off-policy methods?<a class="anchor-link" href="#How-to-evaluate-using-off-policy-methods?">&#182;</a></h2><ul>
 <li>We wish to estimate $v_\pi$ or $q_\pi$, but <ul>
 <li>Episodes following another policy $\mu$, where $\mu \neq \pi$. </li>
 </ul>
@@ -12519,7 +12539,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12536,7 +12557,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12550,11 +12572,12 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#194;&#182;</a></h2><ul>
+<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#182;</a></h2><ul>
 <li>From $S_t$, the probability of the subsequent state–action trajectory, $A_t, S_{t+1}, A_{t+1},... , S_T$, <ul>
 <li>occurring under any policy $\pi$ is<center><img src="img/imp_sam_1.PNG" alt="RewardHypothesis" style="height: 70px;"/></center></li>
 </ul>
@@ -12564,7 +12587,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12578,18 +12602,20 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#194;&#182;</a></h2><p>1) Ordinary Importance Sampling</p>
+<h2 id="Importance-Sampling">Importance Sampling<a class="anchor-link" href="#Importance-Sampling">&#182;</a></h2><p>1) Ordinary Importance Sampling</p>
 <center><img src="img/imp_sam_3.PNG" alt="RewardHypothesis" style="height: 70px;"/></center>
 2) Weighted Importance Sampling
 <center><img src="img/imp_sam_4.PNG" alt="RewardHypothesis" style="height: 100px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12605,7 +12631,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12613,31 +12640,35 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Off-Policy-MC-Prediction">Pseudocode: Off Policy MC Prediction<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Prediction">&#194;&#182;</a></h2><center><img src="img/a5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-Off-Policy-MC-Prediction">Pseudocode: Off Policy MC Prediction<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Prediction">&#182;</a></h2><center><img src="img/a5.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Off-Policy-MC-Control-"><center> Off Policy MC Control </center><a class="anchor-link" href="#-Off-Policy-MC-Control-">&#194;&#182;</a></h1>
+<h1 id="-Off-Policy-MC-Control-"><center> Off Policy MC Control </center><a class="anchor-link" href="#-Off-Policy-MC-Control-">&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Pseudocode:-Off-Policy-MC-Control">Pseudocode: Off Policy MC Control<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Control">&#194;&#182;</a></h2><center><img src="img/a7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
+<h2 id="Pseudocode:-Off-Policy-MC-Control">Pseudocode: Off Policy MC Control<a class="anchor-link" href="#Pseudocode:-Off-Policy-MC-Control">&#182;</a></h2><center><img src="img/a7.png" alt="RewardHypothesis" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12645,11 +12676,12 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><ul>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><ul>
 <li>Monte Carlo Approach</li>
 <li>On-Policy Prediction<ul>
 <li>On-Policy Control (w/o Assumption: Exploring Starts)</li>
@@ -12664,7 +12696,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12680,7 +12713,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12694,7 +12728,8 @@ most fundamental open theoretical questions in reinforcement learning" </center>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
