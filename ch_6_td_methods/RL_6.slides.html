@@ -12142,11 +12142,52 @@ $\quad$until S is terminal</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="TD-error">TD error<a class="anchor-link" href="#TD-error">&#182;</a></h3><p>$ \delta_t = R_{t+1} + \gamma V (S_{t+1}) − V (S_t)$</p>
-<h3 id="Monte-carlo-error">Monte carlo error<a class="anchor-link" href="#Monte-carlo-error">&#182;</a></h3><p>$G_t - V(S_t) = \sum^{T-t-1}_{k=0}{\delta_{t+k}}$</p>
+<h3 id="Monte-carlo-error">Monte carlo error<a class="anchor-link" href="#Monte-carlo-error">&#182;</a></h3><p>$G_t - V(S_t) = \sum^{T-t-1}_{k=0}{\gamma^k \delta_{t+k}}$</p>
 
 </div>
 </div>
 </div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monte-Carlo-VS-TD"><center>Monte Carlo VS TD</center><a class="anchor-link" href="#Monte-Carlo-VS-TD">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Challenge:">Challenge:<a class="anchor-link" href="#Challenge:">&#182;</a></h2><center><img src="img/mcvstd.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>A Markov Process with 5 states.</li>
+<li>Episodes sampled from a fixed behaviour policy (0.5 probability to transition to left or right)</li>
+<li>Theoretical Values of each state can be calculated(Using Probability)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Results:">Results:<a class="anchor-link" href="#Results:">&#182;</a></h2><center><img src="img/mcvstd_2.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12310,28 +12351,10 @@ $\quad$until S is terminal</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-"><center>Batch Monte Carlo methods always find the estimates that minimize mean-squared error on the training set, </center><a class="anchor-link" href="#Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-">&#182;</a></h2>
+<h3 id="Batch-TD-vs-constant-$\alpha$-MC">Batch-TD vs constant-$\alpha$ MC<a class="anchor-link" href="#Batch-TD-vs-constant-$\alpha$-MC">&#182;</a></h3><center><img src="img/batch_td.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process."><center> Whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.</center><a class="anchor-link" href="#-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process.">&#182;</a></h2>
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions."><center> Batch TD(0) converges to the certainty-equivalence estimate.</center> <center> Non-Batch methods can be understood as moving roughly in these directions.</center><a class="anchor-link" href="#-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions.">&#182;</a></h3>
-</div>
-</div>
-</div></div></section><section>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12390,7 +12413,7 @@ $\quad$until S is terminal</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>100% of the times the process was in state A it traversed immediately to B. With no disconting, $V(A)=V(B)$.</li>
+<li>100% of the times the process was in state A it traversed immediately to B. With no discounting, $V(A)=V(B)$.</li>
 </ul>
 
 </div>
@@ -12447,6 +12470,33 @@ $\quad$until S is terminal</p>
 
 </div>
 </div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-"><center>Batch Monte Carlo methods always find the estimates that minimize mean-squared error on the training set, </center><a class="anchor-link" href="#Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process."><center> Whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.</center><a class="anchor-link" href="#-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process.">&#182;</a></h2>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions."><center> Batch TD(0) converges to the certainty-equivalence estimate.</center> <center> Non-Batch methods can be understood as moving roughly in these directions.</center><a class="anchor-link" href="#-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions.">&#182;</a></h3>
+</div>
+</div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12493,7 +12543,7 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This rule uses every element of the quintuple of events, $(S_t, A<em>t, R</em>{t+1}, S<em>{t+1}, A</em>{t+1}), that make up a transition from one state–action pair to the next.</p>
+<p>This rule uses every element of the quintuple of events, $(S_t, A_t, R_{t+1}, S_{t+1}, A_{t+1})$, that make up a transition from one state–action pair to the next.</p>
 <p>Hence this algorithm is named <strong>Sarsa</strong>.</p>
 
 </div>
