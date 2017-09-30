@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,26 +11854,23 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Temporal-Difference-Learning"><center>Temporal Difference Learning</center><a class="anchor-link" href="#Temporal-Difference-Learning">&#182;</a></h1><h3 id="-Reference:-Chapter-6,-Sutton-and-Barto-"><center> Reference: Chapter 6, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-6,-Sutton-and-Barto-">&#182;</a></h3>
+<h1 id="Temporal-Difference-Learning"><center>Temporal Difference Learning</center><a class="anchor-link" href="#Temporal-Difference-Learning">&#194;&#182;</a></h1><h3 id="-Reference:-Chapter-6,-Sutton-and-Barto-"><center> Reference: Chapter 6, Sutton and Barto </center><a class="anchor-link" href="#-Reference:-Chapter-6,-Sutton-and-Barto-">&#194;&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#182;</a></h1>
+<h1 id="Contents"><center>Contents</center><a class="anchor-link" href="#Contents">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11855,8 +11881,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11867,8 +11892,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11885,17 +11909,15 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Temporal-Difference"><center>Temporal Difference</center><a class="anchor-link" href="#Temporal-Difference">&#182;</a></h1>
+<h1 id="Temporal-Difference"><center>Temporal Difference</center><a class="anchor-link" href="#Temporal-Difference">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11907,17 +11929,15 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Methods">Monte Carlo Methods<a class="anchor-link" href="#Monte-Carlo-Methods">&#182;</a></h2>
+<h2 id="Monte-Carlo-Methods">Monte Carlo Methods<a class="anchor-link" href="#Monte-Carlo-Methods">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11926,19 +11946,17 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Constant-$\alpha$-MC">Constant $\alpha$ MC<a class="anchor-link" href="#Constant-$\alpha$-MC">&#182;</a></h4>$$
+<h4 id="Constant-$\alpha$-MC">Constant $\alpha$ MC<a class="anchor-link" href="#Constant-$\alpha$-MC">&#194;&#182;</a></h4>$$
 V(S_t) = V(S_t) + \alpha\big[ G_t - V(S_t) \big]
 $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11950,26 +11968,23 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#182;</a></h2><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#194;&#182;</a></h2><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DP-methods">DP methods<a class="anchor-link" href="#DP-methods">&#182;</a></h2>
+<h2 id="DP-methods">DP methods<a class="anchor-link" href="#DP-methods">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11978,37 +11993,33 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Iterative-policy-evaluation-in-DP">Iterative policy evaluation in DP<a class="anchor-link" href="#Iterative-policy-evaluation-in-DP">&#182;</a></h4>$$
+<h4 id="Iterative-policy-evaluation-in-DP">Iterative policy evaluation in DP<a class="anchor-link" href="#Iterative-policy-evaluation-in-DP">&#194;&#182;</a></h4>$$
 V (s) = \sum_{a}\pi(a|s) \sum_{s',r}{p(s',r|s,a)\big[ r+\gamma V(s') \big]}
 $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#182;</a></h2><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#194;&#182;</a></h2><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Temporal-Difference-Prediction">Temporal Difference Prediction<a class="anchor-link" href="#Temporal-Difference-Prediction">&#182;</a></h2>
+<h2 id="Temporal-Difference-Prediction">Temporal Difference Prediction<a class="anchor-link" href="#Temporal-Difference-Prediction">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12017,19 +12028,17 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="TD(0)">TD(0)<a class="anchor-link" href="#TD(0)">&#182;</a></h4>$$
+<h4 id="TD(0)">TD(0)<a class="anchor-link" href="#TD(0)">&#194;&#182;</a></h4>$$
 V(S_t) = V(S_t) + \alpha\big[ R_{t+1} +\gamma V(S_{t+1})- V(S_t) \big]
 $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12041,26 +12050,23 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#182;</a></h2><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#194;&#182;</a></h2><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#182;</a></h4><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#182;</a></h4><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#182;</a></h4><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+<h4 id="Monte-Carlo-Backup">Monte Carlo Backup<a class="anchor-link" href="#Monte-Carlo-Backup">&#194;&#182;</a></h4><center><img src="img/MCback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="DP-backup">DP backup<a class="anchor-link" href="#DP-backup">&#194;&#182;</a></h4><center><img src="img/DPback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center><h4 id="TD-Backup">TD Backup<a class="anchor-link" href="#TD-Backup">&#194;&#182;</a></h4><center><img src="img/TDback.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12068,17 +12074,15 @@ $$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$"><center>$ v_\pi (s) = E_\pi[G_t | S_t=s] = E_\pi[R_{t+1} + \gamma v_\pi(S_{t+1})| S_t = s]$</center><a class="anchor-link" href="#$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$">&#182;</a></h3>
+<h3 id="$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$"><center>$ v_\pi (s) = E_\pi[G_t | S_t=s] = E_\pi[R_{t+1} + \gamma v_\pi(S_{t+1})| S_t = s]$</center><a class="anchor-link" href="#$-v_\pi-(s)-=-E_\pi[G_t-|-S_t=s]-=-E_\pi[R_{t+1}-+-\gamma-v_\pi(S_{t+1})|-S_t-=-s]$">&#194;&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12090,17 +12094,15 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12108,8 +12110,7 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12117,12 +12118,11 @@ $$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Tabular-TD-for-estimating-$v_\pi$">Tabular TD for estimating $v_\pi$<a class="anchor-link" href="#Tabular-TD-for-estimating-$v_\pi$">&#182;</a></h3><p><strong>Input</strong>: the policy $\pi$ to be evaluated<br>
+<h3 id="Tabular-TD-for-estimating-$v_\pi$">Tabular TD for estimating $v_\pi$<a class="anchor-link" href="#Tabular-TD-for-estimating-$v_\pi$">&#194;&#182;</a></h3><p><strong>Input</strong>: the policy $\pi$ to be evaluated<br>
 <strong>Initialize</strong> $V(s)$ arbitrarily (e.g., $V(s) = 0, \forall s \in S_+$)<br>
 <strong>Repeat</strong> (for each episode):<br>
 $\quad$Initialize $S$<br>
@@ -12136,37 +12136,33 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="TD-error">TD error<a class="anchor-link" href="#TD-error">&#182;</a></h3><p>$ \delta_t = R_{t+1} + \gamma V (S_{t+1}) − V (S_t)$</p>
-<h3 id="Monte-carlo-error">Monte carlo error<a class="anchor-link" href="#Monte-carlo-error">&#182;</a></h3><p>$G_t - V(S_t) = \sum^{T-t-1}_{k=0}{\gamma^k \delta_{t+k}}$</p>
+<h3 id="TD-error">TD error<a class="anchor-link" href="#TD-error">&#194;&#182;</a></h3><p>$ \delta_t = R_{t+1} + \gamma V (S_{t+1}) − V (S_t)$</p>
+<h3 id="Monte-carlo-error">Monte carlo error<a class="anchor-link" href="#Monte-carlo-error">&#194;&#182;</a></h3><p>$G_t - V(S_t) = \sum^{T-t-1}_{k=0}{\gamma^k \delta_{t+k}}$</p>
 
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-VS-TD"><center>Monte Carlo VS TD</center><a class="anchor-link" href="#Monte-Carlo-VS-TD">&#182;</a></h2>
+<h2 id="Monte-Carlo-VS-TD"><center>Monte Carlo VS TD</center><a class="anchor-link" href="#Monte-Carlo-VS-TD">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Challenge:">Challenge:<a class="anchor-link" href="#Challenge:">&#182;</a></h2><center><img src="img/mcvstd.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Challenge:">Challenge:<a class="anchor-link" href="#Challenge:">&#194;&#182;</a></h2><center><img src="img/mcvstd.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12179,35 +12175,31 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results:">Results:<a class="anchor-link" href="#Results:">&#182;</a></h2><center><img src="img/mcvstd_2.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Results:">Results:<a class="anchor-link" href="#Results:">&#194;&#182;</a></h2><center><img src="img/mcvstd_2.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Properties-of-Temporal-Difference-Methods"><center>Properties of Temporal Difference Methods</center><a class="anchor-link" href="#Properties-of-Temporal-Difference-Methods">&#182;</a></h1>
+<h1 id="Properties-of-Temporal-Difference-Methods"><center>Properties of Temporal Difference Methods</center><a class="anchor-link" href="#Properties-of-Temporal-Difference-Methods">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Advantage-of-TD-Methods">Advantage of TD Methods<a class="anchor-link" href="#Advantage-of-TD-Methods">&#182;</a></h2>
+<h2 id="Advantage-of-TD-Methods">Advantage of TD Methods<a class="anchor-link" href="#Advantage-of-TD-Methods">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12218,8 +12210,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12230,8 +12221,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12242,8 +12232,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12252,8 +12241,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12264,8 +12252,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12276,8 +12263,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12288,8 +12274,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12300,18 +12285,16 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Batch-Update">Batch Update<a class="anchor-link" href="#Batch-Update">&#182;</a></h3><p>Suppose you have a fixed number of episodes,</p>
+<h3 id="Batch-Update">Batch Update<a class="anchor-link" href="#Batch-Update">&#194;&#182;</a></h3><p>Suppose you have a fixed number of episodes,</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12322,8 +12305,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12334,8 +12316,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12346,21 +12327,19 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Batch-TD-vs-constant-$\alpha$-MC">Batch-TD vs constant-$\alpha$ MC<a class="anchor-link" href="#Batch-TD-vs-constant-$\alpha$-MC">&#182;</a></h3><center><img src="img/batch_td.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Batch-TD-vs-constant-$\alpha$-MC">Batch-TD vs constant-$\alpha$ MC<a class="anchor-link" href="#Batch-TD-vs-constant-$\alpha$-MC">&#194;&#182;</a></h3><center><img src="img/batch_td.PNG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><p>The following episodes are observed:</p>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#194;&#182;</a></h2><p>The following episodes are observed:</p>
 <p>1) A, 0, B, 0 <br>
 2) B, 1<br>
 3) B, 1 <br>
@@ -12373,8 +12352,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12383,8 +12361,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12395,8 +12372,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12407,8 +12383,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12419,8 +12394,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12431,8 +12405,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12441,8 +12414,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12451,8 +12423,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12461,8 +12432,7 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12471,54 +12441,48 @@ $\quad$until S is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-"><center>Batch Monte Carlo methods always find the estimates that minimize mean-squared error on the training set, </center><a class="anchor-link" href="#Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-">&#182;</a></h2>
+<h2 id="Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-"><center>Batch Monte Carlo methods always find the estimates that minimize mean-squared error on the training set, </center><a class="anchor-link" href="#Batch-Monte-Carlo-methods-always-find-the-estimates-that-minimize-mean-squared-error-on-the-training-set,-">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process."><center> Whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.</center><a class="anchor-link" href="#-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process.">&#182;</a></h2>
+<h2 id="-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process."><center> Whereas batch TD(0) always finds the estimates that would be exactly correct for the maximum-likelihood model of the Markov process.</center><a class="anchor-link" href="#-Whereas-batch-TD(0)-always-finds-the-estimates-that-would-be-exactly-correct-for-the-maximum-likelihood-model-of-the-Markov-process.">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions."><center> Batch TD(0) converges to the certainty-equivalence estimate.</center> <center> Non-Batch methods can be understood as moving roughly in these directions.</center><a class="anchor-link" href="#-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions.">&#182;</a></h3>
+<h3 id="-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions."><center> Batch TD(0) converges to the certainty-equivalence estimate.</center> <center> Non-Batch methods can be understood as moving roughly in these directions.</center><a class="anchor-link" href="#-Batch-TD(0)-converges-to-the-certainty-equivalence-estimate.--Non-Batch-methods-can-be-understood-as-moving-roughly-in-these-directions.">&#194;&#182;</a></h3>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="One-step,-tabular,-modelfree-TD-methods"><center>One-step, tabular, modelfree TD methods</center><a class="anchor-link" href="#One-step,-tabular,-modelfree-TD-methods">&#182;</a></h1>
+<h1 id="One-step,-tabular,-modelfree-TD-methods"><center>One-step, tabular, modelfree TD methods</center><a class="anchor-link" href="#One-step,-tabular,-modelfree-TD-methods">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sarsa:-On-Policy-TD-Control"><center>Sarsa: On-Policy TD Control</center><a class="anchor-link" href="#Sarsa:-On-Policy-TD-Control">&#182;</a></h1><p>First, we estimate $q_\pi (s,a)$ instead of $v(s)$. The TD(0) equation for that would be</p>
+<h1 id="Sarsa:-On-Policy-TD-Control"><center>Sarsa: On-Policy TD Control</center><a class="anchor-link" href="#Sarsa:-On-Policy-TD-Control">&#194;&#182;</a></h1><p>First, we estimate $q_\pi (s,a)$ instead of $v(s)$. The TD(0) equation for that would be</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12528,8 +12492,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12538,8 +12501,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12549,12 +12511,11 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sarsa:-An-on-policy-TD-control-algorithm">Sarsa: An on-policy TD control algorithm<a class="anchor-link" href="#Sarsa:-An-on-policy-TD-control-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
+<h2 id="Sarsa:-An-on-policy-TD-control-algorithm">Sarsa: An on-policy TD control algorithm<a class="anchor-link" href="#Sarsa:-An-on-policy-TD-control-algorithm">&#194;&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
 <strong>Repeat</strong> (for each episode):<br>
 $\quad$Initialize $S$<br>
 $\quad$Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$-greedy)<br>
@@ -12568,18 +12529,16 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Q-learning:-Off-Policy-TD-Control"><center>Q-learning: Off-Policy TD Control</center><a class="anchor-link" href="#Q-learning:-Off-Policy-TD-Control">&#182;</a></h1><p>As in value-iteration, we take the  $Q(S', A')$, corresponding to the maximum from all possible action, instead of the actual action A' taken.</p>
+<h1 id="Q-learning:-Off-Policy-TD-Control"><center>Q-learning: Off-Policy TD Control</center><a class="anchor-link" href="#Q-learning:-Off-Policy-TD-Control">&#194;&#182;</a></h1><p>As in value-iteration, we take the  $Q(S', A')$, corresponding to the maximum from all possible action, instead of the actual action A' taken.</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12589,8 +12548,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12599,21 +12557,19 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#182;</a></h4><center><img src="img/backup_q.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#194;&#182;</a></h4><center><img src="img/backup_q.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q-learning:-An-off-policy-TD-control-algorithm">Q-learning: An off-policy TD control algorithm<a class="anchor-link" href="#Q-learning:-An-off-policy-TD-control-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
+<h2 id="Q-learning:-An-off-policy-TD-control-algorithm">Q-learning: An off-policy TD control algorithm<a class="anchor-link" href="#Q-learning:-An-off-policy-TD-control-algorithm">&#194;&#182;</a></h2><p><strong>Initialize</strong> $Q(s, a), \forall s \in S, a \in A(s)$, arbitrarily, and $Q($terminal-state$, ·) = 0$<br>
 <strong>Repeat</strong> (for each episode):<br>
 $\quad$Initialize $S$<br>
 $\quad$<strong>Repeat</strong> (for each step of episode):<br>
@@ -12626,17 +12582,15 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-:-Cliff-Walking">Example : Cliff Walking<a class="anchor-link" href="#Example-:-Cliff-Walking">&#182;</a></h2><center><img src="img/cliff.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Example-:-Cliff-Walking">Example : Cliff Walking<a class="anchor-link" href="#Example-:-Cliff-Walking">&#194;&#182;</a></h2><center><img src="img/cliff.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12647,8 +12601,7 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12659,8 +12612,7 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12671,8 +12623,7 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12683,17 +12634,15 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q-learning-Vs-Sarsa">Q-learning Vs Sarsa<a class="anchor-link" href="#Q-learning-Vs-Sarsa">&#182;</a></h2><center><img src="img/qvssarsa.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Q-learning-Vs-Sarsa">Q-learning Vs Sarsa<a class="anchor-link" href="#Q-learning-Vs-Sarsa">&#194;&#182;</a></h2><center><img src="img/qvssarsa.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12708,18 +12657,16 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Expected-Sarsa"><center>Expected Sarsa</center><a class="anchor-link" href="#Expected-Sarsa">&#182;</a></h1><p>Learning algorithm that is just like Q-learning except that instead of the maximum over next state–action pairs it uses the expected value, taking into account how likely each action is under the current policy.</p>
+<h1 id="Expected-Sarsa"><center>Expected Sarsa</center><a class="anchor-link" href="#Expected-Sarsa">&#194;&#182;</a></h1><p>Learning algorithm that is just like Q-learning except that instead of the maximum over next state–action pairs it uses the expected value, taking into account how likely each action is under the current policy.</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12731,26 +12678,23 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#182;</a></h4><center><img src="img/ex_sarsa.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
+<h4 id="Back-up-diagram">Back up diagram<a class="anchor-link" href="#Back-up-diagram">&#194;&#182;</a></h4><center><img src="img/ex_sarsa.JPG" alt="Multi-armed Bandit" style="width: 200px;"/></center>
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#182;</a></h2>
+<h2 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12761,8 +12705,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12773,8 +12716,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12785,8 +12727,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12797,21 +12738,19 @@ $$
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Double-Q-Learning"><center>Double Q Learning</center><a class="anchor-link" href="#Double-Q-Learning">&#182;</a></h1>
+<h1 id="Double-Q-Learning"><center>Double Q Learning</center><a class="anchor-link" href="#Double-Q-Learning">&#194;&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Maximization-Bias">Maximization Bias<a class="anchor-link" href="#Maximization-Bias">&#182;</a></h2><ul>
+<h2 id="Maximization-Bias">Maximization Bias<a class="anchor-link" href="#Maximization-Bias">&#194;&#182;</a></h2><ul>
 <li>All the control algorithms that we have discussed so far involve maximization in the construction of their target policies.</li>
 <li>When maximum over estimated values is used implicitly as an estimate of the maximum value, it can lead to significant positive bias.</li>
 </ul>
@@ -12819,17 +12758,15 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2><center><img src="img/maxbias.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Example">Example<a class="anchor-link" href="#Example">&#194;&#182;</a></h2><center><img src="img/maxbias.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12841,8 +12778,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12854,8 +12790,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12867,8 +12802,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12879,17 +12813,15 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-avoid-maximing-bias?">How to avoid maximing bias?<a class="anchor-link" href="#How-to-avoid-maximing-bias?">&#182;</a></h2>
+<h2 id="How-to-avoid-maximing-bias?">How to avoid maximing bias?<a class="anchor-link" href="#How-to-avoid-maximing-bias?">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12900,8 +12832,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12912,8 +12843,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12924,8 +12854,7 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12936,8 +12865,7 @@ $$
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12948,8 +12876,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12960,8 +12887,7 @@ $$
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12972,12 +12898,11 @@ $$
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#182;</a></h4><ul>
+<h4 id="Important-Points">Important Points<a class="anchor-link" href="#Important-Points">&#194;&#182;</a></h4><ul>
 <li>Although we learn two estimates, only one estimate is updated on each play;</li>
 <li>Doubled learning doubles the memory requirements, but is no increase at all in the amount of computation per step.</li>
 </ul>
@@ -12985,12 +12910,11 @@ $$
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Double-Q-learning-algorithm">Double Q-learning algorithm<a class="anchor-link" href="#Double-Q-learning-algorithm">&#182;</a></h2><p><strong>Initialize</strong> $Q_1(s, a),Q_2(s, a), \forall s \in S, a \in A(s)$, arbitrarily, 
+<h2 id="Double-Q-learning-algorithm">Double Q-learning algorithm<a class="anchor-link" href="#Double-Q-learning-algorithm">&#194;&#182;</a></h2><p><strong>Initialize</strong> $Q_1(s, a),Q_2(s, a), \forall s \in S, a \in A(s)$, arbitrarily, 
 <strong>Initialize</strong> $Q_1($terminal-state$, ·) = Q_2($terminal-state$, ·) = 0$<br>
 <strong>Repeat</strong> (for each episode):<br>
 $\quad$Initialize $S$<br>
@@ -13007,12 +12931,11 @@ $\quad$ until $S$ is terminal</p>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Double-Q-learning-vs-Q-Learning">Double Q-learning vs Q-Learning<a class="anchor-link" href="#Double-Q-learning-vs-Q-Learning">&#182;</a></h2><center><img src="img/doubleq.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
+<h2 id="Double-Q-learning-vs-Q-Learning">Double Q-learning vs Q-Learning<a class="anchor-link" href="#Double-Q-learning-vs-Q-Learning">&#194;&#182;</a></h2><center><img src="img/doubleq.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
 </div>
 </div>
 </div></section></section>
