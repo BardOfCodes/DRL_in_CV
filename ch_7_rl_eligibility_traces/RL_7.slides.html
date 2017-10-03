@@ -11858,10 +11858,59 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Bootstrapping-and-Sampling"><center>Bootstrapping and Sampling</center><a class="anchor-link" href="#Bootstrapping-and-Sampling">&#194;&#182;</a></h1><h2 id="TD($\lambda$)-and-Eligibility-Traces"><center>TD($\lambda$) and Eligibility Traces</center><a class="anchor-link" href="#TD($\lambda$)-and-Eligibility-Traces">&#194;&#182;</a></h2><h3 id="-Reference:-Chapter-7,-Sutton-and-Barto"><center> Reference: Chapter 7, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-7,-Sutton-and-Barto">&#194;&#182;</a></h3>
+<h1 id="Unifying-MC-Methods-and-TD-Methods"><center>Unifying MC Methods and TD Methods</center><a class="anchor-link" href="#Unifying-MC-Methods-and-TD-Methods">&#194;&#182;</a></h1><h2 id="Bootstrapping,-TD($\lambda$)-and-Eligibility-Traces"><center>Bootstrapping, TD($\lambda$) and Eligibility Traces</center><a class="anchor-link" href="#Bootstrapping,-TD($\lambda$)-and-Eligibility-Traces">&#194;&#182;</a></h2><h3 id="-Reference:-Chapter-7-and-Chapter-12,-Sutton-and-Barto"><center> Reference: Chapter 7 and Chapter 12, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-7-and-Chapter-12,-Sutton-and-Barto">&#194;&#182;</a></h3>
 </div>
 </div>
 </div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Bootstrapping</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>TD ($\lambda$)</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Eligibility Traces</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Bootstrapping-"><center> Bootstrapping </center><a class="anchor-link" href="#-Bootstrapping-">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11874,7 +11923,18 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unified-view-of-Reinforcement-Learning">Unified view of Reinforcement Learning<a class="anchor-link" href="#Unified-view-of-Reinforcement-Learning">&#194;&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Why-do-Bootstrapping?">Why do Bootstrapping?<a class="anchor-link" href="#Why-do-Bootstrapping?">&#194;&#182;</a></h2><ul>
+<li>Free from tyranny of the time step</li>
+<li>Sometimes updates are required at every step of transition (one-step TD)<ul>
+<li>Take into account every possible transition/ anything that has changed</li>
+</ul>
+</li>
+<li>Sometimes, it makes sense to only update every few stansitions (multi-step TD)<ul>
+<li>Take into account significant/considerable changes</li>
+</ul>
+</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -11891,6 +11951,54 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="n-Step-Return">n-Step Return<a class="anchor-link" href="#n-Step-Return">&#194;&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="n-Step-Prediction">n-Step Prediction<a class="anchor-link" href="#n-Step-Prediction">&#194;&#182;</a></h2><center><img src="img/prediction.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="n-Step-SARSA-(On-policy-Control)">n-Step SARSA (On-policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-policy-Control)">&#194;&#182;</a></h2><center><img src="img/nStepOnline.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="n-Step-Off-Policy-Control-(with-Importance-Sampling)">n-Step Off-Policy Control (with Importance Sampling)<a class="anchor-link" href="#n-Step-Off-Policy-Control-(with-Importance-Sampling)">&#194;&#182;</a></h2><center><img src="img/importancesampling.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">Off-Policy Control (w/o Importance Sampling =&gt; Tree BackUp Algorithm)<a class="anchor-link" href="#Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">&#194;&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Unified-view-of-Reinforcement-Learning">Unified view of Reinforcement Learning<a class="anchor-link" href="#Unified-view-of-Reinforcement-Learning">&#194;&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-TD($lambda$)-"><center> TD($lambda$) </center><a class="anchor-link" href="#-TD($lambda$)-">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -11931,6 +12039,14 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Bckward-view-TD(&#955;)">Bckward-view TD(&#955;)<a class="anchor-link" href="#Bckward-view-TD(&#955;)">&#194;&#182;</a></h2><center><img src="img/9.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Eligibility-Traces-"><center> Eligibility Traces </center><a class="anchor-link" href="#-Eligibility-Traces-">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
