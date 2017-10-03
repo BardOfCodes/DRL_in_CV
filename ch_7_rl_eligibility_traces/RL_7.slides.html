@@ -11966,7 +11966,12 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-SARSA-(On-policy-Control)">n-Step SARSA (On-policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-policy-Control)">&#194;&#182;</a></h2><center><img src="img/nStepOnline.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="n-Step-SARSA-(On-Policy-Control)">n-Step SARSA (On-Policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-Policy-Control)">&#194;&#182;</a></h2><ul>
+<li>simply switch states for actions (state–action pairs) and then use an $\epsilon$-greedy policy.</li>
+<li>The n-step returns in terms of estimated action values:<center><img src="img/return.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
+<li>Update made to a particular value of action-pair is as follows:<center><img src="img/update.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -11974,7 +11979,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-Off-Policy-Control-(with-Importance-Sampling)">n-Step Off-Policy Control (with Importance Sampling)<a class="anchor-link" href="#n-Step-Off-Policy-Control-(with-Importance-Sampling)">&#194;&#182;</a></h2><center><img src="img/importancesampling.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="n-Step-SARSA-(On-policy-Control)">n-Step SARSA (On-policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-policy-Control)">&#194;&#182;</a></h2><center><img src="img/sc1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -11982,7 +11987,57 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">Off-Policy Control (w/o Importance Sampling =&gt; Tree BackUp Algorithm)<a class="anchor-link" href="#Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">&#194;&#182;</a></h2>
+<h1 id="n-Step-SARSA-Example">n-Step SARSA Example<a class="anchor-link" href="#n-Step-SARSA-Example">&#194;&#182;</a></h1><center><img src="img/eg1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="n-Step-Off-Policy-Control-(with-Importance-Sampling)">n-Step Off-Policy Control (with Importance Sampling)<a class="anchor-link" href="#n-Step-Off-Policy-Control-(with-Importance-Sampling)">&#194;&#182;</a></h2><ul>
+<li>learning the value function for one policy, π, while following another policy, μ</li>
+<li>Often, π is the greedy policy for the current action-value-function estimate, and μ is a more exploratory policy, perhaps ε-greedy</li>
+<li>we must take into account the difference between the two policies, using their relative probability of taking the actions that were taken</li>
+<li>To measure this difference, we use the importance sampling ratio. </li>
+<li>Only difference, that instead of measuring it for the entire episode, we measure it for n-steps. </li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The importance sampling ratio looks liks:<center><img src="img/return1.png" alt="RewardHypothesis" style="width: 300px;"/></center></li>
+<li>The update Equatin looks like this:<center><img src="img/update1.png" alt="RewardHypothesis" style="width: 700px;"/></center></li>
+</ul>
+<center><img src="img/sc1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">Off-Policy Control (w/o Importance Sampling =&gt; Tree BackUp Algorithm)<a class="anchor-link" href="#Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">&#194;&#182;</a></h2><ul>
+<li>This backup is an alternating mix of sample transitions—from each action to the su bsequent state—and full backups—from each state we consider all the possible actions, their probability of occuring under π, and their action values.<center><img src="img/bp.png" alt="RewardHypothesis" style="width: 100px;"/></center></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Returns and updates are calculated as follows:<center><img src="img/eq1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<center><img src="img/eq2.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -11998,7 +12053,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-TD($lambda$)-"><center> TD($lambda$) </center><a class="anchor-link" href="#-TD($lambda$)-">&#194;&#182;</a></h2>
+<h2 id="-TD($\lambda$)-"><center> TD($\lambda$) </center><a class="anchor-link" href="#-TD($\lambda$)-">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
