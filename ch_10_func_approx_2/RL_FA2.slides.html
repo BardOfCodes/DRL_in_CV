@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>RL_7 slides</title>
+<title>RL_FA2 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11830,7 +11830,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Unifying-MC-Methods-and-TD-Methods"><center>Unifying MC Methods and TD Methods</center><a class="anchor-link" href="#Unifying-MC-Methods-and-TD-Methods">&#182;</a></h1><h2 id="Bootstrapping,-TD($\lambda$)-and-Eligibility-Traces"><center>Bootstrapping, TD($\lambda$) and Eligibility Traces</center><a class="anchor-link" href="#Bootstrapping,-TD($\lambda$)-and-Eligibility-Traces">&#182;</a></h2><h3 id="-Reference:-Chapter-7-and-Chapter-12,-Sutton-and-Barto"><center> Reference: Chapter 7 and Chapter 12, Sutton and Barto</center><a class="anchor-link" href="#-Reference:-Chapter-7-and-Chapter-12,-Sutton-and-Barto">&#182;</a></h3>
+<h1 id="Value-Function-Approximation"><center>Value Function Approximation</center><a class="anchor-link" href="#Value-Function-Approximation">&#182;</a></h1><h2 id="Part-II"><center>Part II</center><a class="anchor-link" href="#Part-II">&#182;</a></h2><h2 id="Reference:-Sutton-and-Barto;Chapter-9-11"><center>Reference: Sutton and Barto;Chapter 9-11</center><a class="anchor-link" href="#Reference:-Sutton-and-Barto;Chapter-9-11">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11839,203 +11839,23 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Table-of-Contents"><center>Table of Contents</center><a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><p><br></p>
 <ul>
-<li>Bootstrapping</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>TD ($\lambda$)</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Eligibility Traces</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Bootstrapping-"><center> Bootstrapping </center><a class="anchor-link" href="#-Bootstrapping-">&#182;</a></h2>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bootstrapping-and-Sampling">Bootstrapping and Sampling<a class="anchor-link" href="#Bootstrapping-and-Sampling">&#182;</a></h2><center><img src="img/1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-do-Bootstrapping?">Why do Bootstrapping?<a class="anchor-link" href="#Why-do-Bootstrapping?">&#182;</a></h2><ul>
-<li>Free from tyranny of the time step</li>
-<li>Sometimes updates are required at every step of transition (one-step TD)<ul>
-<li>Take into account every possible transition/ anything that has changed</li>
-</ul>
+<li><p><strong>Batch Reinforcement Methods</strong><br><br></p>
 </li>
-<li>Sometimes, it makes sense to only update every few stansitions (multi-step TD)<ul>
-<li>Take into account significant/considerable changes</li>
-</ul>
+<li><p><strong>Least Squares Policy Iteration(LSPI)</strong><br><br></p>
 </li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-Prediction">n-Step Prediction<a class="anchor-link" href="#n-Step-Prediction">&#182;</a></h2><center><img src="img/3.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-Return">n-Step Return<a class="anchor-link" href="#n-Step-Return">&#182;</a></h2><center><img src="img/4.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-Prediction">n-Step Prediction<a class="anchor-link" href="#n-Step-Prediction">&#182;</a></h2><center><img src="img/prediction.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-SARSA-(On-Policy-Control)">n-Step SARSA (On-Policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-Policy-Control)">&#182;</a></h2><ul>
-<li>simply switch states for actions (state–action pairs) and then use an $\epsilon$-greedy policy.</li>
-<li>The n-step returns in terms of estimated action values:<center><img src="img/return.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
-<li>Update made to a particular value of action-pair is as follows:<center><img src="img/update.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-SARSA-(On-policy-Control)">n-Step SARSA (On-policy Control)<a class="anchor-link" href="#n-Step-SARSA-(On-policy-Control)">&#182;</a></h2><center><img src="img/sc1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="n-Step-SARSA-Example">n-Step SARSA Example<a class="anchor-link" href="#n-Step-SARSA-Example">&#182;</a></h1><center><img src="img/eg1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="n-Step-Off-Policy-Control-(with-Importance-Sampling)">n-Step Off-Policy Control (with Importance Sampling)<a class="anchor-link" href="#n-Step-Off-Policy-Control-(with-Importance-Sampling)">&#182;</a></h2><ul>
-<li>learning the value function for one policy, π, while following another policy, μ</li>
-<li>Often, π is the greedy policy for the current action-value-function estimate, and μ is a more exploratory policy, perhaps ε-greedy</li>
-<li>we must take into account the difference between the two policies, using their relative probability of taking the actions that were taken</li>
-<li>To measure this difference, we use the importance sampling ratio. </li>
-<li>Only difference, that instead of measuring it for the entire episode, we measure it for n-steps. </li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>The importance sampling ratio looks liks:<center><img src="img/return1.png" alt="RewardHypothesis" style="width: 300px;"/></center></li>
-<li>The update Equatin looks like this:<center><img src="img/update1.png" alt="RewardHypothesis" style="width: 700px;"/></center></li>
-</ul>
-<center><img src="img/sc1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">Off-Policy Control (w/o Importance Sampling =&gt; Tree BackUp Algorithm)<a class="anchor-link" href="#Off-Policy-Control-(w/o-Importance-Sampling-=&gt;-Tree-BackUp-Algorithm)">&#182;</a></h2><ul>
-<li>This backup is an alternating mix of sample transitions—from each action to the su bsequent state—and full backups—from each state we consider all the possible actions, their probability of occuring under π, and their action values.<center><img src="img/bp.png" alt="RewardHypothesis" style="width: 100px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Returns and updates are calculated as follows:<center><img src="img/eq1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-<center><img src="img/eq2.png" alt="RewardHypothesis" style="width: 1000px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unified-view-of-Reinforcement-Learning">Unified view of Reinforcement Learning<a class="anchor-link" href="#Unified-view-of-Reinforcement-Learning">&#182;</a></h2><center><img src="img/2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h1 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12044,7 +11864,14 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-TD($\lambda$)-"><center> TD($\lambda$) </center><a class="anchor-link" href="#-TD($\lambda$)-">&#182;</a></h2>
+<h2 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#182;</a></h2><p><br></p>
+<ul>
+<li>Gradient descent is simple and appealing<br><br></li>
+<li>But it is not sample efficient<br><br></li>
+<li>Batch methods seek to find the best fitting value function<br><br></li>
+<li>Given the agent’s experience (“training data”)<br><br></li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -12053,7 +11880,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Averaging-n-Step-Returns">Averaging n-Step Returns<a class="anchor-link" href="#Averaging-n-Step-Returns">&#182;</a></h2><center><img src="img/5.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Prediction"><center>Least Squares Prediction</center><a class="anchor-link" href="#Least-Squares-Prediction">&#182;</a></h2><center><img src="img/fa2_slides1.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12062,7 +11889,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="$\lambda$-Returns">$\lambda$ Returns<a class="anchor-link" href="#$\lambda$-Returns">&#182;</a></h2><center><img src="img/6.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Stochastic-Gradient-Descent-with-Experience-Replay"><center>Stochastic Gradient Descent with Experience Replay</center><a class="anchor-link" href="#Stochastic-Gradient-Descent-with-Experience-Replay">&#182;</a></h2><center><img src="img/fa2_slides3.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12071,25 +11898,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD(&#955;)-Weighting-Function">TD(&#955;) Weighting Function<a class="anchor-link" href="#TD(&#955;)-Weighting-Function">&#182;</a></h2><center><img src="img/7.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Forward-view-TD(&#955;)">Forward-view TD(&#955;)<a class="anchor-link" href="#Forward-view-TD(&#955;)">&#182;</a></h2><center><img src="img/8.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bckward-view-TD(&#955;)">Bckward-view TD(&#955;)<a class="anchor-link" href="#Bckward-view-TD(&#955;)">&#182;</a></h2><center><img src="img/9.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Experience-Replay-in-Deep-Q-Networks-(DQN)"><center>Experience Replay in Deep Q-Networks (DQN)</center><a class="anchor-link" href="#Experience-Replay-in-Deep-Q-Networks-(DQN)">&#182;</a></h2><center><img src="img/fa2_slides4.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12098,7 +11907,32 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Eligibility-Traces-"><center> Eligibility Traces </center><a class="anchor-link" href="#-Eligibility-Traces-">&#182;</a></h2>
+<h2 id="CV-Example">CV Example<a class="anchor-link" href="#CV-Example">&#182;</a></h2>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h1>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h2><p><br><br></p>
+<ul>
+<li>Experience replay finds least squares solution<br><br></li>
+<li>But it may take many iterations<br><br></li>
+<li>Using linear value function approximation $\hat{v}(s, w) = x(s)^Tw$<br><br></li>
+<li>We can solve the least squares solution directly</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -12107,34 +11941,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Eligibility-Traces">Eligibility Traces<a class="anchor-link" href="#Eligibility-Traces">&#182;</a></h2>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/10_1.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<center><img src="img/10_2.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Backward-View-TD(&#955;)">Backward View TD(&#955;)<a class="anchor-link" href="#Backward-View-TD(&#955;)">&#182;</a></h2><center><img src="img/11.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h2><center><img src="img/fa2_slides5.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12143,7 +11950,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD(&#955;)-and-TD(0)">TD(&#955;) and TD(0)<a class="anchor-link" href="#TD(&#955;)-and-TD(0)">&#182;</a></h2><center><img src="img/12.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#182;</a></h2><center><img src="img/fa2_slides6.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12152,7 +11959,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD(&#955;)-and-MC">TD(&#955;) and MC<a class="anchor-link" href="#TD(&#955;)-and-MC">&#182;</a></h2><center><img src="img/13.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#182;</a></h2><center><img src="img/fa2_slides7.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12161,7 +11968,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MC-and-TD(1)">MC and TD(1)<a class="anchor-link" href="#MC-and-TD(1)">&#182;</a></h2><center><img src="img/14.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Policy-Iteration(LSPI)"><center>Least Squares Policy Iteration(LSPI)</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)">&#182;</a></h2><center><img src="img/fa2_slides8.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12170,7 +11977,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Telescoping-in-TD(1)">Telescoping in TD(1)<a class="anchor-link" href="#Telescoping-in-TD(1)">&#182;</a></h2><center><img src="img/15.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Action-Value-Function-Approximation"><center>Least Squares Action-Value Function Approximation</center><a class="anchor-link" href="#Least-Squares-Action-Value-Function-Approximation">&#182;</a></h2><center><img src="img/fa2_slides9.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12179,7 +11986,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD(&#955;)-and-TD(1)">TD(&#955;) and TD(1)<a class="anchor-link" href="#TD(&#955;)-and-TD(1)">&#182;</a></h2><center><img src="img/16.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Control"><center>Least Squares Control</center><a class="anchor-link" href="#Least-Squares-Control">&#182;</a></h2><center><img src="img/fa2_slides10.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12188,7 +11995,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Telescoping-in-TD(&#955;)">Telescoping in TD(&#955;)<a class="anchor-link" href="#Telescoping-in-TD(&#955;)">&#182;</a></h2><center><img src="img/17.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Q-Learning"><center>Least Squares Q-Learning</center><a class="anchor-link" href="#Least-Squares-Q-Learning">&#182;</a></h2><center><img src="img/fa2_slides11.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12197,34 +12004,16 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Forwards-and-Backwards-TD(&#955;)">Forwards and Backwards TD(&#955;)<a class="anchor-link" href="#Forwards-and-Backwards-TD(&#955;)">&#182;</a></h2><center><img src="img/18.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="Least-Squares-Policy-Iteration(LSPI)-Algorithm"><center>Least Squares Policy Iteration(LSPI) Algorithm</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)-Algorithm">&#182;</a></h2><center><img src="img/fa2_slides12.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Offline-Equivalence-of-Forward-and-Backward-TD">Offline Equivalence of Forward and Backward TD<a class="anchor-link" href="#Offline-Equivalence-of-Forward-and-Backward-TD">&#182;</a></h2><center><img src="img/19.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Online-Equivalence-of-Forward-and-Backward-TD">Online Equivalence of Forward and Backward TD<a class="anchor-link" href="#Online-Equivalence-of-Forward-and-Backward-TD">&#182;</a></h2><center><img src="img/20.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary-of-Forward-and-Backward-TD(&#955;)">Summary of Forward and Backward TD(&#955;)<a class="anchor-link" href="#Summary-of-Forward-and-Backward-TD(&#955;)">&#182;</a></h2><center><img src="img/21.png" alt="RewardHypothesis" style="width: 1000px;"/></center>
+<h2 id="CV-Example">CV Example<a class="anchor-link" href="#CV-Example">&#182;</a></h2>
 </div>
 </div>
 </div></section></section>
