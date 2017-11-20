@@ -5,28 +5,22 @@
 
 ## Contents:
 
-1) **Recap:What is dynamic Programming?**
+1) **Recap:What is Dynamic Programming?**
 
 2) **Planning by DP in MDP**
+	* Iterative Policy Evaluation
+	* Policy Improvement
 
-3) **Iterative Policy Evaluation**
+3) **Example: Gridworld (Policy Evaluation and Policy Improvment)**
 
-4) **Policy Improvement**
-
-5) **Example: Gridworld (Policy Evaluation and Policy Improvement)**
-
-6) **Policy Iteration**
-
-7) **Value Iteration**
-
-8) **Synchronous Dynamic Programming Algorithms**
-
-9) **Asynchronous Dynamic Programming**
-
-10 **Full-Width Backups/Sample Backups**
-
-## Summary
-* We learnt how planning can be done given the model using-
+4) **Control**
 	* Policy Iteration
 	* Value Iteration
-* We set the context for next chapters: MCMC and TD-Learning because of all the full-width backup and sample backups. 
+
+5) **Synchronous/Asynchronous Dynamic Programming Algorithms**
+
+6) **Full-Width Backups/Sample Backups**
+	* In-place Dynamic Programming
+	* Prioritised Sweeping
+	* Real-Time Dynamic Programming
+

@@ -5,33 +5,34 @@
 
 ## Contents:
 
-1) **Monte Carlo Prediction**
+1) **Introduction**
+	* Why move to MCMC from DP?
 
-2) **Monte Carlo Estimation of Action Values**
+2) **Monte Carlo Prediction (On-Policy)**
+	* Problem Definition
+	* First-Visit Monte Carlo Policy Evaluation
+	* Every-Visit Monte Carlo Evaluation
+		* Non-Stationary Evaluation
+		* Some Important Facts
 
-3) **Monte Carlo Control**
+3) **Monte Carlo Estimation of Action Values**
+	* Why compute stat-action q(s,a) values, instead of v(s)?
 
-4) **Monte Carlo Control without Exploring Starts**
+4) **Monte Carlo Control (On-Policy)**
+	* Building up on Generalised Policy Iteration
+	* Issues with the method
+		* Assuming Infinite Number of Episodes
+		* Problem of "maintaining exploration"
+	* Dealing with the Issues
 
-5) **Off-policy Prediction via Importance Sampling**
+5) **On-Policy vs Off-Policy Methods**
 
-6) **Incremental Implementation**
+6) **Off-Policy MC Predction**
+	* Problem Definition
+	* Importance Sampling
+
+7) **Off-Policy MC Control**
 
 7) **Off-Policy Monte Carlo Control**
 
 8) **Return-Specific Importance Sampling**
-
-
-
-## Summary
-
-* Monte Carlo Approach
-
-* On-Policy Prediction
-
-* On-Policy Control (w/o Assumption: Exploring Starts)
-
-* Off-Policy Prediction
-
-* Off-Policy Control
-
