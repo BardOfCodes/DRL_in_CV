@@ -1,17 +1,15 @@
-# <center>Unifying MC and TD Methods</center>
+# <center>Planning and Learning with Tabular Methods</center>
 
-#### <center> Reference: Chapter 7 and Chapter 12, Sutton and Barto</center>
+#### <center> Reference: Chapter 8, Sutton and Barto</center>
 
 ## Contents:
 
-1) **Bootstrapping**
-	* Why do Bootstrapping?
-	* n-Step SARSA (On-Policy Control)
-	* n-Step Off-Policy Control (with Importance Sampling)
-	* N-Step Off-Policy Control (w/o Importance Sampling => Tree BackUp Algorithm)
+1) **Introduction**
+	
+2) **Model Based RL**
 
-2) **TD($\lambda$)**
-	* Forward View
-	* Backward View
+3) **Dyna: Integrating Planning, Acting and Learning**
 
-3) **Eligibility Traces**
+4) **Prioritizing Sweeps**
+
+5) **Planning as a part of Action Selection (Monte Carlo Tree Search)**

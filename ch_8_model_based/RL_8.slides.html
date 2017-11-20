@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>RL_FA1 slides</title>
+<title>RL_8 slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11858,7 +11858,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Value-Function-Approximation"><center>Value Function Approximation</center><a class="anchor-link" href="#Value-Function-Approximation">&#194;&#182;</a></h1><h2 id="Part-I"><center>Part I</center><a class="anchor-link" href="#Part-I">&#194;&#182;</a></h2><h2 id="Reference:-Sutton-and-Barto;Chapter-9-11"><center>Reference: Sutton and Barto;Chapter 9-11</center><a class="anchor-link" href="#Reference:-Sutton-and-Barto;Chapter-9-11">&#194;&#182;</a></h2>
+<h1 id="Planning-and-learning-with-tabular-methods"><center>Planning and learning with tabular methods</center><a class="anchor-link" href="#Planning-and-learning-with-tabular-methods">&#194;&#182;</a></h1><h4 id="Reference:-Sutton-and-Barto-Chapter-8"><center>Reference: Sutton and Barto Chapter 8</center><a class="anchor-link" href="#Reference:-Sutton-and-Barto-Chapter-8">&#194;&#182;</a></h4>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11866,21 +11866,55 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents"><center>Table of Contents</center><a class="anchor-link" href="#Table-of-Contents">&#194;&#182;</a></h2><p><br></p>
-<ul>
-<li><p><strong>Introduction</strong><br><br></p>
-</li>
-<li><p><strong>Iterative Policy Evaluation Methods</strong><br><br></p>
-</li>
-<li><p><strong>Iterative Control Methods</strong><br><br></p>
-</li>
-<li><p><strong>Average Reward Setting</strong><br><br></p>
-</li>
-</ul>
+<h1 id="Contents">Contents<a class="anchor-link" href="#Contents">&#194;&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1) Introduction</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2) Model Based RL</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>3) Dyna: Integrating Planning, Acting, and Learning</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>4) Prioritizing Sweeps</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>5) Planning as a part of action Selection(MCTS)</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11888,103 +11922,166 @@ a.anchor-link {
 <h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1>
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Model-Free RL<ul>
+<li>No model</li>
+<li>Learn value function (and/or policy) from experience</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Model-Based RL<ul>
+<li>Learn a model from experience</li>
+<li>Plan value function (and/or policy) from mode</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this Chapter we will learn how to <strong>learn</strong> a model directly from the environment and use <strong>planning</strong> to construct a value function/policy.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-is-a-model?">What is a model?<a class="anchor-link" href="#What-is-a-model?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A model of the environment we mean anything that an agent can use to predict how the environment will respond to its actions.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some models produce a description of all possibilities and their probabilities; these we call <strong>distribution</strong> models.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Other models produce just one of the possibilities, sampled according to the probabilities; these we call <strong>sample</strong> models.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-is-planning?">What is planning?<a class="anchor-link" href="#What-is-planning?">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We use the term Planning to refer to any computational process that takes a model as input and produces or improves a policy for interacting with the modeled environment.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>state-space planning</strong>- Planning is viewed primarily as a search through the state space for an optimal policy or path to a goal.</p>
+<p><strong>plan-space planning</strong>-  Planning is instead viewed as a search through the space of plans.Plan-space planning includes evolutionary methods and “partial-order planning".</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In state space planning, two fundamental ideas:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1) All state-space planning methods involve computing value functions as a key intermediate step toward improving the policy, and</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2) They compute their value functions by backup operations applied to simulated experience.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/sslearning.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For eg: Dynamic Programming.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Difference-between-Planning-and-Learning:">Difference between Planning and Learning:<a class="anchor-link" href="#Difference-between-Planning-and-Learning:">&#194;&#182;</a></h3><p>The difference is that whereas planning uses simulated experience generated by a model, learning methods use real experience generated by the environment.</p>
+
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h2><p>Reinforcement learning can be used to solve large problems, e.g.
-<br><br></p>
-<ul>
-<li>Backgammon: $10^{20}$ states
-<br><br></li>
-<li>Computer Go: $10^{170}$ states
-<br><br></li>
-<li>Helicopter: continuous state space</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>How can we use the methods learnt previously on such huge state-spaces?
-<br><br><br>
-For eg: A Tabular methods using only Value Function of states (In half Precision) for the game of Backgammon:</p>
-<ul>
-<li>Memory Requirement: $\frac{10^{20} \times 2}{10^{15}} = $2 Lac PetaBytes</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Story-so-far...">Story so far...<a class="anchor-link" href="#Story-so-far...">&#194;&#182;</a></h2><ul>
-<li>So far we have represented value function by a lookup table;
-<br><br></li>
-<li>Every state $s$ has an entry $V(s)$<br>
-Or every state-action pair $s,a$ has an entry $Q(s, a)$.</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Problem with large MDPs:<ul>
-<li>There are too many states and/or actions to store in memory</li>
-<li>It is too slow to learn the value of each state individually</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Solution for large MDPs</strong>:<ul>
-<li>Estimate value function with function approximation<br>
-### $$\hat{v}(s, w) \sim v_\pi(s)$$ <br>
-or<br>
-### $$\hat{q}(s, a, w) \sim q_\pi(s, a)$$ <br></li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>Generalise from seen states to unseen states;<br></p>
-</li>
-<li><p>Update parameter w using MC or TD learning</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Approximation">Value Approximation<a class="anchor-link" href="#Value-Approximation">&#194;&#182;</a></h2><h3 id="Types-of-Value-Function-Approximation">Types of Value Function Approximation<a class="anchor-link" href="#Types-of-Value-Function-Approximation">&#194;&#182;</a></h3><center><img src="img/func_approx.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h1 id="Model-Based-RL"><center>Model Based RL</center><a class="anchor-link" href="#Model-Based-RL">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
@@ -11992,14 +12089,270 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Approximation">Value Approximation<a class="anchor-link" href="#Value-Approximation">&#194;&#182;</a></h2><h3 id="Function-Approximation-methods:">Function Approximation methods:<a class="anchor-link" href="#Function-Approximation-methods:">&#194;&#182;</a></h3><p><br></p>
+<center><img src="img/modelbasedplanning.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>There are many function approximators, e.g.<br><br><ul>
-<li>Linear combinations of features<br><br></li>
-<li>Neural network<br><br></li>
-<li>Decision tree<br><br></li>
-<li>Nearest neighbour<br><br></li>
-<li>Fourier / wavelet bases<br><br></li>
+<li><strong>Advantages</strong>:<ul>
+<li>Can efficiently learn model by supervised learning methods</li>
+<li>Can reason about model uncertainty</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Disadvantages</strong>:<ul>
+<li>First learn a model, then construct a value function</li>
+<li>Two sources of approximation error</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-model">The model<a class="anchor-link" href="#The-model">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We will assume state space $S$ and action space $A$ are known.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>A model $M$ is a representation of an MDP $\{S, A,P, R\}$ parametrized by $\eta$.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>So a model $M = \{P_\eta,R_\eta\}$, where <ul>
+<li>$P_\eta \approx P$ represents state transitions</li>
+<li>and $R_\eta \approx R$ represents the rewards.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$$ S_{t+1} ~ P_\eta(S_{t+1} | S_t, A_t)$$  $$ R_{t+1} = R_\eta(R_{t+1} | S_t, A_t)$$</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Typically assume conditional independence between state transitions and rewards:<br>
+$$
+P [S_{t+1}, R_{t+1} | St , At ] = P [S_{t+1} | St, At] P [R_{t+1} | St , At] $$</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Model-Learning">Model Learning<a class="anchor-link" href="#Model-Learning">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Goal</strong>: estimate model $M_\eta$ from experience $\{S_1, A_1, R_2, ..., S_T \}$</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This is a supervised learning problem<ul>
+<li>$S_1, A_1 \rhd R_2, S_2$<br></li>
+<li>$S_2, A_2 \rhd R_3, S_3$<br></li>
+<li>.<br></li>
+<li>.<br></li>
+<li>.<br></li>
+<li>$S_{T−1}, A_{T−1} \rhd R_T , S_T$</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Learning $s, a \rhd r$ is a regression problem,</li>
+<li>Learning $s, a \rhd s$ is a density estimation problem.</li>
+</ul>
+<p>Pick loss function, e.g. mean-squared error, KL divergence, ...<br>
+Find parameters $\eta$ that minimise empirical loss</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Examples-of-Models">Examples of Models<a class="anchor-link" href="#Examples-of-Models">&#194;&#182;</a></h3><ul>
+<li><p>Table Lookup Model</p>
+</li>
+<li><p>Linear Expectation Model</p>
+</li>
+<li><p>Linear Gaussian Model</p>
+</li>
+<li><p>Gaussian Process Model</p>
+</li>
+<li><p>Deep Belief Network Mode</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Table-Lookup-Model">Table Lookup Model<a class="anchor-link" href="#Table-Lookup-Model">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Model is an explicit MDP, $\hat{P}, \hat{R}$</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Count visits $N(s, a)$ to each state action pair</p>
+<ul>
+<li><p>#### $$ \hat{P}^a_{s,s'} = \frac{1}{N(s, a)} \sum^{T}_{t=1}{\textbf{1}(S_t, A_t, St+1 = s, a,s')}$$</p>
+</li>
+<li><p>#### $$ \hat{R}^a_{s} = \frac{1}{N(s, a)} \sum^T_{t=1}{\textbf{1}(S_t , A_t = s, a)R_t} $$</p>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Alternatively, <ul>
+<li>At each time-step $t$, record experience tuple <br>
+$\{S_t,A_t, R_{t+1}, S_{t+1}\}$</li>
+<li>To sample model, randomly pick tuple matching $\{s,a,.,.\}$</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Planning-with-a-Model">Planning with a Model<a class="anchor-link" href="#Planning-with-a-Model">&#194;&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Given a model $M_\eta = \{P_\eta, R_\eta\}$</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Solve the MDP $\{S, A,P_\eta, R_\eta \}$</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Using favourite planning algorithm<ul>
+<li>Value iteration</li>
+<li>Policy iteration </li>
 <li>...</li>
 </ul>
 </li>
@@ -12007,15 +12360,12 @@ or<br>
 
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Approximation">Value Approximation<a class="anchor-link" href="#Value-Approximation">&#194;&#182;</a></h2><h3 id="Some-Major-Issues">Some Major Issues<a class="anchor-link" href="#Some-Major-Issues">&#194;&#182;</a></h3><ul>
-<li>Not all function approximation methods are equally well suited</li>
-</ul>
-
+<h3 id="Sample-Based-Planning">Sample-Based Planning<a class="anchor-link" href="#Sample-Based-Planning">&#194;&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
@@ -12024,11 +12374,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Many statistical methods assume a <strong>static training set</strong> over which multiple passes are made.<ul>
-<li>Our situation:data is aquired Online.</li>
-<li>Essential to learn efficiently from incrementally acquired data.</li>
-</ul>
-</li>
+<li>A simple but powerful approach to planning</li>
 </ul>
 
 </div>
@@ -12039,11 +12385,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Reinforcement learning generally requires approximation methods able to handle <strong>nonstationary target</strong> functions<ul>
-<li>In General Control Mechanism, we often seek to learn $q_\pi$ while $\pi$ changes. </li>
-<li>Bootstrapping methods: The target values of training examples are nonstationary</li>
-</ul>
-</li>
+<li>Use the model only to generate samples</li>
 </ul>
 
 </div>
@@ -12054,7 +12396,36 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Methods that cannot easily handle such nonstationarity are less suitable for reinforcement learning</strong>.</li>
+<li>Sample experience from model
+$$ S_{t+1} ∼ P_\eta(S_{t+1} | S_t , A_t)$$
+$$ R_{t+1} = R_\eta(R_{t+1} | S_t , A_t)$$</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Apply model-free RL to samples, e.g.:<ul>
+<li>Monte-Carlo control</li>
+<li>Sarsa</li>
+<li>Q-learning</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Sample-based planning methods are often more efficient</li>
 </ul>
 
 </div>
@@ -12064,43 +12435,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Value-Approximation">Value Approximation<a class="anchor-link" href="#Value-Approximation">&#194;&#182;</a></h2><h3 id="Which-Function-Approximator">Which Function Approximator<a class="anchor-link" href="#Which-Function-Approximator">&#194;&#182;</a></h3><p><br></p>
-<ul>
-<li>We consider <strong>differentiable</strong> function approximators, e.g.<br><br><ul>
-<li><strong>Linear combinations of features</strong><br><br></li>
-<li><strong>Neural network</strong><br><br></li>
-<li>Decision tree<br><br></li>
-<li>Nearest neighbour<br><br></li>
-<li>Fourier / wavelet bases<br><br></li>
-<li>...</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Incremental-Methods"><center>Incremental Methods</center><a class="anchor-link" href="#Incremental-Methods">&#194;&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Gradient-Descent">Gradient Descent<a class="anchor-link" href="#Gradient-Descent">&#194;&#182;</a></h2><center><img src="img/fa_slide1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Prediction-Objective-(MSVE)">The Prediction Objective (MSVE)<a class="anchor-link" href="#The-Prediction-Objective-(MSVE)">&#194;&#182;</a></h2>
+<h2 id="Disadvantages:">Disadvantages:<a class="anchor-link" href="#Disadvantages:">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -12109,8 +12444,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Mean Squared Value Error, or MSVE:
-### $$ MSVE(\theta) = \sum_{s \in S}^{}{d(s) \big[ v_\pi (s)-\hat(v)(s,\theta) \big]^2}$$</li>
+<li>We mostly have an imperfect model $\{P_\eta, R_\eta\} \approx \{P, R\}$</li>
 </ul>
 
 </div>
@@ -12121,7 +12455,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Weighting or distribution $d(s) \ge 0$ representing how much we care about the error in each state $s$.</li>
+<li>Performance of model-based RL is limited to optimal policy for approximate MDP$\{S, A,P_\eta, R_\eta \}$</li>
 </ul>
 
 </div>
@@ -12132,11 +12466,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Why was $d(s)$ not required in Tabular methods?<ul>
-<li>because the learned value function could come to equal the true value function exactly.</li>
-<li>learned values at each state were decoupled—an update at one state affected no other.</li>
-</ul>
-</li>
+<li>i.e. Model-based RL is only as good as the estimated model When the model is inaccurate, planning process will compute a suboptimal policy.</li>
 </ul>
 
 </div>
@@ -12147,21 +12477,26 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>More states than weights</strong><ul>
-<li>making one state’s estimate more accurate leads to making others’ less accurate. </li>
-<li>We must specify which states we care most about.</li>
-</ul>
-</li>
+<li><strong>Solution 1</strong>: when model is wrong, use model-free RL</li>
+<li><strong>Solution 2</strong>: reason explicitly about model uncertainty</li>
 </ul>
 
 </div>
 </div>
-</div></div></section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Prediction-Objective-(MSVE)">The Prediction Objective (MSVE)<a class="anchor-link" href="#The-Prediction-Objective-(MSVE)">&#194;&#182;</a></h2><h3 id="Is-MSVE-Perfect?">Is MSVE Perfect?<a class="anchor-link" href="#Is-MSVE-Perfect?">&#194;&#182;</a></h3>
+<h1 id="Dyna:-Integrating-Planning,-Acting,-and-Learning"><center>Dyna: Integrating Planning, Acting, and Learning</center><a class="anchor-link" href="#Dyna:-Integrating-Planning,-Acting,-and-Learning">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Real-and-Simulated-Experience">Real and Simulated Experience<a class="anchor-link" href="#Real-and-Simulated-Experience">&#194;&#182;</a></h3>
 </div>
 </div>
 </div><div class="fragment">
@@ -12170,89 +12505,13 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>Our ultimate purpose is to use it in finding a better policy.</p>
-<ul>
-<li><strong>The best value function for this purpose is not necessarily the best for minimizing MSVE. </strong></li>
-</ul>
-</li>
-<li><p>Generally,if not specified, consider $d(s) = 1, \forall s \in S $</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Stochastic-Gradient-Descent-for-MSVE"><center>Stochastic Gradient Descent for MSVE</center><a class="anchor-link" href="#Stochastic-Gradient-Descent-for-MSVE">&#194;&#182;</a></h2><center><img src="img/fa_slides2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Feature-Vector"><center> Feature Vector</center><a class="anchor-link" href="#-Feature-Vector">&#194;&#182;</a></h2><center><img src="img/fa_slides3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Value-Function-Approximation"><center>Linear Value Function Approximation</center><a class="anchor-link" href="#Linear-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides4.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-Look-up"><center>Table Look-up</center><a class="anchor-link" href="#Table-Look-up">&#194;&#182;</a></h2><center><img src="img/fa_slides5.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Incremental-Prediction-Methods"><center>Incremental Prediction Methods</center><a class="anchor-link" href="#Incremental-Prediction-Methods">&#194;&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Incremental-Prediction-Methods"><center>Incremental Prediction Methods</center><a class="anchor-link" href="#Incremental-Prediction-Methods">&#194;&#182;</a></h2><center><img src="img/fa_slides6.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Important-Point.">Important Point.<a class="anchor-link" href="#Important-Point.">&#194;&#182;</a></h4><ul>
-<li>The <strong>Monte Carlo target</strong> $U_t = G_t$ is by definition an unbiased estimate of $v_\pi(S_t)$.<ul>
-<li>In this situation, SGD method converges to a locally optimal approximation to $v_\pi(S_t)$.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Bootstrapping targets</strong> such as $n$-step returns $G^{(n)}_{t}$ or the DP target, all depend on the current value of the weight vector $\theta_t$.<ul>
-<li>Implies that they will be biased</li>
-<li>will not produce a true gradient-descent method</li>
-<li>we call them semi-gradient methods.</li>
+<li>We consider two sources of experience<ul>
+<li>Real experience Sampled from environment (true MDP)
+$$ S' ~ P^a_{s,s'}$$
+$$ R = R^a_s $$</li>
+<li>Simulated experience Sampled from model (approximate MDP)
+$$ S' ~ P_\eta(S'|S,A) $$
+$$ R' = R_\eta(S'|S,A) $$</li>
 </ul>
 </li>
 </ul>
@@ -12265,24 +12524,9 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Disadvantage</strong>:semi-gradient (bootstrapping) methods do not converge as robustly as gradient methods.<ul>
-<li>they do converge reliably in cases such as the linear approximation.</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Advantage</strong>:<ul>
-<li>Typically significantly faster to learn</li>
-<li>Enable learning to be continual and online</li>
-<li>provides computational advantages.</li>
+<li>Real Experience has two roles:<ul>
+<li>Model Learning.</li>
+<li>Direct Reinforcement learning.</li>
 </ul>
 </li>
 </ul>
@@ -12294,7 +12538,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-with-Value-Function-Approximation"><center>Monte-Carlo with Value Function Approximation</center><a class="anchor-link" href="#Monte-Carlo-with-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides7.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Dyna">Dyna<a class="anchor-link" href="#Dyna">&#194;&#182;</a></h2><center><img src="img/dyna.jpeg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12302,7 +12546,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD-Learning-with-Value-Function-Approximation"><center>TD Learning with Value Function Approximation</center><a class="anchor-link" href="#TD-Learning-with-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides8.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Tabular-Dyna-Q-Algorithm">Tabular Dyna-Q Algorithm<a class="anchor-link" href="#Tabular-Dyna-Q-Algorithm">&#194;&#182;</a></h3><center><img src="img/dyna_eq.jpg" alt="Multi-armed Bandit" style="width: 800px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12310,7 +12554,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD($\lambda$)-with-Value-Function-Approximation"><center>TD($\lambda$) with Value Function Approximation</center><a class="anchor-link" href="#TD($\lambda$)-with-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides9.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h3><center><img src="img/dyna_perf.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12318,7 +12562,15 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="TD($\lambda$)-with-Value-Function-Approximation"><center>TD($\lambda$) with Value Function Approximation</center><a class="anchor-link" href="#TD($\lambda$)-with-Value-Function-Approximation">&#194;&#182;</a></h2>
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h3><center><img src="img/dyna_perf2.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="When-the-model-is-wrong">When the model is wrong<a class="anchor-link" href="#When-the-model-is-wrong">&#194;&#182;</a></h2>
 </div>
 </div>
 </div><div class="fragment">
@@ -12327,22 +12579,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>TD converges to a point called the <strong>TD-fixedpoint</strong>(see references)</li>
-</ul>
-<h3 id="$$MSVE(\theta_{TD})-\le-\frac{1}{1-\gamma}-min_\theta(MSVE(\theta))$$">$$MSVE(\theta_{TD}) \le \frac{1}{1-\gamma} min_\theta(MSVE(\theta))$$<a class="anchor-link" href="#$$MSVE(\theta_{TD})-\le-\frac{1}{1-\gamma}-min_\theta(MSVE(\theta))$$">&#194;&#182;</a></h3>
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>$\gamma$ is often near one<ul>
-<li>the expansion factor can be quite large, </li>
-<li>there can be substantial loss in asymptotic performance with the TD method.</li>
-</ul>
-</li>
+<li>In  previous section, the model started out empty, and was then filled only with exactly correct information.</li>
 </ul>
 
 </div>
@@ -12353,9 +12590,11 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>However, recall that the TD methods often<ul>
-<li>have vastly reduced variance compared to Monte Carlo methods, and </li>
-<li>are faster.</li>
+<li>In general, Models may be incorrect because <ul>
+<li>The environment is stochastic.</li>
+<li>Only a limited number of samples have been observed.</li>
+<li>The model was learned using function approximation that has generalized imperfectly.</li>
+<li>The environment has changed and its new behavior has not yet been observed.</li>
 </ul>
 </li>
 </ul>
@@ -12367,11 +12606,78 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="State-Aggregation-on-the-1000-state-Random-Walk-"><center>State Aggregation on the 1000-state Random Walk </center><a class="anchor-link" href="#State-Aggregation-on-the-1000-state-Random-Walk-">&#194;&#182;</a></h2><ul>
-<li><p>A simple form of generalizing function approximation in which states are grouped together.</p>
+<h3 id="Examples">Examples<a class="anchor-link" href="#Examples">&#194;&#182;</a></h3><center><img src="img/dynaenvchange.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Examples">Examples<a class="anchor-link" href="#Examples">&#194;&#182;</a></h3><center><img src="img/dynaenvchange2.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dyna-+">Dyna +<a class="anchor-link" href="#Dyna-+">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Agent keeps track for each state–action pair how many time steps elapsed since last tried in a real interaction. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Greater the time elapsed, the greater (we might presume) the chance that the dynamics of this pair has changed and that the model of it is incorrect. </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>To encourage behavior that tests long-untried actions, <ul>
+<li>a special “bonus reward” is given on simulated experiences involving these actions. </li>
+<li>if the modeled reward $r$, and $\{S,A\}$ has not been tried in $\tau$ time steps, <br>
+$r =  r + κ\sqrt{\tau}$ , for some small κ. </li>
+</ul>
 </li>
-<li><p>One estimated value (one component of the weight vector $\theta$) for each group.</p>
-</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Prioritized-Sweeps">Prioritized Sweeps<a class="anchor-link" href="#Prioritized-Sweeps">&#194;&#182;</a></h1>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introuction">Introuction<a class="anchor-link" href="#Introuction">&#194;&#182;</a></h3><ul>
+<li>If simulated transitions are generated uniformly, then many wasteful backups will be made before stumbling onto one of these useful ones.</li>
 </ul>
 
 </div>
@@ -12381,17 +12687,8 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Problem-Statement">Problem Statement<a class="anchor-link" href="#Problem-Statement">&#194;&#182;</a></h3>
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>A 1000-state version of the random walk task</li>
-<li>States are numbered from 1 to 1000, left to right,</li>
+<li>In the much larger problems that are our real objective, the number of states is so large that an unfocused search would be extremely inefficient.</li>
 </ul>
 
 </div>
@@ -12402,23 +12699,7 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>all episodes begin near the center, in state 500</li>
-<li>State transitions are from the current state to one of the 100 neighboring states to its left or right<ul>
-<li>With equal probability</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Termination on the left produces a reward of −1, and termination on the right produces a reward of +1.</li>
-<li>All other transitions have a reward of zero</li>
+<li>In general, we want to work back from any state whose value has changed.</li>
 </ul>
 
 </div>
@@ -12428,108 +12709,89 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-1000-state-Random-Walk">A 1000-state Random Walk<a class="anchor-link" href="#A-1000-state-Random-Walk">&#194;&#182;</a></h2><h3 id="With-Monte-Carlo-Estimates">With Monte Carlo Estimates<a class="anchor-link" href="#With-Monte-Carlo-Estimates">&#194;&#182;</a></h3><center><img src="img/fa_prob1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center><h3 id="Importance-of-the-distribution-function-d(s)">Importance of the distribution function d(s)<a class="anchor-link" href="#Importance-of-the-distribution-function-d(s)">&#194;&#182;</a></h3><ul>
-<li>Do you notice the skew in the prediction?</li>
+<h3 id="'Backward-focusing'-of-planning-computations">'Backward focusing' of planning computations<a class="anchor-link" href="#'Backward-focusing'-of-planning-computations">&#194;&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>the agent discovers a change in the environment and changes its estimated value of one state.</li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-1000-state-Random-Walk">A 1000-state Random Walk<a class="anchor-link" href="#A-1000-state-Random-Walk">&#194;&#182;</a></h2><h3 id="With-TD-estimates">With TD estimates<a class="anchor-link" href="#With-TD-estimates">&#194;&#182;</a></h3><center><img src="img/fa_prob2.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Iterative-Control-Approximation"><center>Iterative Control Approximation</center><a class="anchor-link" href="#Iterative-Control-Approximation">&#194;&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Control-with-Value-Function-Approximation"><center>Control with Value Function Approximation</center><a class="anchor-link" href="#Control-with-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides10.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Action-Value-Function-Approximation"><center>Action-Value Function Approximation</center><a class="anchor-link" href="#Action-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides11.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Action-Value-Function-Approximation"><center>Linear Action-Value Function Approximation</center><a class="anchor-link" href="#Linear-Action-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa_slides12.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Incremental-Control-Algorithms"><center>Incremental Control Algorithms</center><a class="anchor-link" href="#Incremental-Control-Algorithms">&#194;&#182;</a></h2><center><img src="img/fa_slides13.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Mountain-Car-Problem">Mountain Car Problem<a class="anchor-link" href="#Mountain-Car-Problem">&#194;&#182;</a></h2><h3 id="Live-Demo">Live Demo<a class="anchor-link" href="#Live-Demo">&#194;&#182;</a></h3><center><img src="img/fa_prob3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Mountain-Car-Problem">Mountain Car Problem<a class="anchor-link" href="#Mountain-Car-Problem">&#194;&#182;</a></h2><center><img src="img/fa_prob4.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Single-Step-vs-Multi-Step">Single Step vs Multi Step<a class="anchor-link" href="#Single-Step-vs-Multi-Step">&#194;&#182;</a></h1><ul>
-<li><p><strong>Episodic semi-gradient one-step Sarsa</strong></p>
 <ul>
-<li>Target: 
-### $$ G_t = R_{t+1}+ \gamma  \hat{q}(S_{t+1},A_{t+1},\theta _t)$$</li>
-<li>Gradient:
-### $$ \theta_{t+1} = \theta_t + \alpha[ G_t -\hat{q}(S_t,A_t,\theta_t)] \nabla\hat{q}(S_t,A_t,\theta_t) $$</li>
-</ul>
-</li>
-<li><p><strong> Episodic n-step Semi-gradient Sarsa</strong></p>
-<ul>
-<li>Target: 
-### $$ G_t^{(n)} = R_{t+1}+\gamma R_{t+2} + ... + \gamma^{n-1}R(t+n) +\gamma^n  \hat{q}(S_{t+n},A_{t+n},\theta _{t+n-1})$$</li>
-<li>Gradient:
-### $$ \theta_{t+n} = \theta_{t+n-1} + \alpha[ G_t^{(n)} -\hat{q}(S_t,A_t,\theta_{t+n-1})] \nabla\hat{q}(S_t,A_t,\theta_{t+n-1}) $$</li>
-</ul>
-</li>
+<li>The only useful one-step backups are those of actions that lead directly into the one state whose value has been changed.</li>
 </ul>
 
 </div>
 </div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Hence we simulate those steps first.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The frontier of useful backups propagates backward, it often grows rapidly.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Hence we prioritize the backups according to a measure of their urgency.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>This is the idea behind prioritized sweeping</strong>.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prioritized-sweeping-for-a-deterministic-environment-Algorithm">Prioritized sweeping for a deterministic environment Algorithm<a class="anchor-link" href="#Prioritized-sweeping-for-a-deterministic-environment-Algorithm">&#194;&#182;</a></h2><center><img src="img/psweep.jpg" alt="Multi-armed Bandit" style="width: 800px;"/></center>
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Single-Step-vs-Multi-Step">Single Step vs Multi Step<a class="anchor-link" href="#Single-Step-vs-Multi-Step">&#194;&#182;</a></h1><center><img src="img/fa_prob5.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#194;&#182;</a></h3><center><img src="img/psweep_ex.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12537,7 +12799,28 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Effect-of-learning-rate">Effect of learning rate<a class="anchor-link" href="#Effect-of-learning-rate">&#194;&#182;</a></h1><center><img src="img/fa_prob6.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Rod-Maneuvering-Task">Rod Maneuvering Task<a class="anchor-link" href="#Rod-Maneuvering-Task">&#194;&#182;</a></h3><ul>
+<li>14,400 possible states(36 angles, 20x20 Space)</li>
+<li>Actions: AlongRod,PerpRod,RotateL,RotateR</li>
+<li>Ackwardly placed immovable obstacles.</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><img src="img/rod.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Planning-as-Part-of-Action-Selection"><center>Planning as Part of Action Selection</center><a class="anchor-link" href="#Planning-as-Part-of-Action-Selection">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section><section>
@@ -12545,26 +12828,11 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Study-of-&#955;:-Should-We-Bootstrap?"><center>Study of &#955;: Should We Bootstrap?</center><a class="anchor-link" href="#Study-of-&#955;:-Should-We-Bootstrap?">&#194;&#182;</a></h2><center><img src="img/fa_slides14.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Average-Reward"><center>Average Reward</center><a class="anchor-link" href="#Average-Reward">&#194;&#182;</a></h1>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Average-Reward">Average Reward<a class="anchor-link" href="#Average-Reward">&#194;&#182;</a></h2><ul>
-<li>Classical Settings:<ul>
-<li>Discounting Setting</li>
-<li>Episodic Setting</li>
+<h3 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h3><ul>
+<li>The planning seen till now:<ul>
+<li>The gradual improvement of a policy/value function that is good in all states generally,</li>
+<li>Not focused on any particular state.</li>
+<li>Eg: Dyna, DP.</li>
 </ul>
 </li>
 </ul>
@@ -12577,9 +12845,10 @@ or<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><strong>Average Reward</strong><ul>
-<li>applies to continuing problems</li>
-<li>there is no discounting</li>
+<li>A different outlook:<ul>
+<li>planning is begun and completed after encountering each new state $S_t$.</li>
+<li>output is not really a policy,rather a single decision, the action $A_t$.</li>
+<li>next step the planning begins anew with $S_{t+1}$ to produce $A_{t+1}$, and so on.</li>
 </ul>
 </li>
 </ul>
@@ -12591,12 +12860,10 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><strong>Why?</strong><ul>
-<li>The discounted setting is problematic with function approximation, </li>
-<li>The average-reward setting is needed to replace it.</li>
-</ul>
-</li>
+<h4 id="Some-general-Features-of-PPAS">Some general Features of PPAS<a class="anchor-link" href="#Some-general-Features-of-PPAS">&#194;&#182;</a></h4><ul>
+<li>the values and policy are specific to the current state and its choices,</li>
+<li>They are typically discarded after being used to select the current action.</li>
+<li>useful in applications in which fast responses are <strong>not required</strong>.</li>
 </ul>
 
 </div>
@@ -12606,16 +12873,27 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Average-Reward">Average Reward<a class="anchor-link" href="#Average-Reward">&#194;&#182;</a></h2><ul>
-<li><p>In average reward setting, the quality of a policy $\pi$ is defined as:</p>
+<h3 id="Simulation-Based-Search">Simulation-Based Search<a class="anchor-link" href="#Simulation-Based-Search">&#194;&#182;</a></h3><ul>
+<li>Forward search paradigm using sample-based planning</li>
+<li>Simulate episodes of experience from current time step with the model</li>
+<li>Apply model-free RL to simulated episodes</li>
+</ul>
+<center><img src="img/simsearch.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>The <strong>average rate</strong> of rewards while following that policy, $\eta (\pi)$<br>
-### $$ \eta(\pi) = lim_{T \to \infty}\frac{1}{T} \sum_{t=1}^{T}{E[R_t|A_{0:t-1} \sim \pi]}$$
-### $$ \eta(\pi) = \sum_{s}{d_\pi(s) \sum_{a}{\pi(a|s) \sum_{s',r}{p(s,r'|s,a)r}}}$$</p>
+<li><p>Simulate episodes of experience from 'now' with the model
+### $$ \{ s_t^k,A^k_t, R^k_{t+1},... S^k_T \} ^K_{k=1} \sim M_\nu $$</p>
 </li>
-<li><p>$d_\pi$ is the steady-state distribution.
-### $$ \sum_{s}{d_\pi(s) \sum_{a}{\pi(a|s,\theta) {p(s'|s,a)}}} = d_\pi(s')$$</p>
-</li>
+<li><p>Apply model-free RL to simulated episodes</p>
+<ul>
+<li>Monte-Carlo control → Monte-Carlo search</li>
+<li>Sarsa → TD search</li>
 </ul>
 </li>
 </ul>
@@ -12627,13 +12905,30 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Average-Reward">Average Reward<a class="anchor-link" href="#Average-Reward">&#194;&#182;</a></h2><ul>
-<li><p>In the average-reward setting, returns are defined in terms of differences between rewards and the average reward:
-### $$G_t = R_{t+1} - \eta(\pi) + R_{t+2} - \eta(\pi) + ...$$</p>
-</li>
-<li><p>This is know as the <strong>differential return</strong></p>
+<h3 id="Simple-Monte-Carlo-Search">Simple Monte Carlo Search<a class="anchor-link" href="#Simple-Monte-Carlo-Search">&#194;&#182;</a></h3><center><img src="img/simmontesearch.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>corresponding value functions are known as <strong>differential value functions</strong>.</li>
+<li>With a perfect model and an imperfect action-value function, then deeper search will usually yield better policies.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Monte-Carlo-Tree-Search"><center>Monte Carlo Tree Search</center><a class="anchor-link" href="#Monte-Carlo-Tree-Search">&#194;&#182;</a></h1><ul>
+<li>One of the recent and successful developments in planning.</li>
+<li>Broken into two steps:<ul>
+<li>Evaluation</li>
+<li>Simulation</li>
 </ul>
 </li>
 </ul>
@@ -12645,83 +12940,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contrast-with-Discounted-Value-functions:">Contrast with Discounted Value functions:<a class="anchor-link" href="#Contrast-with-Discounted-Value-functions:">&#194;&#182;</a></h2><ul>
-<li><p>Differential value functions also have Bellman equations very similar to disconted value functions.</p>
-</li>
-<li><p>For disconted value functions</p>
-<center><img src="img/fa_avg5.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center>
-<center><img src="img/fa_avg6.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>For Average reward value Functions<center><img src="img/fa_avg1.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contrast-with-Discounted-Value-functions:">Contrast with Discounted Value functions:<a class="anchor-link" href="#Contrast-with-Discounted-Value-functions:">&#194;&#182;</a></h2><ul>
-<li>For optimal disconted value functions<center><img src="img/fa_avg3.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center>
-<center><img src="img/fa_avg4.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>For optimal Average reward value Functions<center><img src="img/fa_avg2.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contrast-with-Discounted-Value-functions:">Contrast with Discounted Value functions:<a class="anchor-link" href="#Contrast-with-Discounted-Value-functions:">&#194;&#182;</a></h2><ul>
-<li><p>There is also a differential form of the two TD errors:</p>
-</li>
-<li><p>For disconted value functions</p>
-<center><img src="img/fa_avg7.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>For Average reward value Functions<center><img src="img/fa_avg8.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center></li>
-<li>$\bar{R}$ is an estimate of the average reward $\eta(\pi)$</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Differential-Semi-gradient-Sarsa-for-Control">Differential Semi-gradient Sarsa for Control<a class="anchor-link" href="#Differential-Semi-gradient-Sarsa-for-Control">&#194;&#182;</a></h2><p><br></p>
-<center><img src="img/fa_avg9.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h3 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#194;&#182;</a></h3><center><img src="img/mctssearch1.jpg" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12729,16 +12948,15 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-from-Operations:">Example from Operations:<a class="anchor-link" href="#Example-from-Operations:">&#194;&#182;</a></h2><h3 id="An-Access-Control-Queuing-Task">An Access-Control Queuing Task<a class="anchor-link" href="#An-Access-Control-Queuing-Task">&#194;&#182;</a></h3><ul>
-<li><p>A set of k servers.</p>
-</li>
-<li><p>Customers of four different priorities arrive at a single queue.</p>
-<ul>
-<li>Reward of 1,2,4,8 respectively</li>
-</ul>
-</li>
-</ul>
-
+<h3 id="Simulation">Simulation<a class="anchor-link" href="#Simulation">&#194;&#182;</a></h3><center><img src="img/mctssearch2.jpg" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="breakdown-of-MCTS">breakdown of MCTS<a class="anchor-link" href="#breakdown-of-MCTS">&#194;&#182;</a></h3><center><img src="img/mctssteps.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
@@ -12746,15 +12964,39 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Steps:">Steps:<a class="anchor-link" href="#Steps:">&#194;&#182;</a></h4><p>1) <strong>Selection</strong>: A node in the current tree is selected by some informed means as the most promising node from which to explore further.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2) <strong>Expansion</strong>: The tree is expanded from the selected node by adding one or more nodes as its children.</p>
 <ul>
-<li><p>In each time step, the customer at the head of the queue is</p>
-<ul>
-<li>accepted (assigned to one of the servers) or </li>
-<li>rejected (removed from the queue, with a reward of zero). </li>
+<li>Each new child node is now a leaf node of the partial game tree, meaning</li>
+<li>None of its possible moves have been visited yet in constructing the tree.</li>
 </ul>
-</li>
-<li><p>On the next time step the next customer in the queue is considered.</p>
-</li>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="breakdown-of-MCTS">breakdown of MCTS<a class="anchor-link" href="#breakdown-of-MCTS">&#194;&#182;</a></h3><center><img src="img/mctssteps.jpg" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>3) <strong>Simulation</strong>: From one of these leaf nodes, or another node having an unvisited move,a move is selected as the start of a simulation, or rollout, of a complete game.</p>
+<ul>
+<li>Moves are selected by a rollout policy.</li>
 </ul>
 
 </div>
@@ -12764,34 +13006,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>The queue never empties</p>
-<ul>
-<li>the priorities of the customers are equally randomly distributed. </li>
-</ul>
-</li>
-<li><p>A customer can not be served if there is no free server;</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>Each busy server becomes free with probability p on each time step.</p>
-</li>
-<li><p><strong>Task: Decide on each step whether to accept or reject the next customer,on the basis of</strong></p>
-<ul>
-<li><strong>His priority and</strong> </li>
-<li><strong>The number of free servers,</strong><br>
-<strong>So as to maximize long-term reward without discounting.</strong></li>
-</ul>
-</li>
-</ul>
+<p>4) <strong>Backpropagation</strong>: The result of the simulated game is backed up to update statistics attached to the links in the partial game tree traversed.</p>
 
 </div>
 </div>
@@ -12800,7 +13015,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-from-Operations:">Example from Operations:<a class="anchor-link" href="#Example-from-Operations:">&#194;&#182;</a></h2><h3 id="An-Access-Control-Queuing-Task">An Access-Control Queuing Task<a class="anchor-link" href="#An-Access-Control-Queuing-Task">&#194;&#182;</a></h3><center><img src="img/fa_prob7.JPG" alt="Multi-armed Bandit" style="width: 500px;"/></center>
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#194;&#182;</a></h3><center><img src="img/mcts0.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12808,7 +13023,7 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-from-Operations:">Example from Operations:<a class="anchor-link" href="#Example-from-Operations:">&#194;&#182;</a></h2><h3 id="An-Access-Control-Queuing-Task">An Access-Control Queuing Task<a class="anchor-link" href="#An-Access-Control-Queuing-Task">&#194;&#182;</a></h3><center><img src="img/fa_prob8.JPG" alt="Multi-armed Bandit" style="width: 800px;"/></center>
+<center><img src="img/mcts1.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
 </div>
 </div>
 </div></section><section>
@@ -12816,48 +13031,49 @@ or<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Futility-of-Discounting-in-continuous-Approximation-problems">Futility of Discounting in continuous Approximation problems<a class="anchor-link" href="#Futility-of-Discounting-in-continuous-Approximation-problems">&#194;&#182;</a></h2><h4 id="Crux:">Crux:<a class="anchor-link" href="#Crux:">&#194;&#182;</a></h4><ul>
-<li>An infinite sequence of returns with no beginning or end, and no clearly identified states.  </li>
-<li>it turns out that the average of the discounted returns is proportional to the average reward.</li>
-</ul>
-
+<center><img src="img/mcts2.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>average of the discounted returns is always $\eta(\pi)/(1 − \gamma)$</li>
-<li><strong> The ordering of all policies in the average discounted return setting would be exactly the same as in the average-reward setting.</strong></li>
-</ul>
-
+<center><img src="img/mcts3.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
 </div>
 </div>
-</div></div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>The discounted case is still pertinent, or at least possible, for the episodic case.</li>
-</ul>
-
+<center><img src="img/mcts4.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h1><ul>
-<li>To add</li>
+<center><img src="img/mcts5.JPG" alt="Multi-armed Bandit" style="width: 300px;"/></center>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Advantages-of-MCTS">Advantages of MCTS<a class="anchor-link" href="#Advantages-of-MCTS">&#194;&#182;</a></h3><ul>
+<li>Highly selective best-first search</li>
+<li>Evaluates states dynamically (unlike e.g. DP)</li>
+<li>Uses sampling to break curse of dimensionality</li>
+<li>Works for “black-box” models (only requires samples)</li>
+<li>Computationally efficient, anytime, parallelisable</li>
 </ul>
 
 </div>
 </div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 

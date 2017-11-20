@@ -1,17 +1,28 @@
-# <center>Unifying MC and TD Methods</center>
+# <center>Value Function Approximation</center>
 
-#### <center> Reference: Chapter 7 and Chapter 12, Sutton and Barto</center>
+#### <center> Reference: Chapter 9 to Chapter 11, Sutton and Barto</center>
 
 ## Contents:
 
-1) **Bootstrapping**
-	* Why do Bootstrapping?
-	* n-Step SARSA (On-Policy Control)
-	* n-Step Off-Policy Control (with Importance Sampling)
-	* N-Step Off-Policy Control (w/o Importance Sampling => Tree BackUp Algorithm)
+1) **Introduction**
+	* Why move to non-tabular mthods?
+	* Value Approximation
 
-2) **TD($\lambda$)**
-	* Forward View
-	* Backward View
+2) **Incremental Methods**
+	* Gradient Descent
+	* The Predictive Objective (MSVE)
+	* SGD for MSVE
+	* Feature Vector
+	* Linear Function Approximator
 
-3) **Eligibility Traces**
+3) **Incremental Prediction Methods**
+	* Target as MC
+	* Target as TD(0)
+	* Target as TD($\lambda$)
+
+4) **Iterative Control Approximation**
+	* Target as MC
+	* Target as TD(0)
+	* Target as TD($\lambda$)
+
+5) **Average Reward Setting**

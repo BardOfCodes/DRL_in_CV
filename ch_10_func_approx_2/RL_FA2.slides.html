@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,21 +11854,19 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Value-Function-Approximation"><center>Value Function Approximation</center><a class="anchor-link" href="#Value-Function-Approximation">&#182;</a></h1><h2 id="Part-II"><center>Part II</center><a class="anchor-link" href="#Part-II">&#182;</a></h2><h2 id="Reference:-Sutton-and-Barto,-Chapter-9-11"><center>Reference: Sutton and Barto, Chapter 9-11</center><a class="anchor-link" href="#Reference:-Sutton-and-Barto,-Chapter-9-11">&#182;</a></h2>
+<h1 id="Value-Function-Approximation"><center>Value Function Approximation</center><a class="anchor-link" href="#Value-Function-Approximation">&#194;&#182;</a></h1><h2 id="Part-II"><center>Part II</center><a class="anchor-link" href="#Part-II">&#194;&#182;</a></h2><h2 id="Reference:-Sutton-and-Barto,-Chapter-9-11"><center>Reference: Sutton and Barto, Chapter 9-11</center><a class="anchor-link" href="#Reference:-Sutton-and-Barto,-Chapter-9-11">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Contents"><center>Table of Contents</center><a class="anchor-link" href="#Table-of-Contents">&#182;</a></h2><p><br></p>
+<h2 id="Table-of-Contents"><center>Table of Contents</center><a class="anchor-link" href="#Table-of-Contents">&#194;&#182;</a></h2><p><br></p>
 <ul>
 <li><p><strong>Batch Reinforcement Methods</strong><br><br></p>
 </li>
@@ -11850,21 +11877,19 @@ a.anchor-link {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#182;</a></h1>
+<h1 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#182;</a></h2><p><br></p>
+<h2 id="Batch-Reinforcement-Methods"><center>Batch Reinforcement Methods</center><a class="anchor-link" href="#Batch-Reinforcement-Methods">&#194;&#182;</a></h2><p><br></p>
 <ul>
 <li>Gradient descent is simple and appealing<br><br></li>
 <li>But it is not sample efficient<br><br></li>
@@ -11875,86 +11900,77 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Prediction"><center>Least Squares Prediction</center><a class="anchor-link" href="#Least-Squares-Prediction">&#182;</a></h2><center><img src="img/fa2_slides1.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Prediction"><center>Least Squares Prediction</center><a class="anchor-link" href="#Least-Squares-Prediction">&#194;&#182;</a></h2><center><img src="img/fa2_slides1.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Stochastic-Gradient-Descent-with-Experience-Replay"><center>Stochastic Gradient Descent with Experience Replay</center><a class="anchor-link" href="#Stochastic-Gradient-Descent-with-Experience-Replay">&#182;</a></h2><center><img src="img/fa2_slides3.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Stochastic-Gradient-Descent-with-Experience-Replay"><center>Stochastic Gradient Descent with Experience Replay</center><a class="anchor-link" href="#Stochastic-Gradient-Descent-with-Experience-Replay">&#194;&#182;</a></h2><center><img src="img/fa2_slides3.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Experience-Replay-in-Deep-Q-Networks-(DQN)"><center>Experience Replay in Deep Q-Networks (DQN)</center><a class="anchor-link" href="#Experience-Replay-in-Deep-Q-Networks-(DQN)">&#182;</a></h2><center><img src="img/fa2_slides4.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Experience-Replay-in-Deep-Q-Networks-(DQN)"><center>Experience Replay in Deep Q-Networks (DQN)</center><a class="anchor-link" href="#Experience-Replay-in-Deep-Q-Networks-(DQN)">&#194;&#182;</a></h2><center><img src="img/fa2_slides4.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DQN-in-ATARI"><center>DQN in ATARI</center><a class="anchor-link" href="#DQN-in-ATARI">&#182;</a></h1>
+<h1 id="DQN-in-ATARI"><center>DQN in ATARI</center><a class="anchor-link" href="#DQN-in-ATARI">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-model">The model<a class="anchor-link" href="#The-model">&#182;</a></h2><center><img src="img/fa2_ex1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="The-model">The model<a class="anchor-link" href="#The-model">&#194;&#182;</a></h2><center><img src="img/fa2_ex1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Performance">Performance<a class="anchor-link" href="#Performance">&#182;</a></h2><center><img src="img/fa2_ex2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Performance">Performance<a class="anchor-link" href="#Performance">&#194;&#182;</a></h2><center><img src="img/fa2_ex2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Benefits-of-Experience-Replay-and-Double-DQN">Benefits of Experience Replay and Double DQN<a class="anchor-link" href="#Benefits-of-Experience-Replay-and-Double-DQN">&#182;</a></h2><center><img src="img/fa2_ex3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Benefits-of-Experience-Replay-and-Double-DQN">Benefits of Experience Replay and Double DQN<a class="anchor-link" href="#Benefits-of-Experience-Replay-and-Double-DQN">&#194;&#182;</a></h2><center><img src="img/fa2_ex3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="DQN-Example-and-Code">DQN Example and Code<a class="anchor-link" href="#DQN-Example-and-Code">&#182;</a></h2><center><img src="img/ex.png" alt="Multi-armed Bandit" style="width: 300px;"/></center><h4 id="CartPole-Example">CartPole Example<a class="anchor-link" href="#CartPole-Example">&#182;</a></h4><p>The agent has to decide between two actions - moving the cart left or right - so that the pole attached to it stays upright.</p>
-<h5 id="State-Space">State Space<a class="anchor-link" href="#State-Space">&#182;</a></h5><p>State is the difference between the current screen patch and the previous one. This will allow the agent to take the velocity of the pole into account from one image.</p>
+<h2 id="DQN-Example-and-Code">DQN Example and Code<a class="anchor-link" href="#DQN-Example-and-Code">&#194;&#182;</a></h2><center><img src="img/ex.png" alt="Multi-armed Bandit" style="width: 300px;"/></center><h4 id="CartPole-Example">CartPole Example<a class="anchor-link" href="#CartPole-Example">&#194;&#182;</a></h4><p>The agent has to decide between two actions - moving the cart left or right - so that the pole attached to it stays upright.</p>
+<h5 id="State-Space">State Space<a class="anchor-link" href="#State-Space">&#194;&#182;</a></h5><p>State is the difference between the current screen patch and the previous one. This will allow the agent to take the velocity of the pole into account from one image.</p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Q-network">Q-network<a class="anchor-link" href="#Q-network">&#182;</a></h5><ul>
+<h5 id="Q-network">Q-network<a class="anchor-link" href="#Q-network">&#194;&#182;</a></h5><ul>
 <li>Our model will be a convolutional neural network that takes in the difference between the current and previous screen patches. </li>
 <li>It has two outputs, representing Q(s,left) and Q(s,right) (where s is the input to the network). </li>
 <li>In effect, the network is trying to predict the quality of taking each action given the current input.<center><img src="img/2.png" alt="Multi-armed Bandit" style="width: 600px;"/></center></li>
@@ -11963,12 +11979,11 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Replay-Memory">Replay Memory<a class="anchor-link" href="#Replay-Memory">&#182;</a></h5><ul>
+<h5 id="Replay-Memory">Replay Memory<a class="anchor-link" href="#Replay-Memory">&#194;&#182;</a></h5><ul>
 <li>Experience replay memory is used for training the DQN. </li>
 <li>It stores the transitions that the agent observes, allowing us to reuse this data later. </li>
 <li>By sampling from it randomly, the transitions that build up a batch are decorrelated. </li>
@@ -11978,38 +11993,34 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Input-Extraction">Input Extraction<a class="anchor-link" href="#Input-Extraction">&#182;</a></h5><p>How do we get the crop of the cart?</p>
+<h5 id="Input-Extraction">Input Extraction<a class="anchor-link" href="#Input-Extraction">&#194;&#182;</a></h5><p>How do we get the crop of the cart?</p>
 <center><img src="img/3.png" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Selecting-an-Action">Selecting an Action<a class="anchor-link" href="#Selecting-an-Action">&#182;</a></h5><p>This is done based on $\epsilon$ greedy policy.</p>
+<h5 id="Selecting-an-Action">Selecting an Action<a class="anchor-link" href="#Selecting-an-Action">&#194;&#182;</a></h5><p>This is done based on $\epsilon$ greedy policy.</p>
 <center><img src="img/4.png" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Training">Training<a class="anchor-link" href="#Training">&#182;</a></h5><center><img src="img/5.png" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h5 id="Training">Training<a class="anchor-link" href="#Training">&#194;&#182;</a></h5><center><img src="img/5.png" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 <center><img src="img/6.png" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12017,21 +12028,19 @@ a.anchor-link {
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h1>
+<h1 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h2><p><br><br></p>
+<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#194;&#182;</a></h2><p><br><br></p>
 <ul>
 <li>Experience replay finds least squares solution<br><br></li>
 <li>But it may take many iterations<br><br></li>
@@ -12042,21 +12051,19 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#182;</a></h2><center><img src="img/fa2_slides5.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction"><center>Linear Least Squares Prediction</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction">&#194;&#182;</a></h2><center><img src="img/fa2_slides5.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#182;</a></h2><center><img src="img/fa2_slides6.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#194;&#182;</a></h2><center><img src="img/fa2_slides6.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div>
@@ -12073,57 +12080,51 @@ a.anchor-link {
 </div>
 
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#182;</a></h2><center><img src="img/fa2_slides7.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Linear-Least-Squares-Prediction-Algorithms"><center>Linear Least Squares Prediction Algorithms</center><a class="anchor-link" href="#Linear-Least-Squares-Prediction-Algorithms">&#194;&#182;</a></h2><center><img src="img/fa2_slides7.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Policy-Iteration(LSPI)"><center>Least Squares Policy Iteration(LSPI)</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)">&#182;</a></h2><center><img src="img/fa2_slides8.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Policy-Iteration(LSPI)"><center>Least Squares Policy Iteration(LSPI)</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)">&#194;&#182;</a></h2><center><img src="img/fa2_slides8.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Action-Value-Function-Approximation"><center>Least Squares Action-Value Function Approximation</center><a class="anchor-link" href="#Least-Squares-Action-Value-Function-Approximation">&#182;</a></h2><center><img src="img/fa2_slides9.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Action-Value-Function-Approximation"><center>Least Squares Action-Value Function Approximation</center><a class="anchor-link" href="#Least-Squares-Action-Value-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/fa2_slides9.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Control"><center>Least Squares Control</center><a class="anchor-link" href="#Least-Squares-Control">&#182;</a></h2><center><img src="img/fa2_slides10.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Control"><center>Least Squares Control</center><a class="anchor-link" href="#Least-Squares-Control">&#194;&#182;</a></h2><center><img src="img/fa2_slides10.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Q-Learning"><center>Least Squares Q-Learning</center><a class="anchor-link" href="#Least-Squares-Q-Learning">&#182;</a></h2><center><img src="img/fa2_slides11.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Q-Learning"><center>Least Squares Q-Learning</center><a class="anchor-link" href="#Least-Squares-Q-Learning">&#194;&#182;</a></h2><center><img src="img/fa2_slides11.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-Squares-Policy-Iteration(LSPI)-Algorithm"><center>Least Squares Policy Iteration(LSPI) Algorithm</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)-Algorithm">&#182;</a></h2><center><img src="img/fa2_slides12.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
+<h2 id="Least-Squares-Policy-Iteration(LSPI)-Algorithm"><center>Least Squares Policy Iteration(LSPI) Algorithm</center><a class="anchor-link" href="#Least-Squares-Policy-Iteration(LSPI)-Algorithm">&#194;&#182;</a></h2><center><img src="img/fa2_slides12.JPG" alt="Multi-armed Bandit" style="width: 600px;"/></center>
 </div>
 </div>
 </div></section></section>
