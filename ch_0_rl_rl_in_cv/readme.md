@@ -1,26 +1,6 @@
 # <center>Deep Reinforcement Learning in CV (3 papers)</center>
 
-#### <center> </center>
-
-## Contents:
-
-
-
-    We will look at three Computer Vision tasks, namely-
-        Object Detection
-        Action Detection
-        Visual Tracking
-
-    For each task we will try answering these questions -
-        What is the task?
-        Can we identify the RL components -
-            The MDP formulation
-                State Space
-                Action Space
-                Reward System
-            Network Architecture
-        Why use RL for this task?
-
+##Contents:
 
 1) **We will look at the following tasks:**
 	* Object Detection
