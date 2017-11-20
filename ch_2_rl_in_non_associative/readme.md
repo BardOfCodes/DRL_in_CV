@@ -1,25 +1,17 @@
-# <center>Reinforcement Learning in Non-Associative setting</center>
+# <center>Unifying MC and TD Methods</center>
 
-#### <center> Reference: Chapter 2, Sutton and Barto</center>
+#### <center> Reference: Chapter 7 and Chapter 12, Sutton and Barto</center>
 
 ## Contents:
 
-1) **Introduction**
-	* Non-Associative Setting?
-	* Examples?
+1) **Bootstrapping**
+	* Why do Bootstrapping?
+	* n-Step SARSA (On-Policy Control)
+	* n-Step Off-Policy Control (with Importance Sampling)
+	* N-Step Off-Policy Control (w/o Importance Sampling => Tree BackUp Algorithm)
 
-2) **Multi-arm Bandit Problems**
-	* k-armed bandit problem
-	* expected reward
-	* exploration vs exploitation
+2) **TD($\lambda$)**
+	* Forward View
+	* Backward View
 
-3) **Action Value Methods**
-	* Sample Average method
-	* greedy and $\epsilon$ greedy
-	* The test-bed
-	* Non-stationary problems
-
-4) **Improving Exploration in Simple Bandit Problem**
-	* Optimistic Initial Values
-	* Upper-Confidence Bound Action Selection
-	* Gradient Bandit Algorithm
+3) **Eligibility Traces**
