@@ -5,7 +5,7 @@
 
 ## Contents:
 
-1) **RL: Formal Definition **
+1) **RL: Formal Definition**
 * Recent Examples
 
 2) **RL vs Supervised Learning vs Unsupervised learning**
