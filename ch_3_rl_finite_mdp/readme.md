@@ -1,32 +1,23 @@
 
-# Finite Markov Decision Processes
+# Dynamic programming Methods
 
 ### Reference: Chapter 3, Sutton and Barto
 
 ## Contents:
 
-1) **Why MDPs?**
+1) **Introduction**
 
-2) **Markov Property**
+2) **Building Blocks of MDP**
+	* Markov Property
+	* State Transition Matrix
+	* Return
+	* Discount
+	* Value Function
 
-3) **Building Blocks of MDP**
-* Episodic vs Continuous Tasks
-* State Transition Matrix
-* Return
-* Discount
-* Value Function
+3) **MDP Parameters**
+	* Policy in MDP Notations
+	* Value Functions in MDP notations
 
-4) **MDP Parameters**
-* Policy in MDP notations
-* Value Functions in MDP notations
+4) **Bellman Expectation Equations**
 
-5) **Bellman Expectation Equations**
-
-6) **Bellman Optimality Equations**
-
-
-
-## Summary
-* We learnt the importance of modeling problems into MDPs. 
-
-* We learnt the Bellman Expectation and Optimality Equations that will be used extensively in the coming slides. 
+5) **Bellman Optimality Equations**
