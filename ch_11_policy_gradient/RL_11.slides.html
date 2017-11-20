@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11825,27 +11854,24 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Policy-Gradient-Methods"><center> Policy Gradient Methods</center><a class="anchor-link" href="#-Policy-Gradient-Methods">&#182;</a></h1>
+<h1 id="-Policy-Gradient-Methods"><center> Policy Gradient Methods</center><a class="anchor-link" href="#-Policy-Gradient-Methods">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Table-of-Content">Table of Content<a class="anchor-link" href="#Table-of-Content">&#182;</a></h2><p>1) Introduction: Policy Gradient vs the World, Advantages and Disadvantages</p>
+<h2 id="Table-of-Content">Table of Content<a class="anchor-link" href="#Table-of-Content">&#194;&#182;</a></h2><p>1) Introduction: Policy Gradient vs the World, Advantages and Disadvantages</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11854,8 +11880,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11864,8 +11889,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11874,48 +11898,43 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#182;</a></h1>
+<h1 id="Introduction"><center>Introduction</center><a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Introduction-"><center> Introduction </center><a class="anchor-link" href="#-Introduction-">&#182;</a></h2><center><img src="img/pg_1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Introduction-"><center> Introduction </center><a class="anchor-link" href="#-Introduction-">&#194;&#182;</a></h2><center><img src="img/pg_1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Value-Based-Vs-Policy-Based-RL"><center> Value-Based Vs Policy-Based RL</center><a class="anchor-link" href="#-Value-Based-Vs-Policy-Based-RL">&#182;</a></h2><center><img src="img/pg_2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Value-Based-Vs-Policy-Based-RL"><center> Value-Based Vs Policy-Based RL</center><a class="anchor-link" href="#-Value-Based-Vs-Policy-Based-RL">&#194;&#182;</a></h2><center><img src="img/pg_2.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Why-Policy-Based-RL"><center> Why Policy-Based RL</center><a class="anchor-link" href="#-Why-Policy-Based-RL">&#182;</a></h2><center><img src="img/pg_3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Why-Policy-Based-RL"><center> Why Policy-Based RL</center><a class="anchor-link" href="#-Why-Policy-Based-RL">&#194;&#182;</a></h2><center><img src="img/pg_3.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Can-Learning-Policy-be-easier-than-Learning-Values-of-states?"><center> Can Learning Policy be easier than Learning Values of states?</center><a class="anchor-link" href="#-Can-Learning-Policy-be-easier-than-Learning-Values-of-states?">&#182;</a></h2><ul>
+<h2 id="-Can-Learning-Policy-be-easier-than-Learning-Values-of-states?"><center> Can Learning Policy be easier than Learning Values of states?</center><a class="anchor-link" href="#-Can-Learning-Policy-be-easier-than-Learning-Values-of-states?">&#194;&#182;</a></h2><ul>
 <li>The policy may be a simpler function to approximate.</li>
 <li>This is the simplest advantage that policy parameterization may have over action-value parameterization.</li>
 </ul>
@@ -11931,48 +11950,43 @@ a.anchor-link {
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#182;</a></h2><center><img src="img/pg_4.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/pg_4.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#182;</a></h2><center><img src="img/pg_5.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/pg_5.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#182;</a></h2><center><img src="img/pg_6.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/pg_6.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#182;</a></h2><center><img src="img/pg_7.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Example-of-Stochastic-Optimal-Policy"><center> Example of Stochastic Optimal Policy</center><a class="anchor-link" href="#-Example-of-Stochastic-Optimal-Policy">&#194;&#182;</a></h2><center><img src="img/pg_7.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-not-use-softmax-of-Action-Values-for-stochastic-Policies?">Why not use softmax of Action-Values for stochastic Policies?<a class="anchor-link" href="#Why-not-use-softmax-of-Action-Values-for-stochastic-Policies?">&#182;</a></h2><ul>
+<h2 id="Why-not-use-softmax-of-Action-Values-for-stochastic-Policies?">Why not use softmax of Action-Values for stochastic Policies?<a class="anchor-link" href="#Why-not-use-softmax-of-Action-Values-for-stochastic-Policies?">&#194;&#182;</a></h2><ul>
 <li>This alone would not approach determinism if and when required.</li>
 <li>The action-value estimates would differ by a finite amount, translating to specific probabilities other than 0 and 1.</li>
 </ul>
@@ -11980,8 +11994,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11993,8 +12006,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12006,131 +12018,117 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="REINFORCE:-Simplest-Policy-Gradient-Method"><center>REINFORCE: Simplest Policy Gradient Method</center><a class="anchor-link" href="#REINFORCE:-Simplest-Policy-Gradient-Method">&#182;</a></h2>
+<h2 id="REINFORCE:-Simplest-Policy-Gradient-Method"><center>REINFORCE: Simplest Policy Gradient Method</center><a class="anchor-link" href="#REINFORCE:-Simplest-Policy-Gradient-Method">&#194;&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Quality-Measure-of-Policy"><center>Quality Measure of Policy</center><a class="anchor-link" href="#Quality-Measure-of-Policy">&#182;</a></h2><center><img src="img/pg_8.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Quality-Measure-of-Policy"><center>Quality Measure of Policy</center><a class="anchor-link" href="#Quality-Measure-of-Policy">&#194;&#182;</a></h2><center><img src="img/pg_8.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Optimisation"><center>Policy Optimisation</center><a class="anchor-link" href="#Policy-Optimisation">&#182;</a></h2><center><img src="img/pg_9.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Policy-Optimisation"><center>Policy Optimisation</center><a class="anchor-link" href="#Policy-Optimisation">&#194;&#182;</a></h2><center><img src="img/pg_9.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Gradient-Ascent"><center>Gradient Ascent</center><a class="anchor-link" href="#Gradient-Ascent">&#182;</a></h2><center><img src="img/pg_10.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Gradient-Ascent"><center>Gradient Ascent</center><a class="anchor-link" href="#Gradient-Ascent">&#194;&#182;</a></h2><center><img src="img/pg_10.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Gradient-Ascent---FDM"><center>Gradient Ascent - FDM</center><a class="anchor-link" href="#Gradient-Ascent---FDM">&#182;</a></h2><center><img src="img/pg_11.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Gradient-Ascent---FDM"><center>Gradient Ascent - FDM</center><a class="anchor-link" href="#Gradient-Ascent---FDM">&#194;&#182;</a></h2><center><img src="img/pg_11.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Analytic-Gradient-Ascent"><center>Analytic Gradient Ascent</center><a class="anchor-link" href="#Analytic-Gradient-Ascent">&#182;</a></h2><center><img src="img/pg_12.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Analytic-Gradient-Ascent"><center>Analytic Gradient Ascent</center><a class="anchor-link" href="#Analytic-Gradient-Ascent">&#194;&#182;</a></h2><center><img src="img/pg_12.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example--Softmax-Policy"><center>Example- Softmax Policy</center><a class="anchor-link" href="#Example--Softmax-Policy">&#182;</a></h2><center><img src="img/pg_13.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Example--Softmax-Policy"><center>Example- Softmax Policy</center><a class="anchor-link" href="#Example--Softmax-Policy">&#194;&#182;</a></h2><center><img src="img/pg_13.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example--Gaussian-Policy"><center>Example- Gaussian Policy</center><a class="anchor-link" href="#Example--Gaussian-Policy">&#182;</a></h2><center><img src="img/pg_14.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Example--Gaussian-Policy"><center>Example- Gaussian Policy</center><a class="anchor-link" href="#Example--Gaussian-Policy">&#194;&#182;</a></h2><center><img src="img/pg_14.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="One-step-MDP"><center>One-step MDP</center><a class="anchor-link" href="#One-step-MDP">&#182;</a></h2><center><img src="img/pg_15.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="One-step-MDP"><center>One-step MDP</center><a class="anchor-link" href="#One-step-MDP">&#194;&#182;</a></h2><center><img src="img/pg_15.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Gradient-Theorem"><center>Policy Gradient Theorem</center><a class="anchor-link" href="#Policy-Gradient-Theorem">&#182;</a></h2><center><img src="img/pg_16.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Policy-Gradient-Theorem"><center>Policy Gradient Theorem</center><a class="anchor-link" href="#Policy-Gradient-Theorem">&#194;&#182;</a></h2><center><img src="img/pg_16.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Gradient-Theorem-Proof"><center>Policy Gradient Theorem-Proof</center><a class="anchor-link" href="#Policy-Gradient-Theorem-Proof">&#182;</a></h2><center><img src="img/sutton_1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Policy-Gradient-Theorem-Proof"><center>Policy Gradient Theorem-Proof</center><a class="anchor-link" href="#Policy-Gradient-Theorem-Proof">&#194;&#182;</a></h2><center><img src="img/sutton_1.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Monte-Carlo-Policy-Gradient-(REINFORCE)"><center>Monte-Carlo Policy Gradient (REINFORCE)</center><a class="anchor-link" href="#Monte-Carlo-Policy-Gradient-(REINFORCE)">&#182;</a></h2><center><img src="img/pg_17.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Monte-Carlo-Policy-Gradient-(REINFORCE)"><center>Monte-Carlo Policy Gradient (REINFORCE)</center><a class="anchor-link" href="#Monte-Carlo-Policy-Gradient-(REINFORCE)">&#194;&#182;</a></h2><center><img src="img/pg_17.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-PuckWorld-Example"><center> PuckWorld Example</center><a class="anchor-link" href="#-PuckWorld-Example">&#182;</a></h2><p><center><img src="img/pg_18.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-PuckWorld-Example"><center> PuckWorld Example</center><a class="anchor-link" href="#-PuckWorld-Example">&#194;&#182;</a></h2><p><center><img src="img/pg_18.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 <strong> DQN Demo <a href="http://cs.stanford.edu/people/karpathy/reinforcejs/puckworld.html">Reinforce.js</a> </strong></p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-REINFORCE-with-Baseline"><center> REINFORCE with Baseline</center><a class="anchor-link" href="#-REINFORCE-with-Baseline">&#182;</a></h2><ul>
+<h2 id="-REINFORCE-with-Baseline"><center> REINFORCE with Baseline</center><a class="anchor-link" href="#-REINFORCE-with-Baseline">&#194;&#182;</a></h2><ul>
 <li>REINFORCE has good theoretical convergence properties. </li>
 <li>The expected update over an episode is in the same direction as the performance gradient.</li>
 <li>This assures: <ul>
@@ -12143,8 +12141,7 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12160,20 +12157,18 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-REINFORCE-with-Baseline"><center> REINFORCE with Baseline</center><a class="anchor-link" href="#-REINFORCE-with-Baseline">&#182;</a></h2><ul>
+<h2 id="-REINFORCE-with-Baseline"><center> REINFORCE with Baseline</center><a class="anchor-link" href="#-REINFORCE-with-Baseline">&#194;&#182;</a></h2><ul>
 <li>The derivative of the quality $\eta(\theta)$ of policy network can be written as </li>
 </ul>
 <center><img src="img/sutton_5.JPG" alt="Multi-armed Bandit" style="width: 400px;"/></center>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12184,8 +12179,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12198,8 +12192,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12210,148 +12203,132 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-Actor-Critic-Methods"><center> Actor Critic Methods</center><a class="anchor-link" href="#-Actor-Critic-Methods">&#182;</a></h1>
+<h1 id="-Actor-Critic-Methods"><center> Actor Critic Methods</center><a class="anchor-link" href="#-Actor-Critic-Methods">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Reducing-Variance-Using-a-Critic"><center> Reducing Variance Using a Critic</center><a class="anchor-link" href="#-Reducing-Variance-Using-a-Critic">&#182;</a></h2><center><img src="img/pg_19.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Reducing-Variance-Using-a-Critic"><center> Reducing Variance Using a Critic</center><a class="anchor-link" href="#-Reducing-Variance-Using-a-Critic">&#194;&#182;</a></h2><center><img src="img/pg_19.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Estimating-the-Action-Value-Function"><center> Estimating the Action-Value Function</center><a class="anchor-link" href="#-Estimating-the-Action-Value-Function">&#182;</a></h2><center><img src="img/pg_20.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Estimating-the-Action-Value-Function"><center> Estimating the Action-Value Function</center><a class="anchor-link" href="#-Estimating-the-Action-Value-Function">&#194;&#182;</a></h2><center><img src="img/pg_20.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Action-Value-Actor-Critic"><center> Action Value Actor Critic</center><a class="anchor-link" href="#-Action-Value-Actor-Critic">&#182;</a></h2><center><img src="img/pg_21.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Action-Value-Actor-Critic"><center> Action Value Actor Critic</center><a class="anchor-link" href="#-Action-Value-Actor-Critic">&#194;&#182;</a></h2><center><img src="img/pg_21.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Bias-In-Actor-Critic-Algorithm"><center> Bias In Actor-Critic Algorithm</center><a class="anchor-link" href="#-Bias-In-Actor-Critic-Algorithm">&#182;</a></h2><center><img src="img/pg_22.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Bias-In-Actor-Critic-Algorithm"><center> Bias In Actor-Critic Algorithm</center><a class="anchor-link" href="#-Bias-In-Actor-Critic-Algorithm">&#194;&#182;</a></h2><center><img src="img/pg_22.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Compatible-Function-Approximation"><center> Compatible Function Approximation</center><a class="anchor-link" href="#-Compatible-Function-Approximation">&#182;</a></h2><center><img src="img/pg_23.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Compatible-Function-Approximation"><center> Compatible Function Approximation</center><a class="anchor-link" href="#-Compatible-Function-Approximation">&#194;&#182;</a></h2><center><img src="img/pg_23.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Compatible-Function-Approximation--Proof"><center> Compatible Function Approximation- Proof</center><a class="anchor-link" href="#-Compatible-Function-Approximation--Proof">&#182;</a></h2><center><img src="img/pg_24.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Compatible-Function-Approximation--Proof"><center> Compatible Function Approximation- Proof</center><a class="anchor-link" href="#-Compatible-Function-Approximation--Proof">&#194;&#182;</a></h2><center><img src="img/pg_24.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Additional-Enhancements-to-Actor-Critic"><center>Additional Enhancements to Actor Critic</center><a class="anchor-link" href="#Additional-Enhancements-to-Actor-Critic">&#182;</a></h1>
+<h1 id="Additional-Enhancements-to-Actor-Critic"><center>Additional Enhancements to Actor Critic</center><a class="anchor-link" href="#Additional-Enhancements-to-Actor-Critic">&#194;&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Actor-Critic-with-Baseline"><center> Actor Critic with Baseline</center><a class="anchor-link" href="#-Actor-Critic-with-Baseline">&#182;</a></h2><center><img src="img/pg_25.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Actor-Critic-with-Baseline"><center> Actor Critic with Baseline</center><a class="anchor-link" href="#-Actor-Critic-with-Baseline">&#194;&#182;</a></h2><center><img src="img/pg_25.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Estimating-the-Advantage-Function"><center> Estimating the Advantage Function</center><a class="anchor-link" href="#-Estimating-the-Advantage-Function">&#182;</a></h2><center><img src="img/pg_26.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Estimating-the-Advantage-Function"><center> Estimating the Advantage Function</center><a class="anchor-link" href="#-Estimating-the-Advantage-Function">&#194;&#182;</a></h2><center><img src="img/pg_26.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Estimating-the-Advantage-Function"><center> Estimating the Advantage Function</center><a class="anchor-link" href="#-Estimating-the-Advantage-Function">&#182;</a></h2><center><img src="img/pg_27.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Estimating-the-Advantage-Function"><center> Estimating the Advantage Function</center><a class="anchor-link" href="#-Estimating-the-Advantage-Function">&#194;&#182;</a></h2><center><img src="img/pg_27.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Critics-at-different-Time-Scales"><center> Critics at different Time-Scales</center><a class="anchor-link" href="#-Critics-at-different-Time-Scales">&#182;</a></h2><p><center><img src="img/pg_27.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>`</p>
+<h2 id="-Critics-at-different-Time-Scales"><center> Critics at different Time-Scales</center><a class="anchor-link" href="#-Critics-at-different-Time-Scales">&#194;&#182;</a></h2><p><center><img src="img/pg_27.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>`</p>
 
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="-Actors-at-different-Time-Scale"><center> Actors at different Time-Scale</center><a class="anchor-link" href="#-Actors-at-different-Time-Scale">&#182;</a></h2><center><img src="img/pg_28.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="-Actors-at-different-Time-Scale"><center> Actors at different Time-Scale</center><a class="anchor-link" href="#-Actors-at-different-Time-Scale">&#194;&#182;</a></h2><center><img src="img/pg_28.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Gradient-with-Eligibility-Traces"><center>Policy Gradient with Eligibility Traces</center><a class="anchor-link" href="#Policy-Gradient-with-Eligibility-Traces">&#182;</a></h2><center><img src="img/pg_29.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Policy-Gradient-with-Eligibility-Traces"><center>Policy Gradient with Eligibility Traces</center><a class="anchor-link" href="#Policy-Gradient-with-Eligibility-Traces">&#194;&#182;</a></h2><center><img src="img/pg_29.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Policy-Gradient-with-Eligibility-Traces"><center>Policy Gradient with Eligibility Traces</center><a class="anchor-link" href="#Policy-Gradient-with-Eligibility-Traces">&#182;</a></h2><center><img src="img/pg_30.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Policy-Gradient-with-Eligibility-Traces"><center>Policy Gradient with Eligibility Traces</center><a class="anchor-link" href="#Policy-Gradient-with-Eligibility-Traces">&#194;&#182;</a></h2><center><img src="img/pg_30.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#182;</a></h2><center><img src="img/pg_34.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
+<h2 id="Summary"><center>Summary</center><a class="anchor-link" href="#Summary">&#194;&#182;</a></h2><center><img src="img/pg_34.JPG" alt="Multi-armed Bandit" style="width: 700px;"/></center>
 </div>
 </div>
 </div></section></section>
