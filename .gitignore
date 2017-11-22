@@ -4,6 +4,12 @@ __pycache__/
 */.ipynb_checkpoints/
 # C extensions
 *.so
+## for the website
+_site/
+.sass-cache/
+.jekyll-metadata
+.DS_Store
+Gemfile.lock
 
 # Distribution / packaging
 .Python
