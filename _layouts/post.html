@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+{% capture pretty_date %}
+  {% assign day = page.date | date: "%-d"  %}
+  {{ page.date | date: "%B" }}
+  {% case day %}{% when '1' or '21' or '31' %}{{ day }}st{% when '2' or '22' %}{{ day }}nd{% when '3' or '23' %}{{ day }}rd{% else %}{{ day }}th{% endcase %}{{ page.date | date: ", %Y" }}
+{% endcapture %}
+
+<main class="post" role="main">
+  <div class="post__head">
+    <h1 class="post__title"> {{ page.title }} </h1>
+    <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}"> {{ pretty_date }} </time>
+    <div class="post__labels">
+    {% if page.category %} <a href="{{ site.baseurl }}/category/{{ page.category }}" class="post__category">{{ page.category }}</a>{% endif %}
+    {% if page.tags %}{% for tag in page.tags %} <a href="{{ site.baseurl }}/tag/{{ tag }}" class="post__tag">{{ tag }}</a>{% endfor %}{% endif %}
+    </div>
+  </div>
+  <div class="post__body">
+    {{ content }}
+  </div>
+</main>
+
+{% comment %}
+{% endcomment %}
+
+{% if page.reddit_post %}
+  <section class="comments">
+    {% if page.featured_comments %}
+      {% assign call_to_action = "Join the Discussion" %}
+
+      <h2>Featured Comments</h2>
+      {% for comment in page.featured_comments %}
+      <div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="{% if comment.context %}true{% else %}false{% endif %}" data-embed-live="{% if comment.freeze %}false{% else %}true{% endif %}"><a href="{{ comment.url }}"></a></div>
+      {% endfor %}
+
+      <script async src="https://www.redditstatic.com/comment-embed.js"></script>
+    {% else %}
+      {% assign call_to_action = "Comments" %}
+    {% endif %}
+    <a href="{{ page.reddit_post }}" target="_blank" class="comments__cta">{{ call_to_action }}</a>
+  </section>
+{% endif %}

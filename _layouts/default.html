@@ -1,0 +1,76 @@
+{% assign title = page.title %}
+
+{% if page.teaser %}
+  {% assign teaser = page.teaser %}
+{% else %}
+  {% assign teaser = page.excerpt %}
+{% endif %}
+
+{% if page.title == 'Posts' %}
+  {% assign page_type = 'home' %}
+  {% assign title = site.title %}
+  {% assign teaser = site.description %}
+{% elsif page.layout == 'listing' %}
+  {% assign page_type = 'listing' %}
+  {% assign title = title | append: ' | ' | append: site.title %}
+{% else %}
+  {% assign page_type = 'destination' %}
+{% endif %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="author"       content="{{ site.author }}" />
+    <meta name="description"  content="{{ teaser }}" />
+    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" />
+    {% feed_meta %}
+    <link rel="stylesheet"    href="{{ site.baseurl }}/style.css">
+    <link rel="stylesheet"    href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:500,500i,300,300i|Roboto+Mono">
+  </head>
+  <body>
+    <div class="backdrop backdrop--{{ page_type }}">
+      <header class="header header--{{ page_type }}">
+        <a class="nameplate nameplate--{{ page_type }}" href="{{ site.baseurl }}/">
+          <div class="nameplate__avatar nameplate--{{ page_type }}__avatar"></div>
+          <h1 class="nameplate__title nameplate--{{ page_type }}__title">{{ site.title }}</h1>
+          <div class="nameplate__subhead nameplate--{{ page_type }}__subhead">{% if site.slogan %} {{ site.slogan }} {% endif %}</div>
+        </a>
+
+        <nav class="nav">
+          <button class="nav__toggle"></button>
+          <ul class="nav__list nav--{{ page_type }}__list collapsed">
+            {% for item in site.nav_menu %}
+              {% if item.scheme == 'mailto' %}
+                {% assign plain_link = 'mailto:' | append: item.handle | append: '@' | append: item.domain %}
+                {% assign obfuscated_link = plain_link | url_encode | split: '' | reverse | join: '' %}
+                <a class="nav__item nav__item--{{ item.name | downcase }} email" href="{{ obfuscated_link }}">{{ item.name }}</a>
+              {% else %}
+                {% if item.outbound %}
+                  {% assign url = item.url | append: '" target=_blank' %}
+                {% else %}
+                  {% assign url = item.url | prepend: site.baseurl %}
+                {% endif %}
+                <a class="nav__item nav__item--{{ item.name | downcase }}" href="{{ url }}">{{ item.name }}</a>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      </header>
+      <hr>
+
+      {{ content }}
+
+      <hr>
+      <footer class="colophon colophon--{{ page_type }}">
+        <span class="colophon__statement">This blog is powered by Jekyll.</span>
+        <span class="colophon__statement"><a href="{{ site.repo }}" target="_blank">Source code</a> available under the MIT License.</span>
+        <span class="colophon__statement">All original writing licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</span>
+      </footer>
+    </div>
+
+    <script src="{{ site.baseurl }}/site.js"></script>
+  </body>
+</html>

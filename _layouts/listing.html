@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+{% if page.collection %}
+  {% assign page_type = 'listing' %}
+  {% assign item_type = 'posts' %}
+  {% assign filter = page.collection %}
+  {% if filter == 'tag' %}
+    {% assign filter = filter | append: 's' %}
+  {% endif %}
+  {% assign label = page.path | split: '/' | last | split: '.' | first %}
+
+  {% assign pool = site.posts | where: filter, label %}
+
+{% elsif page.path == 'projects.html' %}
+  {% assign page_type = 'listing' %}
+  {% assign item_type = 'projects' %}
+  {% assign pool = site.projects %}
+  {% assign outbound_link_flag = ' target="_blank"' %}
+
+{% else %}
+  {% assign page_type = 'home' %}
+  {% assign item_type = 'posts' %}
+  {% assign pool = paginator.posts %}
+
+{% endif %}
+
+<main class="{{ item_type }} {{ item_type }}--{{ page_type }}" role="main">
+  <h2 class="{{ item_type }}__heading {{ item_type }}--{{ page_type }}__heading">{{ page.title }}</h2>
+
+  <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
+    {% for item in pool %}
+      <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
+        {% if item_type == 'posts' %}
+          <time class="posts__entry-date posts__entry-date--{{ page_type }}" datetime="{{ item.date | date_to_xmlschema }}">
+            {{ item.date | date: "%b %-d" }}
+          </time>
+        {% elsif item_type == 'projects' %}
+          <span class="projects__entry-role">{{ item.role }}</span>
+        {% endif %}
+        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.url }}"{{ outbound_link_flag }}>{{ item.title }}</a>
+        {% if item.teaser %} <div class="{{ item_type }}__entry-teaser {{ item_type }}__entry-teaser--{{ page_type }}">{{ item.teaser }}</div> {% endif %}
+        </div>
+        {% if item.category %} <div class="{{ item_type }}__entry-category {{ item_type }}__entry-category--{{ page_type }}">{{ item.category }}</div> {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</main>
+
+{{ content }}

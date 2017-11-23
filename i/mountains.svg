@@ -1,0 +1,33 @@
+<svg width="1080" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grd0" x1="0" y1="0" x2="0" y2="25%">
+      <stop offset="0%" stop-color="#fff0e0" />
+      <stop offset="100%" stop-color="#ffe4c7" />
+    </linearGradient><linearGradient id="grd1" x1="0" y1="0" x2="0" y2="25%">
+      <stop offset="0%" stop-color="#d9d1b8" />
+      <stop offset="100%" stop-color="#ffe4c7" />
+    </linearGradient>
+    <linearGradient id="grd2" x1="0" y1="0" x2="0" y2="30%">
+      <stop offset="0%" stop-color="#b3beaa" />
+      <stop offset="100%" stop-color="#d9d1b8" />
+    </linearGradient>
+    <linearGradient id="grd3" x1="0" y1="0" x2="0" y2="40%">
+      <stop offset="0%" stop-color="#8cab9b" />
+      <stop offset="100%" stop-color="#b3beaa" />
+    </linearGradient>
+    <linearGradient id="grd4" x1="0" y1="0" x2="0" y2="60%">
+      <stop offset="0%" stop-color="#66988d" />
+      <stop offset="100%" stop-color="#8cab9b" />
+    </linearGradient>
+    <linearGradient id="grd5" x1="0" y1="0" x2="0" y2="100%">
+      <stop offset="0%" stop-color="#40867e" />
+      <stop offset="100%" stop-color="#66988d" />
+    </linearGradient>
+  </defs>
+  <path d="M0,0 h1080 v600 h-1080 z" fill="url(#grd0)" />
+  <path d="M0,140 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 l36,-36 l36,36 V600 H0 z" fill="url(#grd1)" />
+  <path d="M-45,165 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 l45,45 l45,-45 V600 H0 z" fill="url(#grd2)" />
+  <path d="M-20,205 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 l60,60 l60,-60 V600 H0 z" fill="url(#grd3)" />
+  <path d="M-55,270 l90,-90 l90,90 l90,-90 l90,90 l90,-90 l90,90 l90,-90 l90,90 l90,-90 l90,90 l90,-90 l90,90 l90,-90 V600 H0 z" fill="url(#grd4)" />
+  <path d="M-30,395 l135,-135 l135,135 l135,-135 l135,135 l135,-135 l135,135 l135,-135 l135,135 l135,-135 V600 H0 z" fill="url(#grd5)" />
+</svg>
