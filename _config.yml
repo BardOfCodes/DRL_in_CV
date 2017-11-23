@@ -11,7 +11,7 @@ slogan: Showtime!        # appears in the header, alongside the title
 avatar: /i/avatar.png    # appears as portrait in the header
 banner: /i/mountains.svg # appears as background in the header
 url: http://jekyllrb.com # used by plugins to generate feed.xml and sitemap.xml
-baseurl: ''              # prepended to all absolute filepaths
+baseurl: '/DRL_in_CV/'              # prepended to all absolute filepaths
 repo: https://github.com//rlue.github.io # appears in footer
 
 # Objects listed here will appear in the main nav menu.
@@ -80,7 +80,7 @@ defaults:
 sass:
   sass_dir: _assets/css
 
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
