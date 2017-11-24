@@ -41,7 +41,7 @@
 }
 
 .header {
-  background-image: url("{{ site.banner }}");
+  background-image: url("{{ site.baseurl }}{{ site.banner }}");
   box-shadow: 0 0 3px #333;
   @include transition(top, 0, 200ms);
   left: 0;
@@ -110,8 +110,8 @@
   @include tablet-portrait-up {
     margin: 0 0.5rem;
     font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: lowercase;
+    //font-weight: 700;
+    //text-transform: lowercase;
 
     a:active { color: #fff; }
   }
@@ -123,32 +123,33 @@
     height: 0;
     color: #fff;
     text-shadow: 2px 2px #444;
-    line-height: 0;
+    line-height: 0; 
 
     > h1, > div:last-child {
       position: absolute;
-      bottom: -9rem;
+      bottom: -7rem;
     }
 
     > h1 {
       text-align: right;
       right: 50%;
       margin-right: 6.5rem;
-      font-size: 6.5vw;
+      font-size: 12.5vw;
       line-height: inherit;
     }
 
     > div:last-child {
       left: 50%;
       margin-left: 6.5rem;
-      font-size: 5.75vw;
+      font-size: 12.5vw;
+      font-weight: 700;
     }
   }
 
   @include tablet-landscape-up {
-    > h1 { font-size: 3.625rem; }
+    > h1 { font-size: 6.625rem; }
 
-    > div:last-child { font-size: 3.25rem; }
+    > div:last-child { font-size: 6.625rem; }
   }
 }
 
@@ -160,7 +161,8 @@
     margin: auto;
     width: 12rem;
     height: 12rem;
-    box-shadow: 2px 2px #444;
+    //box-shadow: 2px 2px #444;
+    box-shadow: inset 2px 2px 8px 3px #444
   }
 }
 
@@ -477,7 +479,7 @@
 
 .posts__entry-title {
   @include mobile-only {
-    font-size: 1.25rem;
+    font-size: 3rem;
     @include fontweight(bold);
     overflow: hidden;        // Keep titles
     text-overflow: ellipsis; // limited to
@@ -485,9 +487,9 @@
   }
 
   @include tablet-portrait-up {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-top: 5rem;
+    margin-top: 3rem;
 
     a, a:hover {
       border: none;
@@ -511,7 +513,7 @@
 }
 .posts__entry-category {
   @include mobile-only {
-    text-align: right;
+    text-align: left;
     margin: auto;
     margin-top: 0.5rem;
     padding-right: 1.75rem;
@@ -520,9 +522,10 @@
   }
 
   @include tablet-portrait-up {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+    //position: absolute;
+    //top: 1rem;
+    //left: 1rem;
+    text-align: left;
     @include fontweight(bold, serif, inherit);
   }
 }

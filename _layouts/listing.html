@@ -31,19 +31,25 @@ layout: default
 
   <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
     {% for item in pool %}
+    {% if item.type =='course' %}
       <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
         {% if item_type == 'posts' %}
-          <time class="posts__entry-date posts__entry-date--{{ page_type }}" datetime="{{ item.date | date_to_xmlschema }}">
+          <!-- <time class="posts__entry-date posts__entry-date--{{ page_type }}" datetime="{{ item.date | date_to_xmlschema }}">
             {{ item.date | date: "%b %-d" }}
-          </time>
+          </time> -->
         {% elsif item_type == 'projects' %}
           <span class="projects__entry-role">{{ item.role }}</span>
         {% endif %}
-        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.url }}"{{ outbound_link_flag }}>{{ item.title }}</a>
+        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.slide_link }}"{{ outbound_link_flag }}>{{ item.title }}</a>
         {% if item.teaser %} <div class="{{ item_type }}__entry-teaser {{ item_type }}__entry-teaser--{{ page_type }}">{{ item.teaser }}</div> {% endif %}
         </div>
-        {% if item.category %} <div class="{{ item_type }}__entry-category {{ item_type }}__entry-category--{{ page_type }}">{{ item.category }}</div> {% endif %}
+        {% if item.tutorial %} 
+        <div class="{{ item_type }}__entry-category {{ item_type }}__entry-category--{{ page_type }}">
+          <a href="{{ item.tute_link }}"{{ outbound_link_flag }}> {{ item.tutorial }}</a>
+        </div> 
+        {% endif %}
       </li>
+    {% endif %}
     {% endfor %}
   </ul>
 </main>
