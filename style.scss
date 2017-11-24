@@ -485,7 +485,7 @@
     text-overflow: ellipsis; // limited to
     white-space: nowrap;     // one line
   }
-
+  
   @include tablet-portrait-up {
     font-size: 3rem;
     font-weight: 700;
