@@ -8,7 +8,7 @@ description: >           # appears in an HTML <meta> tag, as well as feed.xml
   A site for Deep reinforcement learning in Computer Vision 
 slogan: Nil        # appears in the header, alongside the title
 avatar: /i/avatar_3.png    # appears as portrait in the header
-banner: /i/mountains.svg # appears as background in the header
+banner: /DRL_in_CV/i/mountains.svg # appears as background in the header
 url: http://jekyllrb.com # used by plugins to generate feed.xml and sitemap.xml
 baseurl: '/DRL_in_CV/'              # prepended to all absolute filepaths
 repo: https://github.com//rlue.github.io # appears in footer

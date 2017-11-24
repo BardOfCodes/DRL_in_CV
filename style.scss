@@ -42,7 +42,7 @@
 }
 
 .header {
-  background-image: url("{{ site.baseurl }}{{ site.banner }}");
+  background-image: url("{{ site.banner }}");
   box-shadow: 0 0 3px #333;
   @include transition(top, 0, 200ms);
   left: 0;
