@@ -17,10 +17,10 @@ repo: https://github.com//rlue.github.io # appears in footer
 # Exceeding four items may cause problems on the desktop (>900px wide) layout.
 nav_menu:
   - name: Course
-    url: /category/course/
+    url: /category/course
     icon: /i/icons.svg#posts # icons should be 24x24 px.
   - name: Posts
-    url: /category/posts/
+    url: /category/posts
     icon: /i/icons.svg#portfolio
   - name: Papers 
     url: /DRL_in_CV_Papers/

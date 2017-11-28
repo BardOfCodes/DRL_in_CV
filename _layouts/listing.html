@@ -32,7 +32,7 @@ layout: default
 <center><img class="center-image" src="{{ site.baseurl }}/img/statement_hinton_bengio_lecun_1.png" alt="DQN"/></center>
 </div>
   <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
-        <h1><a href="{{ site.baseurl }}/category/posts/" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Recent Posts</a></h1>
+        <h1><a href="{{ site.baseurl }}/category/posts" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Recent Posts</a></h1>
   {% assign pool = site.posts | where:'type','post' %}
     {% for item in pool  limit: 3%}
       <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
@@ -55,7 +55,7 @@ layout: default
   <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
 
   {% assign pool = site.posts | where:'type','course' %}
-        <h1><a href="{{ site.baseurl }}/category/course/" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Course</a></h1>
+        <h1><a href="{{ site.baseurl }}/category/course" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Course</a></h1>
     {% for item in pool %}
       <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
         {% if item_type == 'posts' %}
