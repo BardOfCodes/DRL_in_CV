@@ -16,9 +16,9 @@
   // layout
   @extend %block--align-center;
   max-width: 75rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 
-  background: #fff;
+  //background: #fff;
   padding-top: 7.5rem;
 
   > * { padding: 1rem; }
@@ -477,18 +477,21 @@
     right: 1rem;
   }
 }
-
+.center-image{
+  width:100%;
+  padding-top:1rem;
+}
 .posts__entry-title {
   @include mobile-only {
-    font-size: 3rem;
-    @include fontweight(bold);
+    font-size: 2rem;
+    @include fontweight(bold); 
     overflow: hidden;        // Keep titles
     text-overflow: ellipsis; // limited to
     white-space: nowrap;     // one line
   }
   
   @include tablet-portrait-up {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-top: 3rem;
 
@@ -611,6 +614,7 @@
   @include tablet-portrait-up {
     color: inherit;
     margin-bottom: 1rem;
+    padding-top:1em;
   }
 }
 

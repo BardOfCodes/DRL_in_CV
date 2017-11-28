@@ -17,38 +17,21 @@ repo: https://github.com//rlue.github.io # appears in footer
 # Exceeding four items may cause problems on the desktop (>900px wide) layout.
 nav_menu:
   - name: Course
-    url: /
+    url: /category/course/
     icon: /i/icons.svg#posts # icons should be 24x24 px.
   - name: Posts
-    url: /projects
+    url: /category/posts/
     icon: /i/icons.svg#portfolio
-  - name: Papers
+  - name: Papers 
     url: /DRL_in_CV_Papers/
     icon: /i/icons.svg#github
     outbound: true      # this key sets a link to open in a new window.
-  - name: Contact
-    scheme: mailto      # these keys enable email obfuscation.
-    handle: hello       # you know, to protect you from bots. (handle and domain
-    domain: github.com  # are separated in case bots crawl GitHub repos, too.)
-    icon: /i/icons.svg#email
+  - name: About
+    url: /about
+    icon: /i/icons.svg#portfolio
 
 # Objects listed here will appear on the /projects.html page.
-projects:
-  - title: Solana
-    teaser: A responsive blog template written in Sass and vanilla JavaScript.
-    url: https://github.com/rlue/solana
-    role: Creator
-    category: Frontend Dev
-  - title: Cortana
-    teaser: A talking robot. Now available on Google Play?
-    url: https://play.google.com/store/apps/details?id=com.microsoft.cortana
-    role: Core Team
-    category: NLP
-  - title: Rihanna
-    teaser: Possibly another robot. Also available on Google Play.
-    url: https://play.google.com/store/music/artist/Rihanna?id=Arcw2m2ih45qntv3fufub25tyhu
-    role: Contributor
-    category: Algorithmic Composition
+
 
 #################
 # Site Settings #
@@ -68,13 +51,6 @@ collections:
   category: { output: true }
   tag:      { output: true }
 
-defaults:
-  - scope:  { type:   posts    }
-    values: { layout: post     }
-  - scope:  { type:   tag      }
-    values: { layout: listing  }
-  - scope:  { type:   category }
-    values: { layout: listing  }
 
 sass:
   sass_dir: _assets/css

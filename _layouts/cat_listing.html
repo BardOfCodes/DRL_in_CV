@@ -1,45 +1,23 @@
 ---
 layout: default
 ---
-
-
-  {% assign page_type = 'home' %}
+  {% assign page_type = 'listing' %}
   {% assign item_type = 'posts' %}
+  {% assign outbound_link_flag = ' target="_blank"' %}
 
 
 <main class="{{ item_type }} {{ item_type }}--{{ page_type }}" role="main">
   <h2 class="{{ item_type }}__heading {{ item_type }}--{{ page_type }}__heading">{{ page.title }}</h2>
-<div class='post-body'>
-  <p>This is an online repository and for publications and material related to the application of 
-  Deep Reinforcement Learning in Computer Vision. Additionally, we have put together a <b>Course titled "DRL in CV"</b> (mostly Curation of content by amazing people), which focuses on introducing
-  researchers to the field of Reinforcement learning and show applications in Computer Vision. </p>
-  <!--
-  <p> We rely heavily on the following for the content. This work is mostly curation 
-    of the excellant material already provided by these brilliant creators:
-    <ul>
-    <li> Reinforcement Learning: An Introduction- Book by Andrew Barto and Richard S. Sutton.
-          <a href="ufal.mff.cuni.cz/~straka/courses/npfl114/2016/sutton-bookdraft2016sep.pdf">Link to latest draft</a>
-    </li>
-    <li>UCL course on RL - Course by David Silver.<a href="http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html">Link to material</a>
-    </li>
-    <li>Code material from various amazing sources: <a href="https://github.com/dennybritz/reinforcement-learning">DannyBritz</a>,
-        <a href="https://github.com/ShangtongZhang/reinforcement-learning-an-introduction">ShangtongZhang</a>,
-        <a href="https://github.com/karpathy/reinforcejs">AndrejKarapathy</a>.
-    </li>
-    </ul>
-</p>
--->
-<center><img class="center-image" src="{{ site.baseurl }}/img/statement_hinton_bengio_lecun_1.png" alt="DQN"/></center>
-</div>
+  {% if page.content_type=='post' %}
+
   <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
-        <h1><a href="{{ site.baseurl }}/category/posts/" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Recent Posts</a></h1>
-  {% assign pool = site.posts | where:'type','post' %}
-    {% for item in pool  limit: 3%}
+  {% assign pool = site.posts | where:'type',page.content_type %}
+    {% for item in pool %}
       <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
            <time class="posts__entry-date posts__entry-date--{{ page_type }}" datetime="{{ item.date | date_to_xmlschema }}">
             {{ item.date | date: "%b %-d" }}
           </time>
-        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.url }}"{{ outbound_link_flag }} >{{ item.title }}</a>
+        <div class="{{ item_type }}__entry-title {{ item_type }}__entry-title--{{ page_type }}"><a href="{{ site.baseurl }}{{ item.url }}"{{ outbound_link_flag }} style="font-size:2rem;">{{ item.title }}</a>
         {% if item.author %} <div class="{{ item_type }}__entry-teaser {{ item_type }}__entry-teaser--{{ page_type }}">{{ item.author }}</div>
     {% endif %}
     {% if item.teaser %} <div class="{{ item_type }}__entry-teaser {{ item_type }}__entry-teaser--{{ page_type }}">{{ item.teaser }}</div>
@@ -50,12 +28,12 @@ layout: default
     {% endfor %}
   </ul>
 
+  {% else %}
+  
 
 
   <ul class="{{ item_type }}__list {{ item_type }}--{{ page_type }}__list">
-
   {% assign pool = site.posts | where:'type','course' %}
-        <h1><a href="{{ site.baseurl }}/category/course/" style="color: #4e3107; border-bottom:none;"{{ outbound_link_flag }}>Course</a></h1>
     {% for item in pool %}
       <li class="{{ item_type }}__entry {{ item_type }}--{{ page_type }}__entry">
         {% if item_type == 'posts' %}
@@ -75,6 +53,6 @@ layout: default
       </li>
     {% endfor %}
   </ul>
+  {% endif %}
 </main>
-
 {{ content }}
