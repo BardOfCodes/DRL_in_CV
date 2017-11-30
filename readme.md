@@ -43,3 +43,4 @@ of the excellant material already provided by these brilliant creators:
 
 This work has been complied by Aditya Ganeshan and Trisha Mittal while working at [Video Analytics Lab(VAL),IISc](http://val.serc.iisc.ernet.in/valweb/). We thank the lab for giving us this opportunity.
 
+##### Tutorials are still to be added for most chapters.
