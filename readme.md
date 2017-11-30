@@ -22,6 +22,9 @@ Hence, we are presenting a short series of lectures,(at our lab) with the follow
 
 <center><img src="img/motivation.png" alt="motivations" style=""></center>
 
+# DRL in CV Papers
+An Additional repository has been made [DRL_in_CV_Papers](https://github.com/BardOfCodes/DRL_in_CV_Papers), which consist of a list of published works in computer vision which use Deep Reinforcement learning. A few of the papers have an added blog-post on them as well, highlighting important parts of the paper.
+
 # Posts
 Additionally, for some topics which are important but might not have been a good slide presentation, we have made blog-like posts. This section will see further additions.
 It is open for additional posts from all. Kindly look in the `_post` folder for more information.
