@@ -27,7 +27,13 @@ An Additional repository has been made [DRL_in_CV_Papers](https://github.com/Bar
 
 # Posts
 Additionally, for some topics which are important but might not have been a good slide presentation, we have made blog-like posts. This section will see further additions.
-It is open for additional posts from all. Kindly look in the `_post` folder for more information.
+It is open for additional posts from all.Each post should contain the following information:
+* title: The title of the post
+* teaser: A small intro for the post
+* author: The contributor's name
+* type: keep it `post`
+* addmath: True if you want to add equations to the post
+* layout: 'post'
 
 # Acknowledgement
 
@@ -42,4 +48,10 @@ of the excellant material already provided by these brilliant creators:
 [AndrejKarapathy](https://github.com/karpathy/reinforcejs).
 
 This work has been complied by Aditya Ganeshan and Trisha Mittal while working at [Video Analytics Lab(VAL),IISc](http://val.serc.iisc.ernet.in/valweb/). We thank the lab for giving us this opportunity.
+
+## For the website:
+
+* The template used for the website is [Solana](https://github.com/rlue/jekyll-solana). Thanks to [rlue](https://github.com/rlue) for this elegant yet friendly theme!
+* For the Favicon, and a few other images, [Wordart.com](https://wordart.com/) and [LunaPic.com](https://www169.lunapic.com/editor/?action=transparent) were very useful.
+
 
