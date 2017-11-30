@@ -1,5 +1,7 @@
 # Deep Reinforcement Learning in Computer Vision
 
+[DRL in CV Website](https://bardofcodes.github.io/DRL_in_CV_Papers/)
+
 **[Google Slides on this introduction](https://docs.google.com/presentation/d/1Nnt6Jj77SLECbeb3m_Y6lqDEH0t8CUePJt2U-HlT6ZM/edit?usp=sharing)**
 
 In recent years, while use of Computer Vision techniques/models has burgeoned
@@ -20,19 +22,12 @@ Hence, we are presenting a short series of lectures,(at our lab) with the follow
 
 <center><img src="img/motivation.png" alt="motivations" style=""></center>
 
-## The Content Break-down
-<center><img src="img/break_1.png" alt="motivations" style=""></center>
+# DRL in CV Papers
+An Additional repository has been made [DRL_in_CV_Papers](https://github.com/BardOfCodes/DRL_in_CV_Papers), which consist of a list of published works in computer vision which use Deep Reinforcement learning. A few of the papers have an added blog-post on them as well, highlighting important parts of the paper.
 
-
-For a finer breakdown, kindly refer to the [google sildes](https://docs.google.com/presentation/d/1Nnt6Jj77SLECbeb3m_Y6lqDEH0t8CUePJt2U-HlT6ZM/edit?usp=sharing)
-
-## Content for each Topic
-
-We have roughly 12 major topics, and each topic contains:
-
-* A reaveal.js based presentation on the topic, and
-
-* A Tutorial on the topic in a Jupyter-Notebook(with solutions)
+# Posts
+Additionally, for some topics which are important but might not have been a good slide presentation, we have made blog-like posts. This section will see further additions.
+It is open for additional posts from all. Kindly look in the `_post` folder for more information.
 
 # Acknowledgement
 
@@ -45,3 +40,6 @@ of the excellant material already provided by these brilliant creators:
 * Code material from various amazing sources: [DannyBritz](https://github.com/dennybritz/reinforcement-learning),
 [ShangtongZhang](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction),
 [AndrejKarapathy](https://github.com/karpathy/reinforcejs).
+
+This work has been complied by Aditya Ganeshan and Trisha Mittal while working at [Video Analytics Lab(VAL),IISc](http://val.serc.iisc.ernet.in/valweb/). We thank the lab for giving us this opportunity.
+
