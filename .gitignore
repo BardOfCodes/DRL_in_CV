@@ -1,5 +1,7 @@
 _site/
 .sass-cache/
 .jekyll-metadata
+*.ipynb_checkpoints/*
+.ipynb_checkpoints/*
 .DS_Store
 Gemfile.lock
